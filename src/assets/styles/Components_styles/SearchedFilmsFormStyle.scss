@@ -1,0 +1,60 @@
+.posterFilm {
+    display: flex;
+    justify-content: center;
+    height: 400px;
+    width: 300px;
+    padding: 10px;
+    margin-top: -40px
+}
+
+.idFilm {
+    position: absolute;
+}
+
+
+.movie_rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    position: relative;
+    top:15px;
+    right: 85px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: #000000c4;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.movie_rating_border_green {
+    border: 2px solid green;
+}
+
+.movie_rating_border_orange {
+    border: 2px solid orange;
+}
+
+.movie_rating_border_red {
+    border: 2px solid red;
+}
+
+
+.filmCard {
+    width: 250px;
+    height: 400px;
+}
+
+.text {
+    display: block;
+    text-align: center;
+    padding-bottom: 5px;
+    padding-inline: 30px;
+    margin: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 30px;
+    width: 275px;
+}

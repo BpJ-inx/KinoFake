@@ -1,0 +1,137 @@
+.posterFilm {
+
+    display: flex;
+    justify-content: center;
+    margin-inline: auto;
+    height: 90%;
+    width: 90%;
+    max-width: 300px;
+    max-height: 400px;
+    padding: 10px;
+    margin-bottom: 25px;
+}
+
+.descSide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    order:1;
+}
+
+.imgSide {
+    display: flex;
+    flex-direction: column;
+    // width: 50%;
+    // max-width: 430px;
+    order:1;
+}
+
+.nameFilm {
+    display: flex;
+    justify-content: center;
+    font-family: Tahoma, Arial, Verdana, sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 40px;
+
+}
+
+.altNameFilm {
+    display: flex;
+    font-size: 15px;
+    justify-content: center;
+}
+
+
+.otherInformation {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    margin-top: 20px;
+    border-top: 1px solid rgb(0, 0, 0);
+    padding-top: 10px;
+}
+
+.grayNameClass {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.whiteColorClass {
+    color: rgb(255, 255, 255)
+}
+
+
+.descriptText {
+    margin-top: 10px;
+    border-top: 1px solid rgb(0, 0, 0);
+    padding-top: 10px;
+}
+
+.aboutFilm {
+    // display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    border-radius: 0.5rem;
+    border-width: 2px;
+    border-color: rgba(255, 255, 255, .05);
+    background-color: rgba(0, 0, 0, .6);
+    padding: 25px;
+    width: 70%;
+    padding-bottom: 50px;
+    margin-top: 100px;
+    
+    margin-bottom: 25px;
+}
+
+.buttonOnKinoPoisk {
+    display: flex;
+    align-self: center;
+    width: 230px;
+    justify-content: center;
+    padding: 14px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 1000px;
+    background: linear-gradient(135deg, #f50 69.93%, #d6bb00);
+
+}
+
+.buttonOnKinoPoisk:hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+
+.movie_rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    position: absolute;
+    margin-top: 15px;
+    margin-left: 30px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: #000000c4;
+    color: #ffffff;
+    font-size: 14px;
+    z-index: 1;
+    order:0;
+}
+
+.movie_rating_border_green {
+    border: 2px solid green;
+}
+
+.movie_rating_border_orange {
+    border: 2px solid orange;
+}
+
+.movie_rating_border_red {
+    border: 2px solid red;
+}

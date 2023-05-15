@@ -1,0 +1,48 @@
+
+.carousel{
+
+    border-radius: 0.5rem;
+    border-width: 2px;
+    border-color: rgba(255, 255, 255, .05);
+    background-color: rgba(0, 0, 0, .6);
+    margin-top: 10px;
+    padding-inline: 100px;
+    padding-top:10px;
+    padding-bottom:10px;
+    margin-top: 20px;
+    
+    }
+    .facial {
+    cursor: pointer;
+    flex-basis: 56.25%;
+    }
+    
+    .unFacial {
+    flex-basis: '';
+    cursor: pointer;
+    }
+    
+    .facialNumber {
+    opacity: 0
+    }
+    
+    .unFacialNumber {
+    opacity: 90
+    }
+    
+    .imgUnFacial {
+    opacity: 0.4;
+    }
+    
+    .imgFacial {
+    opacity: 1;
+    object-fit: cover;
+    }
+    
+    .unFacial:hover {
+    flex-basis: 3%;
+    }
+    
+    .imgUnFacial:hover{
+    opacity: 0.6;
+    }
