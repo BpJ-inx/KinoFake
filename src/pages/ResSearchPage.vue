@@ -1,6 +1,8 @@
 <template>
     <div class="header">Результаты по вашему запросу:</div>
+
     <spinner></spinner>
+
     <div class="resSearchFiveFilms hidden flex-wrap justify-center gap-3 items-center align-top">
 
         <SearchedFilmsForm 
@@ -17,27 +19,19 @@
 <script>
 import SearchError from '../components/SearchError.vue';
 import SearchedFilmsForm from '../components/SearchedFilmsForm.vue'
-
-// import { fetchSearch } from '../hooks/fetchSearch';
 import { fetchSearch } from '../hooks/fetch';
 import axios from "axios";
 
 export default {
-    data() {
-        return {
-
-        }
-    },
     components: {
         SearchedFilmsForm,
         SearchError,
-
     },
     methods: {
-
         async listenerFunction() {
             document.querySelector('.spinner').classList.remove('hidden')
             document.querySelector('.resSearchFiveFilms').classList.add('hidden')
+            
             if (document.querySelector('.errorPlace')) {
                 document.querySelector('.errorPlace').classList.add('hidden')
             }
@@ -62,7 +56,6 @@ export default {
                 if (responseFromServer.data.docs.length != 0) {
                     this.responseSearchFilms = []
                     this.responseSearchFilms = responseFromServer.data.docs
-
 
                     for (let i = 0; i < this.responseSearchFilms.length; ++i) {
                         if (!this.responseSearchFilms[i].poster) {

@@ -47,20 +47,6 @@
 
 export default {
     name: 'usearchinputapi',
-    data() {
-        return {
-        }
-    },
-
-
-    methods: {
-
-       
-    },
-    computed: {
-    },
-
-
 }
 </script>
 

@@ -38,11 +38,10 @@ export function fetchMainTop() {
                                             month.value = "OCTOBER" :
                                             month.value == 10 ?
                                                 month.value = "NOVEMBER" :
-                                                month.value = "DECEMBER";       ///strange... выглядит страшно  
+                                                month.value = "DECEMBER";       ///strange...
 
     fetchRequest.value = `https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres?year=${year.value}&month=${month.value}`
     X_API_KEY.value = '8c8e1a50-6322-4135-8875-5d40a5420d86'
-    
 
     const fetchFunc = async () => {
 
@@ -110,9 +109,8 @@ export function fetchMove() {
 
     onMounted(fetchFunc)
     
-
-
     isRandom.value=true
+
     return {
         responseMove
     }
@@ -125,7 +123,6 @@ export function fetchSearch() {
     document.querySelector('.searchInput').value = ''
     document.querySelector('.searchInput').blur()
     const responseSearchFilms = ref([])
-
 
     const fetchFunc = async () => {
         fetchRequest.value =

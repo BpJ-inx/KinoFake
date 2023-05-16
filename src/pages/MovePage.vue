@@ -2,22 +2,19 @@
     <div>
         <spinner></spinner>
 
-        <FilmForm :responseMove='responseMove'>
+        <FilmForm 
+        :responseMove='responseMove'>
         </FilmForm>
+
     </div>
 </template>
 
 <script>
 import FilmForm from '../components/FilmForm.vue'
-// import { fetchMove } from '../hooks/fetchMove.js'
 import { fetchMove } from '../hooks/fetch';
 import axios from "axios";
 
 export default {
-    data() {
-        return {
-        }
-    },
     components: {
         FilmForm
     },
@@ -59,8 +56,6 @@ export default {
     },
     setup(props) {
         const { responseMove } = fetchMove()
-
-
         return {
             responseMove
         }

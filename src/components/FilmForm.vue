@@ -4,24 +4,26 @@
     :key="film.id">
 
         <div class="imgSide ">
+            <img class="posterFilm" 
+            :src="film.poster.previewUrl" 
+            @load="hideSpinnerShowFilmChangeColorRating">
 
-            <img class="posterFilm" :src="film.poster.previewUrl" @load="hideSpinnerShowFilmChangeColorRating">
-            <div class="movie_rating" > {{ film.rating.kp }}</div>
+            <div class="movie_rating"> {{ film.rating.kp }}</div>
             <a class="buttonOnKinoPoisk cursor-pointer" @click="openFilmOnKP">Открыть на КиноПоиске</a>
         </div>
 
-
-
-        <div class="descSide  ">
+        <div class="descSide">
             <div class="idFilm hidden">{{ film.id }} </div>
             <div class="nameFilm ">{{ film.name }}</div>
             <div class="altNameFilm"> {{ film.alternativeName }}
             </div>
+
             <div class="otherInformation">
-                <div class="flex countryText grayNameClass flex-row ">Country:
+                <div class="countryText flex grayNameClass flex-row ">Country:
                     <div class="countryFilm whiteColorClass ml-2 ">{{ film.countries[0].name }}</div>
                 </div>
-                <div class="flex yearText grayNameClass flex-row ">Year:
+
+                <div class="yearText flex grayNameClass flex-row ">Year:
                     <div class="yearFilm whiteColorClass ml-2">{{ film.year }}</div>
                 </div>
 
@@ -44,11 +46,6 @@ export default {
             type: Array,
             required: true,
         }
-    },
-    data() {
-        return {
-
-        };
     },
     methods: {
         openFilmOnKP() {

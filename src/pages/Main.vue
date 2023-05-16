@@ -20,9 +20,6 @@ export default {
   components: {
     FilmsFormWithoutRating,
   },
-  data() {
-    return {};
-  },
   methods: {
     async loadMoreFilms() {
       try {

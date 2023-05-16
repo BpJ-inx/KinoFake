@@ -1,9 +1,14 @@
 <template>
-  <div class="filmCard flex flex-col  m-2 cursor-pointer items-center" @click="openFilmOnSelfPage()"
-    v-for="film in responseSearchFilms" :key="film.id">
+  <div class="filmCard flex flex-col  m-2 cursor-pointer items-center" 
+    @click="openFilmOnSelfPage()"
+    v-for="film in responseSearchFilms" 
+    :key="film.id">
+
     <div class="idFilm hidden">{{ film.id }}</div>
     <div class="movie_rating">{{ film.rating.kp }}</div>
-    <img class="posterFilm" :src='film.poster.url' @load="hideSpinnerShowFilmChangeColorRating">
+    <img class="posterFilm" 
+    :src='film.poster.url'
+     @load="hideSpinnerShowFilmChangeColorRating">
     <div class="nameFilm text"> {{ film.name }}</div>
 
   </div>
