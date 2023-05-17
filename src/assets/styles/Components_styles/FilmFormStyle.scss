@@ -1,5 +1,4 @@
 .posterFilm {
-
     display: flex;
     justify-content: center;
     margin-inline: auto;
@@ -21,8 +20,6 @@
 .imgSide {
     display: flex;
     flex-direction: column;
-    // width: 50%;
-    // max-width: 430px;
     order:1;
 }
 
@@ -69,7 +66,6 @@
 }
 
 .aboutFilm {
-    // display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -82,7 +78,6 @@
     width: 70%;
     padding-bottom: 50px;
     margin-top: 100px;
-    
     margin-bottom: 25px;
 }
 
