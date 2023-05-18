@@ -1,6 +1,5 @@
 <template>
-  <div class="filmCard flex flex-col  m-2 cursor-pointer items-center" 
-    @click="openFilmOnSelfPage()"
+  <div class="filmCard flex flex-col  m-2 cursor-pointer items-center" @click="openFilmOnSelfPage()"
     v-for="film in responseSearchFilms" 
     :key="film.id">
 
@@ -8,14 +7,14 @@
     <div class="movie_rating">{{ film.rating.kp }}</div>
     <img class="posterFilm" 
     :src='film.poster.url'
-     @load="hideSpinnerShowFilmChangeColorRating">
+    @load="hideSpinnerShowFilmChangeColorRating">
     <div class="nameFilm text"> {{ film.name }}</div>
 
   </div>
 </template>
 
 <script>
-import {openFilmOnSelfPage} from '../hooks/fetch.js'
+import { openFilmOnSelfPage } from '../hooks/fetch.js'
 export default {
   props: {
     responseSearchFilms: {
@@ -25,9 +24,12 @@ export default {
   },
   methods: {
     hideSpinnerShowFilmChangeColorRating() {
-      document.querySelector('.resSearchFiveFilms').classList.remove('hidden');
-      document.querySelector('.resSearchFiveFilms').classList.add('flex');
-      document.querySelector('.spinner').classList.add('hidden');
+
+      if (document.querySelector('.errorPlace').classList.contains('hidden')) {
+        document.querySelector('.resSearchFiveFilms').classList.remove('hidden');
+        document.querySelector('.resSearchFiveFilms').classList.add('flex');
+        document.querySelector('.spinner').classList.add('hidden');
+      }
 
       for (let i = 0; i < document.querySelectorAll('.movie_rating').length; ++i) {
 
@@ -43,10 +45,10 @@ export default {
     }
 
   },
-  setup(props){
-return{
-  openFilmOnSelfPage
-}
+  setup(props) {
+    return {
+      openFilmOnSelfPage
+    }
 
   }
 }

@@ -14,6 +14,4 @@ export default[
     SearchError,
     URandomBut,
     ULogoBut,
-
-
 ]

@@ -31,7 +31,7 @@ export default {
         async listenerFunction() {
             document.querySelector('.spinner').classList.remove('hidden')
             document.querySelector('.resSearchFiveFilms').classList.add('hidden')
-            
+
             if (document.querySelector('.errorPlace')) {
                 document.querySelector('.errorPlace').classList.add('hidden')
             }
@@ -50,11 +50,9 @@ export default {
                             'accept': 'application/json',
                             'X-API-KEY': X_API_KEY
                         }
-                    }
-                )
-
+                    })
                 if (responseFromServer.data.docs.length != 0) {
-                    this.responseSearchFilms = []
+                    
                     this.responseSearchFilms = responseFromServer.data.docs
 
                     for (let i = 0; i < this.responseSearchFilms.length; ++i) {
@@ -65,6 +63,7 @@ export default {
                     }
                 } else {
                     document.querySelector('.spinner').classList.add('hidden')
+                    document.querySelector('.resSearchFiveFilms').classList.add('hidden')
                     document.querySelector('.searchInput').value = ''
                     document.querySelector('.errorPlace').classList.remove('hidden')
                     document.querySelector('.textError').innerHTML = `Sorry, No results found for "${searchQuery}"`
@@ -75,17 +74,14 @@ export default {
             }
         }
     },
-
     mounted() {
         document.querySelector('.searchInputButton').addEventListener('click', this.listenerFunction)
     },
-    beforeMount() {
+    beforeUnmount() {
         document.querySelector('.searchInputButton').removeEventListener('click', this.listenerFunction)
     },
-
     setup(props) {
         const { responseSearchFilms } = fetchSearch()
-
 
         return {
             responseSearchFilms

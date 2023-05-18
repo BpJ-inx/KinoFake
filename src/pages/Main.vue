@@ -1,11 +1,11 @@
 <template >
   <div class="header">Премьеры в этом месяце :</div>
-  <div class="resSearchFiveFilms flex flex-wrap gap-3 items-center align-top">
 
-    <FilmsFormWithoutRating 
-    :responseFilms="responseFilms">
+  <spinner></spinner>
+
+  <div class="resSearchFiveFilms hidden flex-wrap gap-3 items-center align-top">
+    <FilmsFormWithoutRating :responseFilms="responseFilms">
     </FilmsFormWithoutRating>
-
   </div>
 
   <div ref="observer" class="observer"></div>
@@ -44,7 +44,6 @@ export default {
       }
     },
   },
-
   mounted() {
     let options = {
       rootMargin: "0px",

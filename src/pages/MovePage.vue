@@ -20,8 +20,6 @@ export default {
     },
     methods: {
         async refreshPage() {
-
-
             if (document.querySelector('.aboutFilm').classList.contains('flex')) {
                 document.querySelector('.aboutFilm').classList.remove('flex');
                 document.querySelector('.aboutFilm').classList.add('hidden');
@@ -60,12 +58,6 @@ export default {
             responseMove
         }
     }
-
-
-
-
-
-
 
 }
 </script>
