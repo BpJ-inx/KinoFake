@@ -4,8 +4,10 @@
   <spinner></spinner>
 
   <div class="resSearchFiveFilms hidden flex-wrap gap-3 items-center align-top">
+    
     <FilmsFormWithoutRating :responseFilms="responseFilms">
     </FilmsFormWithoutRating>
+    
   </div>
 
   <div ref="observer" class="observer"></div>
@@ -37,8 +39,9 @@ export default {
             this.endSlice
           ),
         ];
-        this.startSlice += 5;
-        this.endSlice += 5;
+        let x = 10
+        this.startSlice += x;
+        this.endSlice += x;
       } catch (e) {
         console.log(e);
       }

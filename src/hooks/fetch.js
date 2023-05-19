@@ -27,8 +27,8 @@ const fetchFunc = async () => {
         if (whatPageRequest.value == 'main') {
 
             responseFilms.value = responseFromServer.data.items.slice(startSlice.value, endSlice.value)
-            startSlice.value += 5,
-                endSlice.value += 5
+            startSlice.value += 20,
+            endSlice.value += 10
 
         } else if (whatPageRequest.value == 'move') {
 
@@ -66,7 +66,7 @@ export function fetchMainTop() {
 
     whatPageRequest.value = 'main'
     startSlice.value = 0
-    endSlice.value = 5
+    endSlice.value = 20
 
     month.value == 0 ?
         month.value = "JANUARY" :
