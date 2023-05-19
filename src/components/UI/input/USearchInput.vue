@@ -15,9 +15,10 @@
                             </path>
                         </svg>
                     </div>
-                   
-                    <input  @keyup.enter="$router.push('/ressearch')" 
-                    
+
+                    <input 
+                    v-model="searchQuery"
+                    @keyup.enter="$router.push('/ressearch')"  
                     type="search" class="searchInput bg-black border border-black text-gray-900 text-sm rounded-lg
              focus:ring-black focus:border-black block w-full pl-10 p-2.5
              dark:bg-gray-700 dark:border-black dark:placeholder-gray-400 dark:text-white
@@ -43,10 +44,15 @@
 </template>
 
 <script>
-
-
+import fetch from '../../../hooks/fetch';
 export default {
     name: 'usearchinputapi',
+    setup() {
+        const { searchQuery } = fetch
+        return {
+            searchQuery
+        }
+    }
 }
 </script>
 

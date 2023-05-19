@@ -28,7 +28,7 @@ const fetchFunc = async () => {
 
             responseFilms.value = responseFromServer.data.items.slice(startSlice.value, endSlice.value)
             startSlice.value += 5,
-            endSlice.value += 5
+                endSlice.value += 5
 
         } else if (whatPageRequest.value == 'move') {
 
@@ -58,7 +58,6 @@ const fetchFunc = async () => {
         console.log(e)
     }
 }
-
 
 export function fetchMainTop() {
     const date = ref(new Date())
@@ -107,12 +106,8 @@ export function fetchMainTop() {
     }
 }
 
-
-
-
 export function fetchMove() {
     whatPageRequest.value = 'move'
-   
 
     if (isRandom.value) {
         fetchRequest.value = `https://api.kinopoisk.dev/v1/movie/random`;
@@ -131,18 +126,16 @@ export function fetchMove() {
     }
 }
 
-
-
 export function fetchSearch() {
     whatPageRequest.value = 'search'
     responseSearchFilms.value = []
-    searchQuery.value = document.querySelector('.searchInput').value
-    document.querySelector('.searchInput').value = ''
     document.querySelector('.searchInput').blur()
 
     fetchRequest.value =
         `https://api.kinopoisk.dev/v1/movie?selectFields=rating.kp%20name%20year%20alternativeName%20poster.url%20countries.name%20description%20id&page=1&name=${searchQuery.value}`
     X_API_KEY.value = '9A3NPT8-DRV4AHY-QG3HFAE-2GHT683'
+
+    document.querySelector('.searchInput').value = ''
 
     onMounted(fetchFunc)
 
@@ -151,10 +144,12 @@ export function fetchSearch() {
     }
 }
 
-
-
 export async function openFilmOnSelfPage() {
     selectedFimId.value = event.target.closest('div.filmCard').querySelector('.idFilm').innerHTML
     isRandom.value = false
     await router.replace('/movepage')
+}
+
+export default {
+    searchQuery
 }
