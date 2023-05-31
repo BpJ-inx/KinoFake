@@ -5,7 +5,7 @@ import router from '../router/router'
 const isRandom = ref(true)
 const selectedFimId = ref('')
 const fetchRequest = ref(``)
-const X_API_KEY = ref('')
+const X_API_KEY = ref('9A3NPT8-DRV4AHY-QG3HFAE-2GHT683')
 const responseMove = ref([])
 const responseFilms = ref([]);
 const startSlice = ref(0)
@@ -53,6 +53,7 @@ const fetchFunc = async () => {
                 document.querySelector('.textError').innerHTML = `Sorry, No results found for "${searchQuery.value}"`
             }
         }
+        X_API_KEY.value = '9A3NPT8-DRV4AHY-QG3HFAE-2GHT683'
     }
     catch (e) {
         console.log(e)
@@ -109,13 +110,9 @@ export function fetchMainTop() {
 export function fetchMove() {
     whatPageRequest.value = 'move'
 
-    if (isRandom.value) {
-        fetchRequest.value = `https://api.kinopoisk.dev/v1/movie/random`;
-        X_API_KEY.value = '9A3NPT8-DRV4AHY-QG3HFAE-2GHT683'
-    } else {
-        fetchRequest.value = `https://api.kinopoisk.dev/v1/movie/${selectedFimId.value}`
-        X_API_KEY.value = '9A3NPT8-DRV4AHY-QG3HFAE-2GHT683'
-    }
+isRandom.value ? 
+fetchRequest.value ='https://api.kinopoisk.dev/v1/movie/random' : 
+fetchRequest.value = `https://api.kinopoisk.dev/v1/movie/${selectedFimId.value}`
 
     onMounted(fetchFunc)
 

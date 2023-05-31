@@ -52,7 +52,7 @@ export default {
         document.querySelector('.butRandom ').removeEventListener('click', this.refreshPage)
         this.responseMove = []
     },
-    setup(props) {
+    setup() {
         const { responseMove } = fetchMove()
         return {
             responseMove
