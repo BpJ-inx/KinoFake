@@ -33,11 +33,11 @@ export default {
 
       for (let i = 0; i < document.querySelectorAll('.movie_rating').length; ++i) {
 
-        if (document.querySelectorAll('.movie_rating')[i].innerText > 7.000) {
+        if (document.querySelectorAll('.movie_rating')[i].innerText > 7) {
           document.querySelectorAll('.movie_rating')[i].classList.add('movie_rating_border_green')
-        } else if (document.querySelectorAll('.movie_rating')[i].innerText > 5.000 || document.querySelector('.movie_rating').innerText < 7.000) {
+        } else if (document.querySelectorAll('.movie_rating')[i].innerText > 5|| document.querySelector('.movie_rating').innerText < 7) {
           document.querySelectorAll('.movie_rating')[i].classList.add('movie_rating_border_orange')
-        } else if (document.querySelectorAll('.movie_rating')[i].innerText <= 5.000) {
+        } else if (document.querySelectorAll('.movie_rating')[i].innerText <= 5) {
           document.querySelectorAll('.movie_rating')[i].classList.add('movie_rating_border_red')
         }
       }
