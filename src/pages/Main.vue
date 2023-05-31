@@ -28,7 +28,7 @@ export default {
         let responseFromServer = await axios.get(this.fetchRequest, {
           headers: {
             accept: "application/json",
-            "X-API-KEY": this.X_API_KEY,
+            "X-API-KEY": '8c8e1a50-6322-4135-8875-5d40a5420d86',
           },
         });
 
