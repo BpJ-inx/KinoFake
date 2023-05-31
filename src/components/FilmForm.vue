@@ -9,7 +9,7 @@
             @load="hideSpinnerShowFilmChangeColorRating">
 
             <div class="movie_rating"> {{ film.rating.kp }}</div>
-            <a class="buttonOnKinoPoisk cursor-pointer" @click="openFilmOnKP">Открыть на КиноПоиске</a>
+            <button class="buttonOnKinoPoisk cursor-pointer" @click="openFilmOnKP">Открыть на КиноПоиске</button>
         </div>
 
         <div class="descSide">
