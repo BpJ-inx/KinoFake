@@ -48,7 +48,7 @@ export default {
     }
 
   },
-  setup(props) {
+  setup() {
     return {
       openFilmOnSelfPage
     }

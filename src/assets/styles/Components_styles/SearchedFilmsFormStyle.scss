@@ -44,6 +44,13 @@
 .filmCard {
     width: 250px;
     height: 400px;
+    transition: all 0.5s ease;
+}
+
+.filmCard:hover{
+    -webkit-transform: scale(1.04);
+    -ms-transform: scale(1.04);
+    transform: scale(1.04);
 }
 
 .text {
