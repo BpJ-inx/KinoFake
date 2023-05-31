@@ -30,13 +30,14 @@
     font-size: 19px;
     font-weight: 700;
     line-height: 40px;
-
+    margin-top: 10px;
 }
 
 .altNameFilm {
     display: flex;
     font-size: 15px;
     justify-content: center;
+    margin-top: 5px;
 }
 
 
@@ -90,14 +91,14 @@
     font-size: 15px;
     font-weight: 600;
     border-radius: 1000px;
-    background: linear-gradient(135deg, #f50 69.93%, #d6bb00);
-
+    background: linear-gradient(135deg,#ff5500 69.93%,#d6bb00);
+    transition: all 0.5s ease;
 }
 
 .buttonOnKinoPoisk:hover {
-    -webkit-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 

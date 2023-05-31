@@ -1,6 +1,6 @@
 <template>
     <button
-        class="butRandom rounded-xl bg-gray-700 px-5 mt-1 mb-1 font-medium text-white transition duration-200 hover:bg-gray-600 active:bg-gray-400 border-black">
+        class="butRandom rounded-xl bg-gray-700 px-5 mt-1 mb-1 font-medium text-gray-300 transition duration-500 hover:bg-gray-600 hover:text-white active:bg-gray-400 border-black">
         <slot></slot>
     </button>
 </template>

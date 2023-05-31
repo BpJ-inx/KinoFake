@@ -13,14 +13,13 @@
 
     <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
       <nav>
-        <ul
+        <ul 
           class="lg:flex items-center justify-around bg-rgba(0, 0, 0, 0.95) first-letter:text-base text-white  py-3 lg:pt-0">
-          <urandombut class="lg:p-2 py-2 px-0 block border-b-2 border-transparent hover:border-white mr-10"
+          <urandombut class="mt-3 lg:p-2 py-2 px-0 block mr-10"
             @click="$router.push('/movepage')">Random film</urandombut>
           <li>
             <usearchinputapi 
-            
-            class="lg:p-2 py-2 px-0 mr-10" >
+            class="mt-1 lg:p-2 py-2 px-0 mr-20" >
             </usearchinputapi>
           </li>
         </ul>

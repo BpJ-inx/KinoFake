@@ -16,17 +16,13 @@
                         </svg>
                     </div>
 
-                    <input 
-                    v-model="searchQuery"
-                    @keyup.enter="$router.push('/ressearch')"  
-                    type="search" class="searchInput bg-black border border-black text-gray-900 text-sm rounded-lg
-             focus:ring-black focus:border-black block w-full pl-10 p-2.5
+                    <input v-model="searchQuery" @keyup.enter="$router.push('/ressearch')" type="search" class="searchInput bg-black border border-black text-gray-900 text-sm rounded-lg focus:outline-none block w-full pl-10 p-2.5
              dark:bg-gray-700 dark:border-black dark:placeholder-gray-400 dark:text-white
               dark:focus:ring-black dark:focus:border-black pr-20 px-20" placeholder="Search">
 
                     <button class="searchInputButton absolute top-0 right-0 p-2.5 text-sm font-medium
                  text-white bg-black rounded-r-lg border border-black
-                hover:bg-black focus:ring-1 focus:outline-none focus:ring-black
+                 transition duration-500 hover:bg-black focus:ring-1 focus:outline-none focus:ring-black
                 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800" @click="$router.push('/ressearch')">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
