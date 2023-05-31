@@ -62,6 +62,9 @@ export default {
             } else if (document.querySelector('.movie_rating').innerText <= 5.000) {
                 document.querySelector('.movie_rating').classList.add('movie_rating_border_red')
             }
+            if (document.querySelector('.movie_rating').innerText == 0) {
+                document.querySelector('.movie_rating').innerText = '-'
+            }
         },
     },
 
