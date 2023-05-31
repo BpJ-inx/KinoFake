@@ -1,5 +1,5 @@
 <template >
-  <div class="header">Премьеры в этом месяце :</div>
+  <h1 class="header">Премьеры в этом месяце :</h1>
 
   <spinner></spinner>
 

@@ -6,7 +6,7 @@
 body { 
     overflow-y: scroll;
     overflow-x: hidden;
-    background-color: rgb(255, 255, 255);
+    background-color: #f4f4f4;
 }
 
 
@@ -50,4 +50,11 @@ body::-webkit-scrollbar {
 .wh-full {
     height: 100%;
     width: 100%
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  width: 911px;
+  margin: auto;
 }
