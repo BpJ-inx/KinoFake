@@ -40,6 +40,9 @@ export default {
         } else if (document.querySelectorAll('.movie_rating')[i].innerText <= 5) {
           document.querySelectorAll('.movie_rating')[i].classList.add('movie_rating_border_red')
         }
+         if (document.querySelectorAll('.movie_rating')[i].innerText == 0) {
+          document.querySelectorAll('.movie_rating')[i].innerText = '-'
+        }
       }
 
     }
