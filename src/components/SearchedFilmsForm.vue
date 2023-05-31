@@ -4,7 +4,7 @@
     :key="film.id">
 
     <div class="idFilm hidden">{{ film.id }}</div>
-    <div class="movie_rating">{{ film.rating.kp }}</div>
+    <div class="movie_rating">{{ film.rating.kp.toFixed(1) }}</div>
     <img class="posterFilm" 
     :src='film.poster.url'
     @load="hideSpinnerShowFilmChangeColorRating">

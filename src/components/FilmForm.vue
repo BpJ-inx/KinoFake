@@ -8,7 +8,7 @@
             :src="film.poster.previewUrl" 
             @load="hideSpinnerShowFilmChangeColorRating">
 
-            <div class="movie_rating"> {{ film.rating.kp }}</div>
+            <div class="movie_rating"> {{ film.rating.kp.toFixed(1) }} </div>
             <button class="buttonOnKinoPoisk cursor-pointer" @click="openFilmOnKP">Открыть на КиноПоиске</button>
         </div>
 
