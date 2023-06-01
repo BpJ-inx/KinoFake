@@ -28,7 +28,7 @@ const fetchFunc = async () => {
 
             responseFilms.value = responseFromServer.data.items.slice(startSlice.value, endSlice.value)
             startSlice.value += 20,
-            endSlice.value += 10
+                endSlice.value += 10
 
         } else if (whatPageRequest.value == 'move') {
 
@@ -64,34 +64,14 @@ export function fetchMainTop() {
     const date = ref(new Date())
     const year = ref(date.value.getFullYear());
     const month = ref(date.value.getMonth());
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
     whatPageRequest.value = 'main'
     startSlice.value = 0
     endSlice.value = 20
 
-    month.value == 0 ?
-        month.value = "JANUARY" :
-        month.value == 1 ?
-            month.value = "FEBRUARY" :
-            month.value == 2 ?
-                month.value = "MARCH" :
-                month.value == 3 ?
-                    month.value = "APRIL" :
-                    month.value == 4 ?
-                        month.value = "MAY" :
-                        month.value == 5 ?
-                            month.value = "JUNE" :
-                            month.value == 6 ?
-                                month.value = "JULY" :
-                                month.value == 7 ?
-                                    month.value = "AUGUST" :
-                                    month.value == 8 ?
-                                        month.value = "SEPTEMBER" :
-                                        month.value == 9 ?
-                                            month.value = "OCTOBER" :
-                                            month.value == 10 ?
-                                                month.value = "NOVEMBER" :
-                                                month.value = "DECEMBER";       ///strange...
+
+    month.value = months[month.value]
 
     fetchRequest.value = `https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres?year=${year.value}&month=${month.value}`
     X_API_KEY.value = '8c8e1a50-6322-4135-8875-5d40a5420d86'
@@ -110,9 +90,9 @@ export function fetchMainTop() {
 export function fetchMove() {
     whatPageRequest.value = 'move'
 
-isRandom.value ? 
-fetchRequest.value ='https://api.kinopoisk.dev/v1/movie/random' : 
-fetchRequest.value = `https://api.kinopoisk.dev/v1/movie/${selectedFimId.value}`
+    isRandom.value ?
+        fetchRequest.value = 'https://api.kinopoisk.dev/v1/movie/random' :
+        fetchRequest.value = `https://api.kinopoisk.dev/v1/movie/${selectedFimId.value}`
 
     onMounted(fetchFunc)
 
@@ -130,7 +110,6 @@ export function fetchSearch() {
 
     fetchRequest.value =
         `https://api.kinopoisk.dev/v1/movie?selectFields=rating.kp%20name%20year%20alternativeName%20poster.url%20countries.name%20description%20id&page=1&name=${searchQuery.value}`
-    X_API_KEY.value = '9A3NPT8-DRV4AHY-QG3HFAE-2GHT683'
 
     document.querySelector('.searchInput').value = ''
 
