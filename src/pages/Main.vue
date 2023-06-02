@@ -52,15 +52,15 @@ export default {
       rootMargin: "0px",
       threshold: 1.0,
     };
-    const callback = (entries, observer) => {
+    const funcAtIntersection = (entries) => {
       if (entries[0].isIntersecting) {
         this.loadMoreFilms();
       }
     };
-    let observer = new IntersectionObserver(callback, options);
+    let observer = new IntersectionObserver(funcAtIntersection, options);
     observer.observe(this.$refs.observer);
   },
-  setup(props) {
+  setup() {
     const { responseFilms, startSlice, endSlice, fetchRequest, X_API_KEY } =
       fetchMainTop();
 
