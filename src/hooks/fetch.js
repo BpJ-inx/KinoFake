@@ -25,33 +25,11 @@ const fetchFunc = async () => {
             }
         )
         if (whatPageRequest.value == 'main') {
-
-            responseFilms.value = responseFromServer.data.items.slice(startSlice.value, endSlice.value)
-            startSlice.value += 20,
-                endSlice.value += 10
-
+            changeOnRequestMain(responseFromServer)
         } else if (whatPageRequest.value == 'move') {
-
-            responseMove.value = []
-            responseMove.value.push(responseFromServer.data)
-
+            changeOnRequestMove(responseFromServer)
         } else if (whatPageRequest.value == 'search') {
-
-            if (responseFromServer.data.docs.length != 0) {
-                responseSearchFilms.value = responseFromServer.data.docs
-
-                for (let i = 0; i < responseSearchFilms.value.length; ++i) {
-                    if (!responseSearchFilms.value[i].poster) {
-                        responseSearchFilms.value[i].poster = {}
-                        responseSearchFilms.value[i].poster.url = 'src/assets/img/nonPoster.png'
-                    }
-                }
-            } else {
-                document.querySelector('.spinner').classList.add('hidden')
-                document.querySelector('.resSearchFiveFilms').classList.add('hidden')
-                document.querySelector('.errorPlace').classList.remove('hidden')
-                document.querySelector('.textError').innerHTML = `Sorry, No results found for "${searchQuery.value}"`
-            }
+            changeOnRequestSearch(responseFromServer)
         }
         X_API_KEY.value = '9A3NPT8-DRV4AHY-QG3HFAE-2GHT683'
     }
@@ -59,6 +37,37 @@ const fetchFunc = async () => {
         console.log(e)
     }
 }
+
+
+function changeOnRequestMain(responseFromServer) {
+    responseFilms.value = responseFromServer.data.items.slice(startSlice.value, endSlice.value),
+        startSlice.value += 20,
+        endSlice.value += 10
+}
+
+function changeOnRequestMove(responseFromServer) {
+    responseMove.value = []
+    responseMove.value.push(responseFromServer.data)
+}
+
+function changeOnRequestSearch(responseFromServer) {
+    if (responseFromServer.data.docs.length != 0) {
+        responseSearchFilms.value = responseFromServer.data.docs
+
+        for (let i = 0; i < responseSearchFilms.value.length; ++i) {
+            if (!responseSearchFilms.value[i].poster) {
+                responseSearchFilms.value[i].poster = {}
+                responseSearchFilms.value[i].poster.url = 'src/assets/img/nonPoster.png'
+            }
+        }
+    } else {
+        document.querySelector('.spinner').classList.add('hidden')
+        document.querySelector('.resSearchFiveFilms').classList.add('hidden')
+        document.querySelector('.errorPlace').classList.remove('hidden')
+        document.querySelector('.textError').innerHTML = `Sorry, No results found for "${searchQuery.value}"`
+    }
+}
+
 
 export function fetchMainTop() {
     const date = ref(new Date())
