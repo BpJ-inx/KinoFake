@@ -1,7 +1,7 @@
 import axios from "axios";
 import { onMounted, ref } from 'vue'
 import router from '../router/router'
-import { basic_X_API_KEY, private_X_API_KEY } from '../urlConfig.js'
+import { basic_X_API_KEY, private_X_API_KEY, fetchFilm, fetchSearchName, fetchPremieres } from '../urlConfig.js'
 
 const isRandom = ref(true)
 const selectedFimId = ref('')
@@ -36,7 +36,7 @@ const fetchFunc = async () => {
     catch (e) {
         console.log(e)
     }
-    
+
 }
 
 
@@ -70,19 +70,12 @@ function changeOnRequestSearch(responseFromServer) {
 }
 
 
-export function fetchMainTop() {
-    const date = ref(new Date())
-    const year = ref(date.value.getFullYear());
-    const month = ref(date.value.getMonth());
-    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-
+export function fetchMainTop() {    
     whatPageRequest.value = 'main'
     startSlice.value = 0
     endSlice.value = 20
 
-    month.value = months[month.value]
-
-    fetchRequest.value = `https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres?year=${year.value}&month=${month.value}`
+    fetchRequest.value = fetchPremieres
     X_API_KEY.value = private_X_API_KEY
 
     onMounted(fetchFunc)
@@ -101,8 +94,8 @@ export function fetchMove() {
     X_API_KEY.value = basic_X_API_KEY
 
     isRandom.value ?
-        fetchRequest.value = 'https://api.kinopoisk.dev/v1/movie/random' :
-        fetchRequest.value = `https://api.kinopoisk.dev/v1/movie/${selectedFimId.value}`
+        fetchRequest.value = fetchFilm + 'random' :
+        fetchRequest.value = fetchFilm + selectedFimId.value
 
     onMounted(fetchFunc)
 
@@ -118,12 +111,11 @@ export function fetchMove() {
 export function fetchSearch() {
     whatPageRequest.value = 'search'
     X_API_KEY.value = basic_X_API_KEY
-    
+
     responseSearchFilms.value = []
     document.querySelector('.searchInput').blur()
 
-    fetchRequest.value =
-        `https://api.kinopoisk.dev/v1/movie?selectFields=rating.kp%20name%20year%20alternativeName%20poster.url%20countries.name%20description%20id&page=1&name=${searchQuery.value}`
+    fetchRequest.value = fetchSearchName + searchQuery.value
 
     document.querySelector('.searchInput').value = ''
 
@@ -131,8 +123,8 @@ export function fetchSearch() {
 
     return {
         responseSearchFilms,
-        fetchRequest,
         X_API_KEY,
+        searchQuery
     }
 }
 

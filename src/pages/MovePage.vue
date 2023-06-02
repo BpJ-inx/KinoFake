@@ -10,6 +10,7 @@
 
 <script>
 import FilmForm from '../components/FilmForm.vue'
+import {fetchFilm} from '../urlConfig.js'
 import { fetchMove } from '../hooks/fetch';
 import axios from "axios";
 
@@ -26,7 +27,7 @@ export default {
             }
 
             try {
-                let responseFromServer = await axios.get('https://api.kinopoisk.dev/v1/movie/random',
+                let responseFromServer = await axios.get(fetchFilm + 'random',
                     {
                         headers: {
                             'accept': 'application/json',

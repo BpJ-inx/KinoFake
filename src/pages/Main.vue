@@ -16,7 +16,6 @@
 
 <script>
 import { fetchMainTop } from '../hooks/fetch.js'
-import { basic_X_API_KEY, private_X_API_KEY } from '../urlConfig.js'
 import FilmsFormWithoutRating from "../components/FilmsFormWithoutRating.vue";
 import axios from "axios";
 
