@@ -5,7 +5,8 @@
 
   <div class="resSearchFiveFilms hidden flex-wrap gap-3 items-center align-top">
     
-    <FilmsFormWithoutRating :responseFilms="responseFilms">
+    <FilmsFormWithoutRating 
+    :responseFilms="responseFilms">
     </FilmsFormWithoutRating>
     
   </div>
@@ -15,6 +16,7 @@
 
 <script>
 import { fetchMainTop } from '../hooks/fetch.js'
+import { basic_X_API_KEY, private_X_API_KEY } from '../urlConfig.js'
 import FilmsFormWithoutRating from "../components/FilmsFormWithoutRating.vue";
 import axios from "axios";
 
@@ -28,7 +30,7 @@ export default {
         let responseFromServer = await axios.get(this.fetchRequest, {
           headers: {
             accept: "application/json",
-            "X-API-KEY": '8c8e1a50-6322-4135-8875-5d40a5420d86',
+            "X-API-KEY": this.X_API_KEY,
           },
         });
 

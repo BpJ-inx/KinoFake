@@ -1,11 +1,12 @@
 import axios from "axios";
 import { onMounted, ref } from 'vue'
 import router from '../router/router'
+import { basic_X_API_KEY, private_X_API_KEY } from '../urlConfig.js'
 
 const isRandom = ref(true)
 const selectedFimId = ref('')
 const fetchRequest = ref(``)
-const X_API_KEY = ref('9A3NPT8-DRV4AHY-QG3HFAE-2GHT683')
+const X_API_KEY = ref(basic_X_API_KEY)
 const responseMove = ref([])
 const responseFilms = ref([]);
 const startSlice = ref(0)
@@ -31,11 +32,11 @@ const fetchFunc = async () => {
         } else if (whatPageRequest.value == 'search') {
             changeOnRequestSearch(responseFromServer)
         }
-        X_API_KEY.value = '9A3NPT8-DRV4AHY-QG3HFAE-2GHT683'
     }
     catch (e) {
         console.log(e)
     }
+    
 }
 
 
@@ -79,11 +80,10 @@ export function fetchMainTop() {
     startSlice.value = 0
     endSlice.value = 20
 
-
     month.value = months[month.value]
 
     fetchRequest.value = `https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres?year=${year.value}&month=${month.value}`
-    X_API_KEY.value = '8c8e1a50-6322-4135-8875-5d40a5420d86'
+    X_API_KEY.value = private_X_API_KEY
 
     onMounted(fetchFunc)
 
@@ -98,6 +98,7 @@ export function fetchMainTop() {
 
 export function fetchMove() {
     whatPageRequest.value = 'move'
+    X_API_KEY.value = basic_X_API_KEY
 
     isRandom.value ?
         fetchRequest.value = 'https://api.kinopoisk.dev/v1/movie/random' :
@@ -108,12 +109,16 @@ export function fetchMove() {
     isRandom.value = true
 
     return {
-        responseMove
+        responseMove,
+        fetchRequest,
+        X_API_KEY,
     }
 }
 
 export function fetchSearch() {
     whatPageRequest.value = 'search'
+    X_API_KEY.value = basic_X_API_KEY
+    
     responseSearchFilms.value = []
     document.querySelector('.searchInput').blur()
 
@@ -126,6 +131,8 @@ export function fetchSearch() {
 
     return {
         responseSearchFilms,
+        fetchRequest,
+        X_API_KEY,
     }
 }
 

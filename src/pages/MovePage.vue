@@ -2,8 +2,7 @@
     <div>
         <spinner></spinner>
 
-        <FilmForm 
-        :responseMove='responseMove'>
+        <FilmForm :responseMove='responseMove'>
         </FilmForm>
 
     </div>
@@ -27,11 +26,11 @@ export default {
             }
 
             try {
-                let responseFromServer = await axios.get(`https://api.kinopoisk.dev/v1/movie/random`,
+                let responseFromServer = await axios.get('https://api.kinopoisk.dev/v1/movie/random',
                     {
                         headers: {
                             'accept': 'application/json',
-                            'X-API-KEY': '9A3NPT8-DRV4AHY-QG3HFAE-2GHT683'
+                            'X-API-KEY': this.X_API_KEY,
                         }
                     }
                 )
@@ -53,9 +52,10 @@ export default {
         this.responseMove = []
     },
     setup() {
-        const { responseMove } = fetchMove()
+        const { responseMove, X_API_KEY, } = fetchMove()
         return {
-            responseMove
+            responseMove,
+            X_API_KEY,
         }
     }
 

@@ -18,6 +18,7 @@
 
 <script>
 import SearchError from '../components/SearchError.vue';
+import { basic_X_API_KEY, private_X_API_KEY } from '../urlConfig.js'
 import SearchedFilmsForm from '../components/SearchedFilmsForm.vue'
 import { fetchSearch } from '../hooks/fetch';
 import axios from "axios";
@@ -41,14 +42,13 @@ export default {
             document.querySelector('.searchInput').blur()
             let fetchRequest =
                 `https://api.kinopoisk.dev/v1/movie?selectFields=rating.kp%20name%20year%20alternativeName%20poster.url%20countries.name%20description%20id&page=1&name=${searchQuery}`
-            let X_API_KEY = '9A3NPT8-DRV4AHY-QG3HFAE-2GHT683'
 
             try {
                 let responseFromServer = await axios.get(fetchRequest,
                     {
                         headers: {
                             'accept': 'application/json',
-                            'X-API-KEY': X_API_KEY
+                            'X-API-KEY': this.X_API_KEY
                         }
                     })
                 if (responseFromServer.data.docs.length != 0) {
@@ -80,11 +80,13 @@ export default {
     beforeUnmount() {
         document.querySelector('.searchInputButton').removeEventListener('click', this.listenerFunction)
     },
-    setup(props) {
-        const { responseSearchFilms } = fetchSearch()
+    setup() {
+        const { responseSearchFilms, fetchRequest, X_API_KEY,  } = fetchSearch()
 
         return {
-            responseSearchFilms
+            responseSearchFilms,
+            fetchRequest,
+            X_API_KEY,
         }
     }
 
