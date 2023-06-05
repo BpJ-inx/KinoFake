@@ -2,6 +2,7 @@ import Main from '../pages/Main.vue'
 import MovePage from '../pages/MovePage.vue'
 import ResSearchPage from '../pages/ResSearchPage.vue'
 import {createRouter, createWebHistory} from 'vue-router'
+import Premieres from '../pages/Premieres.vue'
 
 
 const routes = [
@@ -17,6 +18,10 @@ const routes = [
     {
         path:'/ressearch',
         component: ResSearchPage
+    },
+    {
+        path:'/premieres',
+        component: Premieres
     },
     
 ]

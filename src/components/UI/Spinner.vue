@@ -1,7 +1,7 @@
 
 <template>
     
-<div class="spinner w-12 h-12 border-4  border-black rounded-full loader m-auto mt-40"></div>
+<div class="spinner w-12 h-12 border-4  border-white rounded-full loader m-auto mt-40"></div>
 
 </template>
 

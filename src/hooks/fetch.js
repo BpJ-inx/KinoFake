@@ -73,13 +73,32 @@ function changeOnRequestSearch(responseFromServer) {
 export function fetchMainTop() {    
     whatPageRequest.value = 'main'
     startSlice.value = 0
+    endSlice.value = 5 
+
+    fetchRequest.value = fetchPremieres
+    X_API_KEY.value = private_X_API_KEY
+
+    onMounted(fetchFunc)
+    
+    return {
+        responseFilms,
+        startSlice,
+        endSlice,
+        fetchRequest,
+        X_API_KEY,
+    }
+}
+
+export function fetchPremieresTop() {    
+    whatPageRequest.value = 'main'
+    startSlice.value = 0
     endSlice.value = 20
 
     fetchRequest.value = fetchPremieres
     X_API_KEY.value = private_X_API_KEY
 
     onMounted(fetchFunc)
-
+    
     return {
         responseFilms,
         startSlice,
