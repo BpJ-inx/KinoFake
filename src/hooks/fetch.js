@@ -1,5 +1,5 @@
 import axios from "axios";
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, onBeforeMount} from 'vue'
 import router from '../router/router'
 import { basic_X_API_KEY, private_X_API_KEY, fetchFilm, fetchSearchName, fetchPremieres } from '../urlConfig.js'
 
@@ -14,6 +14,10 @@ const endSlice = ref(5)
 const whatPageRequest = ref('main')
 const responseSearchFilms = ref([])
 const searchQuery = ref('')
+const response = ref([])
+const prevRespPremiers = ref([]);
+const prevRespTop = ref([]);
+const prevRespBest = ref([]);
 const fetchFunc = async () => {
 
     try {
@@ -31,6 +35,8 @@ const fetchFunc = async () => {
             changeOnRequestMove(responseFromServer)
         } else if (whatPageRequest.value == 'search') {
             changeOnRequestSearch(responseFromServer)
+        } else if (whatPageRequest.value == 'premier') {
+            changeOnRequestPremier(responseFromServer)
         }
     }
     catch (e) {
@@ -41,6 +47,10 @@ const fetchFunc = async () => {
 
 
 function changeOnRequestMain(responseFromServer) {
+    response.value = responseFromServer
+
+}
+function changeOnRequestPremier(responseFromServer) {
     responseFilms.value = responseFromServer.data.items.slice(startSlice.value, endSlice.value),
         startSlice.value += 20,
         endSlice.value += 10
@@ -70,27 +80,41 @@ function changeOnRequestSearch(responseFromServer) {
 }
 
 
-export function fetchMainTop() {    
+export function fetchMainTop() {
     whatPageRequest.value = 'main'
     startSlice.value = 0
-    endSlice.value = 5 
+    endSlice.value = 5
 
     fetchRequest.value = fetchPremieres
     X_API_KEY.value = private_X_API_KEY
 
-    onMounted(fetchFunc)
-    
+onMounted(fetchsMainPage)
+
     return {
-        responseFilms,
-        startSlice,
-        endSlice,
-        fetchRequest,
-        X_API_KEY,
+        prevRespPremiers,
+        prevRespTop,
+        prevRespBest
     }
 }
 
-export function fetchPremieresTop() {    
-    whatPageRequest.value = 'main'
+const fetchsMainPage = async () => {
+    await fetchFunc()
+
+    prevRespPremiers.value = response.value = response.value.data.items.slice(startSlice.value, endSlice.value)
+    
+    fetchRequest.value = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=1'
+    await fetchFunc()
+    prevRespTop.value = response.value = response.value.data.films.slice(startSlice.value, endSlice.value)
+    console.log(prevRespTop.value);
+    fetchRequest.value = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_250_BEST_FILMS&page=1'
+    await fetchFunc()
+    prevRespBest.value = response.value = response.value.data.films.slice(startSlice.value, endSlice.value)
+}
+
+
+
+export function fetchPremieresTop() {
+    whatPageRequest.value = 'premier'
     startSlice.value = 0
     endSlice.value = 20
 
@@ -98,7 +122,7 @@ export function fetchPremieresTop() {
     X_API_KEY.value = private_X_API_KEY
 
     onMounted(fetchFunc)
-    
+
     return {
         responseFilms,
         startSlice,

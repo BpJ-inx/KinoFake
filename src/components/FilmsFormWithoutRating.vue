@@ -3,7 +3,7 @@
     v-for="film in responseFilms" 
     :key="film.kinopoiskId">
 
-    <div class="idFilm hidden">{{ film.kinopoiskId }}</div>
+    <div class="idFilm hidden">{{ film.kinopoiskId }} {{ film.filmId }}</div>
     <img class="posterFilm " 
     :src="film.posterUrl" 
     @load="hideSpinnerShowFilmChangeColorRating" />

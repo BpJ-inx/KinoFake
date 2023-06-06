@@ -11,12 +11,13 @@
       </h1>
     </div>
 
-    <!-- <div class="resSearchFiveFilms hidden flex-wrap gap-3 items-center align-top">
+    <div class="resSearchFiveFilms  flex-wrap gap-3 items-center align-top">
 
-      <FilmsFormWithoutRating :responseFilms="responseFilms">
+      <FilmsFormWithoutRating 
+      :responseFilms="prevRespTop">
       </FilmsFormWithoutRating>
 
-    </div> -->
+    </div>
 
 
 
@@ -32,9 +33,30 @@
   </div>
 
 
-  <div class="resSearchFiveFilms hidden flex-wrap gap-3 items-center align-top">
+  <div class="resSearchFiveFilms flex flex-wrap gap-3 items-center align-top">
 
-    <FilmsFormWithoutRating :responseFilms="responseFilms">
+    <FilmsFormWithoutRating 
+    :responseFilms="prevRespPremiers">
+    </FilmsFormWithoutRating>
+
+  </div>
+
+  <div class="flex justify-start">
+    <h1 class="header" @click="$router.push('/premieres')">Лучшие за все время
+      <svg viewBox="0 0 1024 1024" class="icon_right" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"
+      stroke="#000000">
+      <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z" fill="#ffffff"></path>
+    </svg>
+    </h1>
+
+   
+  </div>
+
+
+  <div class="resSearchFiveFilms flex flex-wrap gap-3 items-center align-top">
+
+    <FilmsFormWithoutRating 
+    :responseFilms="prevRespBest">
     </FilmsFormWithoutRating>
 
   </div>
@@ -55,15 +77,12 @@ export default {
   },
 
   setup() {
-    const { responseFilms, startSlice, endSlice, fetchRequest, X_API_KEY } =
-      fetchMainTop();
-
+const { prevRespPremiers , prevRespTop , prevRespBest} = fetchMainTop()
+  
     return {
-      responseFilms,
-      startSlice,
-      endSlice,
-      fetchRequest,
-      X_API_KEY,
+      prevRespPremiers,
+      prevRespTop,
+      prevRespBest
     };
   },
 };
