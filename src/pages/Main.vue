@@ -1,75 +1,71 @@
 <template >
   <spinner></spinner>
 
+<div class="wind">
 
-    <div class="flex justify-start">
-      <h1 class="header">Популярные сейчас
+  <div class="flex flex-col">
+    <div class="flex ">
+      <h1 class="header " @click="$router.push('/popnow')">Популярные сейчас
         <svg viewBox="0 0 1024 1024" class="icon_right" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"
-        stroke="#000000">
-        <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z" fill="#ffffff"></path>
-      </svg>
+          stroke="#000000">
+          <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z" fill="#ffffff"></path>
+        </svg>
       </h1>
     </div>
 
-    <div class="resSearchFiveFilms  flex-wrap gap-3 items-center align-top">
-
+    <div class="resSearchFiveFilms flex-wrap gap-7  align-top">
+<!-- items-center -->
       <FilmsFormWithoutRating 
       :responseFilms="prevRespTop">
       </FilmsFormWithoutRating>
 
     </div>
-
-
-
-  <div class="flex justify-start">
-    <h1 class="header" @click="$router.push('/premieres')">Премьеры в этом месяце
-      <svg viewBox="0 0 1024 1024" class="icon_right" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"
-      stroke="#000000">
-      <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z" fill="#ffffff"></path>
-    </svg>
-    </h1>
-
-   
   </div>
 
+  <div class="flex flex-col">
+    <div class="flex ">
+      <h1 class="header" @click="$router.push('/premieres')">Премьеры в этом месяце
+        <svg viewBox="0 0 1024 1024" class="icon_right" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"
+          stroke="#000000">
+          <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z" fill="#ffffff"></path>
+        </svg>
+      </h1>
+    </div>
 
-  <div class="resSearchFiveFilms flex flex-wrap gap-3 items-center align-top">
 
-    <FilmsFormWithoutRating 
-    :responseFilms="prevRespPremiers">
-    </FilmsFormWithoutRating>
+    <div class="resSearchFiveFilms flex flex-wrap gap-7 items-center align-top">
 
+      <FilmsFormWithoutRating 
+      :responseFilms="prevRespPremiers">
+      </FilmsFormWithoutRating>
+
+    </div>
   </div>
 
-  <div class="flex justify-start">
-    <h1 class="header" @click="$router.push('/premieres')">Лучшие за все время
-      <svg viewBox="0 0 1024 1024" class="icon_right" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"
-      stroke="#000000">
-      <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z" fill="#ffffff"></path>
-    </svg>
-    </h1>
+  <div class="flex flex-col">
+    <div class="flex justify-start">
+      <h1 class="header" @click="$router.push('/bestfilms')">Лучшие за все время
+        <svg viewBox="0 0 1024 1024" class="icon_right" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"
+          stroke="#000000">
+          <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z" fill="#ffffff"></path>
+        </svg>
+      </h1>
+    </div>
+    <div class="resSearchFiveFilms flex flex-wrap gap-7 items-center align-top">
 
-   
+      <FilmsFormWithoutRating 
+      :responseFilms="prevRespBest">
+      </FilmsFormWithoutRating>
+
+    </div>
   </div>
-
-
-  <div class="resSearchFiveFilms flex flex-wrap gap-3 items-center align-top">
-
-    <FilmsFormWithoutRating 
-    :responseFilms="prevRespBest">
-    </FilmsFormWithoutRating>
-
-  </div>
-
-
-
+</div>
 </template>
 
 <script>
 import { fetchMainTop } from '../hooks/fetch.js'
 import FilmsFormWithoutRating from "../components/FilmsFormWithoutRating.vue";
 import axios from "axios";
-import Premieres from './Premieres.vue';
 
 export default {
   components: {
@@ -77,8 +73,8 @@ export default {
   },
 
   setup() {
-const { prevRespPremiers , prevRespTop , prevRespBest} = fetchMainTop()
-  
+    const { prevRespPremiers, prevRespTop, prevRespBest } = fetchMainTop()
+
     return {
       prevRespPremiers,
       prevRespTop,
@@ -91,5 +87,9 @@ const { prevRespPremiers , prevRespTop , prevRespBest} = fetchMainTop()
 <style lang="scss" scoped>
 @import '../assets/styles/Pages_styles/MainStyle.scss';
 
-
+.wind{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
 </style>

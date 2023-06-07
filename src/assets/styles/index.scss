@@ -38,9 +38,8 @@ body::-webkit-scrollbar {
 
 .filmCard {
     border-radius: 0.5rem;
-    border-width: 2px;
-    border-color: rgba(255,255,255,.05);
-    background-color: rgb(0, 0, 0);
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.19);
 }
 
 .bg-smoky {
@@ -56,6 +55,5 @@ main {
   display: flex;
   flex-direction: column;
   // width: 911px;
-  margin: auto;
   margin-bottom: 50px;
 }

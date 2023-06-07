@@ -1,7 +1,7 @@
 import axios from "axios";
-import { onMounted, ref} from 'vue'
+import { onMounted, ref } from 'vue'
 import router from '../router/router'
-import { basic_X_API_KEY, private_X_API_KEY, fetchFilm, fetchSearchName, fetchPremieres } from '../urlConfig.js'
+import { basic_X_API_KEY, private_X_API_KEY, fetchFilm, fetchSearchName, fetchPremieres, fetchTopNow, fetchBest } from '../urlConfig.js'
 
 const isRandom = ref(true)
 const selectedFimId = ref('')
@@ -37,6 +37,8 @@ const fetchFunc = async () => {
             changeOnRequestSearch(responseFromServer)
         } else if (whatPageRequest.value == 'premier') {
             changeOnRequestPremier(responseFromServer)
+        } else if (whatPageRequest.value == 'top/best') {
+            changeOnRequestTopBest(responseFromServer)
         }
     }
     catch (e) {
@@ -54,6 +56,10 @@ function changeOnRequestPremier(responseFromServer) {
     responseFilms.value = responseFromServer.data.items.slice(startSlice.value, endSlice.value),
         startSlice.value += 20,
         endSlice.value += 10
+}
+
+function changeOnRequestTopBest(responseFromServer) {
+    responseFilms.value = responseFromServer.data.films.slice(startSlice.value, endSlice.value)
 }
 
 function changeOnRequestMove(responseFromServer) {
@@ -88,7 +94,7 @@ export function fetchMainTop() {
     fetchRequest.value = fetchPremieres
     X_API_KEY.value = private_X_API_KEY
 
-onMounted(fetchsMainPage)
+    onMounted(fetchsMainPage)
 
     return {
         prevRespPremiers,
@@ -101,12 +107,12 @@ const fetchsMainPage = async () => {
     await fetchFunc()
 
     prevRespPremiers.value = response.value = response.value.data.items.slice(startSlice.value, endSlice.value)
-    
-    fetchRequest.value = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=1'
+
+    fetchRequest.value = fetchTopNow + `1`
     await fetchFunc()
     prevRespTop.value = response.value = response.value.data.films.slice(startSlice.value, endSlice.value)
 
-    fetchRequest.value = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_250_BEST_FILMS&page=1'
+    fetchRequest.value = fetchBest + `1`
     await fetchFunc()
     prevRespBest.value = response.value = response.value.data.films.slice(startSlice.value, endSlice.value)
 }
@@ -129,6 +135,44 @@ export function fetchPremieresTop() {
         endSlice,
         fetchRequest,
         X_API_KEY,
+    }
+}
+
+export function fetchPopNow() {
+    whatPageRequest.value = 'top/best'
+    let pageNumber = '1'
+
+    fetchRequest.value = fetchTopNow + pageNumber
+    X_API_KEY.value = private_X_API_KEY
+
+    onMounted(fetchFunc)
+
+    fetchRequest.value = fetchTopNow
+
+    return {
+        responseFilms,
+        fetchRequest,
+        X_API_KEY,
+        pageNumber
+    }
+}
+
+export function fetchBestFilms() {
+    whatPageRequest.value = 'top/best'
+    let pageNumber = '1'
+
+    fetchRequest.value = fetchBest + pageNumber
+    X_API_KEY.value = private_X_API_KEY
+
+    onMounted(fetchFunc)
+
+    fetchRequest.value = fetchBest
+
+    return {
+        responseFilms,
+        fetchRequest,
+        X_API_KEY,
+        pageNumber
     }
 }
 

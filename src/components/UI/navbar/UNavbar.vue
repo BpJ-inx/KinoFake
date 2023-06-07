@@ -1,6 +1,6 @@
 <template>
-  <nav class="navbar ZC9cZpWb lg:px-4  px-2 flex flex-wrap items-center lg:py-2">
-    <div class="flex-1 justify-between items-center p-1">
+  <nav class="navbar lg:px-4 px-6 flex flex-wrap items-center lg:py-2">
+    <div class="flex-1 justify-center  items-center p-1">
       <ulogobut @click="$router.push('/')"></ulogobut>
     </div>
 

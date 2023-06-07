@@ -3,7 +3,7 @@
   
     <spinner></spinner>
   
-    <div class="resSearchFiveFilms hidden flex-wrap gap-3 items-center align-top">
+    <div class="resSearchFiveFilms hidden flex-wrap gap-7 items-center align-top">
       
       <FilmsFormWithoutRating 
       :responseFilms="responseFilms">
@@ -77,7 +77,7 @@
   </script>
   
   <style lang="scss" scoped>
-  @import '../assets/styles/Pages_styles/PremieresStyle.scss';
+  @import '../assets/styles/Pages_styles/CategoryStyle.scss';
   .header{
     cursor:auto;
   }
