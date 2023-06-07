@@ -1,5 +1,5 @@
 import axios from "axios";
-import { onMounted, ref, onBeforeMount} from 'vue'
+import { onMounted, ref} from 'vue'
 import router from '../router/router'
 import { basic_X_API_KEY, private_X_API_KEY, fetchFilm, fetchSearchName, fetchPremieres } from '../urlConfig.js'
 
@@ -105,7 +105,7 @@ const fetchsMainPage = async () => {
     fetchRequest.value = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=1'
     await fetchFunc()
     prevRespTop.value = response.value = response.value.data.films.slice(startSlice.value, endSlice.value)
-    console.log(prevRespTop.value);
+
     fetchRequest.value = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_250_BEST_FILMS&page=1'
     await fetchFunc()
     prevRespBest.value = response.value = response.value.data.films.slice(startSlice.value, endSlice.value)

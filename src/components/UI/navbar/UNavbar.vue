@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar  lg:px-4  px-2 flex flex-wrap items-center lg:py-2">
+  <nav class="navbar ZC9cZpWb lg:px-4  px-2 flex flex-wrap items-center lg:py-2">
     <div class="flex-1 justify-between items-center p-1">
       <ulogobut @click="$router.push('/')"></ulogobut>
     </div>
@@ -13,13 +13,12 @@
 
     <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
       <nav>
-        <ul 
+        <ul
           class="lg:flex items-center justify-around bg-rgba(0, 0, 0, 0.95) first-letter:text-base text-white  py-3 lg:pt-0">
-          <urandombut class="mt-3 lg:p-2 py-2 px-0 block mr-10"
-            @click="$router.push('/movepage')">Random film</urandombut>
+          <urandombut class="mt-3 lg:p-2 py-2 px-0 block mr-10" @click="$router.push('/movepage')">Random film
+          </urandombut>
           <li>
-            <usearchinputapi 
-            class="mt-1 lg:p-2 py-2 px-0 mr-20" >
+            <usearchinputapi class="mt-1 lg:p-2 py-2 px-0 mr-20">
             </usearchinputapi>
           </li>
         </ul>
@@ -30,9 +29,21 @@
 
 <script>
 
-
 export default {
+
   name: 'navbar',
+  created() {
+    let prevScrollpos = window.pageYOffset;
+    window.onscroll = function () {
+      let currentScrollPos = window.pageYOffset;
+      if (prevScrollpos > currentScrollPos) {
+        document.querySelector('.navbar').style.top = "0";
+      } else {
+        document.querySelector('.navbar').style.top = "-100px";
+      }
+      prevScrollpos = currentScrollPos;
+    }
+  }
 
 }
 
