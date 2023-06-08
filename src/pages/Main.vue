@@ -1,7 +1,7 @@
 <template >
   <spinner></spinner>
 
-<div class="wind">
+
 
   <div class="flex flex-col">
     <div class="flex ">
@@ -13,7 +13,7 @@
       </h1>
     </div>
 
-    <div class="resSearchFiveFilms flex-wrap gap-7  align-top">
+    <div class="resSearchFiveFilms flex flex-wrap gap-7  align-top">
       <FilmsFormWithoutRating 
       :responseFilms="prevRespTop">
       </FilmsFormWithoutRating>
@@ -58,13 +58,12 @@
 
     </div>
   </div>
-</div>
+
 </template>
 
 <script>
 import { fetchMainTop } from '../hooks/fetch.js'
 import FilmsFormWithoutRating from "../components/FilmsFormWithoutRating.vue";
-import axios from "axios";
 
 export default {
   components: {
@@ -86,9 +85,5 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/styles/Pages_styles/MainStyle.scss';
 
-.wind{
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-}
+
 </style>

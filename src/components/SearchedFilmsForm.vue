@@ -7,7 +7,7 @@
     <div class="movie_rating">{{ film.rating.kp.toFixed(1) }}</div>
     <img class="posterFilm" 
     :src='film.poster.url'
-    @load="hideSpinnerShowFilmChangeColorRating">
+    @load="showSearchedFilms">
     <div class="nameFilm text"> {{ film.name }}</div>
 
   </div>
@@ -15,6 +15,7 @@
 
 <script>
 import { openFilmOnSelfPage } from '../hooks/fetch.js'
+import {mapActions} from 'vuex'
 export default {
   props: {
     responseSearchFilms: {
@@ -23,29 +24,9 @@ export default {
     }
   },
   methods: {
-    hideSpinnerShowFilmChangeColorRating() {
-
-      if (document.querySelector('.errorPlace').classList.contains('hidden')) {
-        document.querySelector('.resSearchFiveFilms').classList.remove('hidden');
-        document.querySelector('.resSearchFiveFilms').classList.add('flex');
-        document.querySelector('.spinner').classList.add('hidden');
-      }
-
-      for (let i = 0; i < document.querySelectorAll('.movie_rating').length; ++i) {
-
-        if (document.querySelectorAll('.movie_rating')[i].innerText > 7) {
-          document.querySelectorAll('.movie_rating')[i].classList.add('movie_rating_border_green')
-        } else if (document.querySelectorAll('.movie_rating')[i].innerText > 5|| document.querySelector('.movie_rating').innerText < 7) {
-          document.querySelectorAll('.movie_rating')[i].classList.add('movie_rating_border_orange')
-        } else if (document.querySelectorAll('.movie_rating')[i].innerText <= 5) {
-          document.querySelectorAll('.movie_rating')[i].classList.add('movie_rating_border_red')
-        }
-         if (document.querySelectorAll('.movie_rating')[i].innerText == 0) {
-          document.querySelectorAll('.movie_rating')[i].innerText = '-'
-        }
-      }
-
-    }
+    ...mapActions({
+      showSearchedFilms:'showSearchedFilms'
+    }),
 
   },
   setup() {

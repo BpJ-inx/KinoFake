@@ -6,7 +6,7 @@
     <div class="idFilm hidden">{{ film.kinopoiskId }} {{ film.filmId }}</div>
     <img class="posterFilm " 
     :src="film.posterUrl" 
-    @load="hideSpinnerShowFilmChangeColorRating" />
+    @load="showFilmCardWR" />
     <div class="nameFilm text ">{{ film.nameRu }}</div>
 
   </div>
@@ -14,6 +14,7 @@
 
 <script>
 import { openFilmOnSelfPage } from '../hooks/fetch';
+import {mapActions} from 'vuex'
 export default {
   props: {
     responseFilms: {
@@ -22,13 +23,11 @@ export default {
     },
   },
   methods: {
-    hideSpinnerShowFilmChangeColorRating() {
-      document.querySelector('.resSearchFiveFilms').classList.remove('hidden');
-      document.querySelector('.resSearchFiveFilms').classList.add('flex');
-      document.querySelector('.spinner').classList.add('hidden');
-    },
+    ...mapActions({
+      showFilmCardWR:'showFilmCardWR'
+    }),
   },
-  setup(props) {
+  setup() {
     return {
       openFilmOnSelfPage
     }

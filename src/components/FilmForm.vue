@@ -6,7 +6,7 @@
         <div class="imgSide ">
             <img class="posterFilm" 
             :src="film.poster.previewUrl" 
-            @load="hideSpinnerShowFilmChangeColorRating">
+            @load="showAboutFilm">
 
             <div class="movie_rating"> {{ film.rating.kp.toFixed(1) }} </div>
             <button class="buttonOnKinoPoisk cursor-pointer" @click="openFilmOnKP">Открыть на КиноПоиске</button>
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-
+import {mapActions} from 'vuex'
 export default {
     props: {
         responseMove: {
@@ -45,26 +45,11 @@ export default {
         }
     },
     methods: {
+        ...mapActions({
+            showAboutFilm:'showAboutFilm'
+    }),
         openFilmOnKP() {
             window.open(`https://www.kinopoisk.ru/film/` + document.querySelector(".idFilm").innerHTML);
-        },
-
-        hideSpinnerShowFilmChangeColorRating() {
-            document.querySelector('.aboutFilm').classList.remove('hidden');
-            document.querySelector('.aboutFilm').classList.add('flex');
-            document.querySelector('.spinner').classList.add('hidden');
-
-            document.querySelector('.movie_rating').classList.remove('movie_rating_border_green', 'movie_rating_border_orange', 'movie_rating_border_red')
-            if (document.querySelector('.movie_rating').innerText > 7.000) {
-                document.querySelector('.movie_rating').classList.add('movie_rating_border_green')
-            } else if (document.querySelectorAll('.movie_rating').innerText > 5.000 || document.querySelector('.movie_rating').innerText < 7.000) {
-                document.querySelector('.movie_rating').classList.add('movie_rating_border_orange')
-            } else if (document.querySelector('.movie_rating').innerText <= 5.000) {
-                document.querySelector('.movie_rating').classList.add('movie_rating_border_red')
-            }
-            if (document.querySelector('.movie_rating').innerText == 0) {
-                document.querySelector('.movie_rating').innerText = '-'
-            }
         },
     },
 

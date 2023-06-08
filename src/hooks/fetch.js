@@ -56,7 +56,7 @@ function changeOnRequestMain(responseFromServer) {
 
 }
 function changeOnRequestPremier(responseFromServer) {
-    responseFilms.value = responseFromServer.data.items.slice(startSlice.value, endSlice.value),
+    responseFilms.value = responseFromServer.data.items.slice(startSlice.value, endSlice.value)
         startSlice.value += 20,
         endSlice.value += 10
 }
