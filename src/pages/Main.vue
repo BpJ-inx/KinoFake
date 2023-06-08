@@ -14,7 +14,6 @@
     </div>
 
     <div class="resSearchFiveFilms flex-wrap gap-7  align-top">
-<!-- items-center -->
       <FilmsFormWithoutRating 
       :responseFilms="prevRespTop">
       </FilmsFormWithoutRating>

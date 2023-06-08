@@ -1,11 +1,12 @@
 <template>
-    <div class="header">Результаты по вашему запросу:</div>
+    <h1 class="header">Результаты по вашему запросу :</h1>
 
     <spinner></spinner>
 
-    <div class="resSearchFiveFilms hidden flex-wrap justify-center gap-3 items-center align-top">
+    <div class="resSearchFiveFilms hidden flex-wrap justify-center gap-7 items-center align-top">
 
-        <SearchedFilmsForm :responseSearchFilms="responseSearchFilms">
+        <SearchedFilmsForm 
+        :responseSearchFilms="responseSearchFilms">
         </SearchedFilmsForm>
 
     </div>
@@ -17,7 +18,7 @@
 
 <script>
 import SearchError from '../components/SearchError.vue';
-import { basic_X_API_KEY, private_X_API_KEY, fetchFilm, fetchSearchName, fetchPremieres } from '../urlConfig.js'
+import {fetchSearchName} from '../urlConfig.js'
 import SearchedFilmsForm from '../components/SearchedFilmsForm.vue'
 import { fetchSearch } from '../hooks/fetch';
 import axios from "axios";
