@@ -29,6 +29,9 @@ const fetchFunc = async () => {
                 }
             }
         )
+
+   
+
         if (whatPageRequest.value == 'main') {
             changeOnRequestMain(responseFromServer)
         } else if (whatPageRequest.value == 'move') {
@@ -105,7 +108,6 @@ export function fetchMainTop() {
 
 const fetchsMainPage = async () => {
     await fetchFunc()
-
     prevRespPremiers.value = response.value = response.value.data.items.slice(startSlice.value, endSlice.value)
 
     fetchRequest.value = fetchTopNow + `1`
@@ -119,7 +121,7 @@ const fetchsMainPage = async () => {
 
 
 
-export function fetchPremieresTop() {
+export function  fetchPremieresTop() {
     whatPageRequest.value = 'premier'
     startSlice.value = 0
     endSlice.value = 20
@@ -128,7 +130,7 @@ export function fetchPremieresTop() {
     X_API_KEY.value = private_X_API_KEY
 
     onMounted(fetchFunc)
-
+    
     return {
         responseFilms,
         startSlice,

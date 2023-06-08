@@ -25,7 +25,7 @@ export default {
   methods: {
     async loadMoreFilms() {
       this.pageNumber ++
-      console.log(this.fetchRequest);
+
       try {
         let responseFromServer = await axios.get(this.fetchRequest + this.pageNumber , {
           headers: {
