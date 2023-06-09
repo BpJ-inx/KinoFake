@@ -14,7 +14,7 @@
 
 <script>
 import { openFilmOnSelfPage } from '../hooks/fetch';
-import {mapActions} from 'vuex'
+import { showFilm } from '../hooks/change';
 export default {
   props: {
     responseFilms: {
@@ -23,13 +23,11 @@ export default {
     },
   },
   methods: {
-    ...mapActions({
-      showFilm:'showFilm'
-    }),
   },
   setup() {
     return {
-      openFilmOnSelfPage
+      openFilmOnSelfPage,
+      showFilm
     }
   }
 };

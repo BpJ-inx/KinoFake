@@ -1,13 +1,10 @@
 <template>
   <div class="filmCard flex flex-col  m-2 cursor-pointer items-center" @click="openFilmOnSelfPage()"
-    v-for="film in responseSearchFilms" 
-    :key="film.id">
+    v-for="film in responseSearchFilms" :key="film.id">
 
     <div class="idFilm hidden">{{ film.id }}</div>
     <div class="movie_rating">{{ film.rating.kp.toFixed(1) }}</div>
-    <img class="posterFilm" 
-    :src='film.poster.url'
-    @load="showSearchedFilms">
+    <img class="posterFilm" :src='film.poster.url' @load="showSearchedFilms">
     <div class="nameFilm text"> {{ film.name }}</div>
 
   </div>
@@ -15,7 +12,7 @@
 
 <script>
 import { openFilmOnSelfPage } from '../hooks/fetch.js'
-import {mapActions} from 'vuex'
+import { showSearchedFilms } from '../hooks/change'
 export default {
   props: {
     responseSearchFilms: {
@@ -23,15 +20,11 @@ export default {
       required: true
     }
   },
-  methods: {
-    ...mapActions({
-      showSearchedFilms:'showSearchedFilms'
-    }),
 
-  },
   setup() {
     return {
-      openFilmOnSelfPage
+      openFilmOnSelfPage,
+      showSearchedFilms
     }
 
   }

@@ -1,12 +1,8 @@
 <template >
-    <div class="aboutFilm h-auto hidden" 
-    v-for="film in responseMove" 
-    :key="film.id">
+    <div class="aboutFilm h-auto hidden" v-for="film in responseMove" :key="film.id">
 
         <div class="imgSide ">
-            <img class="posterFilm" 
-            :src="film.poster.previewUrl" 
-            @load="showFilm">
+            <img class="posterFilm" :src="film.poster.previewUrl" @load="showFilm">
 
             <div class="movie_rating"> {{ film.rating.kp.toFixed(1) }} </div>
             <button class="buttonOnKinoPoisk cursor-pointer" @click="openFilmOnKP">Открыть на КиноПоиске</button>
@@ -36,7 +32,7 @@
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+import { showFilm } from '../hooks/change';
 export default {
     props: {
         responseMove: {
@@ -44,10 +40,12 @@ export default {
             required: true,
         }
     },
+    setup() {
+        return {
+            showFilm
+        }
+    },
     methods: {
-        ...mapActions({
-            showFilm:'showFilm'
-    }),
         openFilmOnKP() {
             window.open(`https://www.kinopoisk.ru/film/` + document.querySelector(".idFilm").innerHTML);
         },
