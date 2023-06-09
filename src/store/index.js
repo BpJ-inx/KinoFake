@@ -3,7 +3,8 @@ import {createStore} from 'vuex'
 
 export default createStore({
     actions:{
-        showAboutFilm() {
+        showFilm() {
+          if (document.querySelector('.aboutFilm')){
             document.querySelector('.aboutFilm').classList.remove('hidden');
             document.querySelector('.aboutFilm').classList.add('flex');
             document.querySelector('.spinner').classList.add('hidden');
@@ -19,13 +20,12 @@ export default createStore({
             if (document.querySelector('.movie_rating').innerText == 0) {
                 document.querySelector('.movie_rating').innerText = '-'
             }
-        },
-
-        showFilmCardWR() {
+          }else{
             document.querySelector('.resSearchFiveFilms').classList.remove('hidden');
             document.querySelector('.resSearchFiveFilms').classList.add('flex');
             document.querySelector('.spinner').classList.add('hidden');
-          },
+          }
+        },
        
 
           showSearchedFilms() {

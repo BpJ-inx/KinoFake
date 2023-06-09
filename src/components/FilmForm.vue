@@ -6,7 +6,7 @@
         <div class="imgSide ">
             <img class="posterFilm" 
             :src="film.poster.previewUrl" 
-            @load="showAboutFilm">
+            @load="showFilm">
 
             <div class="movie_rating"> {{ film.rating.kp.toFixed(1) }} </div>
             <button class="buttonOnKinoPoisk cursor-pointer" @click="openFilmOnKP">Открыть на КиноПоиске</button>
@@ -46,7 +46,7 @@ export default {
     },
     methods: {
         ...mapActions({
-            showAboutFilm:'showAboutFilm'
+            showFilm:'showFilm'
     }),
         openFilmOnKP() {
             window.open(`https://www.kinopoisk.ru/film/` + document.querySelector(".idFilm").innerHTML);

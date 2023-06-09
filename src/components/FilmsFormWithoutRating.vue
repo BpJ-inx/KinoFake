@@ -6,7 +6,7 @@
     <div class="idFilm hidden">{{ film.kinopoiskId }} {{ film.filmId }}</div>
     <img class="posterFilm " 
     :src="film.posterUrl" 
-    @load="showFilmCardWR" />
+    @load="showFilm" />
     <div class="nameFilm text ">{{ film.nameRu }}</div>
 
   </div>
@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      showFilmCardWR:'showFilmCardWR'
+      showFilm:'showFilm'
     }),
   },
   setup() {
