@@ -14,7 +14,7 @@
 
 <script>
 import { openFilmOnSelfPage } from '../hooks/fetch';
-import { showFilm } from '../hooks/change';
+import { showFilm } from '../hooks/show';
 export default {
   props: {
     responseFilms: {

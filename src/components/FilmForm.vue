@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { showFilm } from '../hooks/change';
+import { showFilm } from '../hooks/show';
 export default {
     props: {
         responseMove: {

@@ -12,7 +12,7 @@
 
 <script>
 import { openFilmOnSelfPage } from '../hooks/fetch.js'
-import { showSearchedFilms } from '../hooks/change'
+import { showSearchedFilms } from '../hooks/show'
 export default {
   props: {
     responseSearchFilms: {
