@@ -4,9 +4,9 @@
         <form @submit.prevent>
 
             <div class="flex">
-                <div class="relative w-full ">
+                <div class="relative w-full   ">
 
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <div class="absolute   inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                         <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
                             viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
@@ -16,14 +16,13 @@
                         </svg>
                     </div>
 
-                    <input v-model="searchQuery" @keyup.enter="$router.push('/ressearch')" type="search" class="searchInput bg-black border border-black text-gray-900 text-sm rounded-lg focus:outline-none block w-full pl-10 p-2.5
-             dark:bg-gray-700 dark:border-black dark:placeholder-gray-400 dark:text-white
-              dark:focus:ring-black dark:focus:border-black pr-20 px-20" placeholder="Search">
+                    <input v-model="searchQuery" @keyup.enter="$router.push('/ressearch')" type="search" class="searchInput text-sm rounded-lg  block w-full pl-10 p-2.5
+             dark:bg-gray-700  dark:placeholder-gray-400 pr-20 px-20" placeholder="Search">
 
-                    <button class="searchInputButton absolute top-0 right-0 p-2.5 text-sm font-medium
-                 text-white bg-black rounded-r-lg border border-black
-                 transition duration-500 hover:bg-black focus:ring-1 focus:outline-none focus:ring-black
-                dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800" @click="$router.push('/ressearch')">
+                    <button class="searchInputButton   absolute top-0 right-0 p-2.5 text-sm font-medium
+                    text-gray-300 bg-black rounded-r-lg 
+                 transition duration-500 hover:bg-black
+                 dark:hover:bg-gray-700" @click="$router.push('/ressearch')">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
