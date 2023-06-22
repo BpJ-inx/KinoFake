@@ -2,4 +2,12 @@
     font-family: Tahoma, Arial, Verdana, sans-serif;
     font-size: 15px;   
     padding-inline: 10px;
+    background-color: #1b1a1d;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.butRandom:hover {
+    background: #2c2b2f;
 }
