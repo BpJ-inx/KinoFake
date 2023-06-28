@@ -4,6 +4,7 @@ import Spinner from './Spinner.vue'
 import SearchError from "../SearchError.vue"
 import URandomBut from '../UI/button/URandomBut.vue'
 import ULogoBut from './button/ulogobut.vue'
+import UAuthoForm from './forms/uauthoform.vue'
 
 
 
@@ -14,4 +15,5 @@ export default[
     SearchError,
     URandomBut,
     ULogoBut,
+    UAuthoForm
 ]
