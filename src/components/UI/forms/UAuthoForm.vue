@@ -20,14 +20,9 @@
 
             </div>
         </div>
-        <div class="buttons flex    ">
+        <div class="buttons">
             <button type="button"
                 class="butSign rounded-xl h-10 px-5 mt-1 mb-1 font-medium text-gray-300 hover:text-white border-black mr-2">
-                Sign in
-            </button>
-
-            <button type="button"
-                class="butSign rounded-xl h-10   px-5 mt-1 mb-1 font-medium text-gray-300 hover:text-white border-black">
                 Sign in
             </button>
 

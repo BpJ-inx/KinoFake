@@ -1,10 +1,10 @@
 <template>
-  <nav class="navbar lg:px-4 px-6 flex flex-wrap items-center lg:py-2">
-    <div class="flex-1 justify-center  items-center p-1">
+  <nav class="navbar lg:px-4 flex flex-wrap justify-center items-center lg:py-2">
+    <div class="flex-1 p-1">
       <ulogobut @click="$router.push('/')"></ulogobut>
     </div>
 
-    <label for="menu-toggle" class="lg:hidden block"><svg class="fill-current text-white"
+    <label for="menu-toggle" class="lg:hidden block mr-3"><svg class="fill-current text-white"
         xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
         <title>menu</title>
         <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
