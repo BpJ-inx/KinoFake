@@ -52,10 +52,10 @@ export default {
   },
   methods: {
     showReg() {
-      document.querySelector('.regPlace').classList.replace("hidden", "flex")
+      document.querySelector('.reg_place').classList.replace("hidden", "flex")
       document.querySelector('body').classList.add('overflow-hidden')
-      document.querySelector('.emptyWindow').addEventListener('click', () => {
-        document.querySelector('.regPlace').classList.replace("flex", "hidden"),
+      document.querySelector('.empty_window').addEventListener('click', () => {
+        document.querySelector('.reg_place').classList.replace("flex", "hidden"),
           document.querySelector('body').classList.remove('overflow-hidden')
       }
       )

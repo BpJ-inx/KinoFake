@@ -5,7 +5,7 @@
 
   <div class="flex flex-col">
     <div class="flex ">
-      <h1 class="header " @click="$router.push('/popnow')">Популярные сейчас
+      <h1 class="header " @click="$router.push('/popnow')">Popular now
         <svg viewBox="0 0 1024 1024" class="icon_right" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"
           stroke="#000000">
           <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z" fill="#ffffff"></path>
@@ -23,7 +23,7 @@
 
   <div class="flex flex-col">
     <div class="flex ">
-      <h1 class="header" @click="$router.push('/premieres')">Премьеры в этом месяце
+      <h1 class="header" @click="$router.push('/premieres')">Premieres this month
         <svg viewBox="0 0 1024 1024" class="icon_right" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"
           stroke="#000000">
           <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z" fill="#ffffff"></path>
@@ -43,7 +43,7 @@
 
   <div class="flex flex-col">
     <div class="flex justify-start">
-      <h1 class="header" @click="$router.push('/bestfilms')">Лучшие за все время
+      <h1 class="header" @click="$router.push('/bestfilms')">Best of all time
         <svg viewBox="0 0 1024 1024" class="icon_right" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"
           stroke="#000000">
           <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z" fill="#ffffff"></path>
