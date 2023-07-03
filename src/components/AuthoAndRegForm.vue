@@ -35,17 +35,11 @@ export default {
   height: 50px;
   margin: 20px;
   background-color: #404040;
-  // border: solid #b4b4b4 1px; 
   cursor: pointer;
   transition: ease-out all 0.5s;
 }
 
-
-
-
-
 .cancel:hover {
   background-color: #515151;
 }
-
 </style>

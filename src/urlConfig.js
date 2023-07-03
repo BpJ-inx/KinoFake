@@ -12,5 +12,5 @@ export let fetchPremieres = `https://kinopoiskapiunofficial.tech/api/v2.2/films/
 export let fetchTopNow = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page='
 export let fetchBest = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_250_BEST_FILMS&page='
 
-  
+
 

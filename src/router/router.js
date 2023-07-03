@@ -1,39 +1,43 @@
 import Main from '../pages/Main.vue'
 import MovePage from '../pages/MovePage.vue'
 import ResSearchPage from '../pages/ResSearchPage.vue'
-import {createRouter, createWebHistory} from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import PremieresPage from '../pages/PremieresPage.vue'
 import PopNowPage from '../pages/PopNowPage.vue'
 import BestFilmsPage from '../pages/BestFilmsPage.vue'
-
+import PersonalPage from '../pages/PersonalPage.vue'
 
 const routes = [
     {
-        path:'/',
-        component:Main
+        path: '/',
+        component: Main
 
     },
     {
-        path:'/movepage',
+        path: '/movepage',
         component: MovePage
     },
     {
-        path:'/ressearch',
+        path: '/ressearch',
         component: ResSearchPage
     },
     {
-        path:'/premieres',
+        path: '/premieres',
         component: PremieresPage
     },
     {
-        path:'/popnow',
+        path: '/popnow',
         component: PopNowPage
     },
     {
-        path:'/bestfilms',
+        path: '/bestfilms',
         component: BestFilmsPage
     },
-    
+    {
+        path: '/personal',
+        component: PersonalPage
+    },
+
 ]
 
 const router = createRouter({

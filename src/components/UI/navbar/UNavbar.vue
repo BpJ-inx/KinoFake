@@ -24,7 +24,7 @@
             </usearchinputapi>
           </li>
           <li>
-            <urandombut class="mt-3 lg:p-2 py-2 px-0 block mr-10" @click="showReg">Sign In
+            <urandombut class="mt-3 lg:p-2 py-2 px-0 block mr-10" @click="openAuthoMenu">Sign In
             </urandombut>
           </li>
         </ul>
@@ -34,9 +34,8 @@
 </template>
 
 <script>
-
+import { checkProfile } from '.././../../hooks/authorization'
 export default {
-
   name: 'navbar',
   created() {
     let prevScrollpos = window.pageYOffset;
@@ -51,17 +50,38 @@ export default {
     }
   },
   methods: {
-    showReg() {
+    openAuthoMenu() {
+      this.showMenu()
+      this.startListenerEnterBut()
+    },
+
+    showMenu() {
       document.querySelector('.reg_place').classList.replace("hidden", "flex")
       document.querySelector('body').classList.add('overflow-hidden')
+      this.hideMenu()
+    },
+
+    hideMenu() {
       document.querySelector('.empty_window').addEventListener('click', () => {
         document.querySelector('.reg_place').classList.replace("flex", "hidden"),
           document.querySelector('body').classList.remove('overflow-hidden')
       }
       )
-    }
-  }
+    },
+    startListenerEnterBut() {
+      document.querySelector('.input_login').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          document.querySelector('.input_password').focus()
+        };
+      });
 
+      document.querySelector('.input_password').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          checkProfile()
+        };
+      });
+    }
+  },
 }
 
 </script>
