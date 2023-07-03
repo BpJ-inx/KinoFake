@@ -24,7 +24,7 @@
             </usearchinputapi>
           </li>
           <li>
-            <urandombut class="mt-3 lg:p-2 py-2 px-0 block mr-10" @click="openAuthoMenu">Sign In
+            <urandombut class="menu__Personal_page mt-3 lg:p-2 py-2 px-0 block mr-10" @click="authorizationСheck">Sign In
             </urandombut>
           </li>
         </ul>
@@ -34,7 +34,9 @@
 </template>
 
 <script>
+import router from '../../../router/router';
 import { checkProfile } from '.././../../hooks/authorization'
+
 export default {
   name: 'navbar',
   created() {
@@ -50,6 +52,14 @@ export default {
     }
   },
   methods: {
+    authorizationСheck() {
+     if (localStorage.getItem('logNAME') != ''){
+      
+      document.querySelector('.menu__Personal_page').addEventListener('click', router.replace('/personal'))
+     }else{
+      document.querySelector('.menu__Personal_page').addEventListener('click', this.openAuthoMenu())
+     }
+    },
     openAuthoMenu() {
       this.showMenu()
       this.startListenerEnterBut()

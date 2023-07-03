@@ -3,7 +3,7 @@ import router from '../router/router'
 
 
 localStorage.setItem('1', 2)
-
+localStorage.setItem('logNAME','')
 
 // document.querySelector('.input_login').addEventListener('keydown', (e) => {
 //     if (e.key === 'Enter') {
@@ -66,6 +66,7 @@ export function checkProfile() {
 
         hideMenu()
         clearInputs()
+        document.querySelector('.menu__Personal_page').innerHTML='Personal page'
         return router.replace('/personal');
 
     }
