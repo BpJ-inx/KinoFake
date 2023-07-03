@@ -66,7 +66,8 @@ export function checkProfile() {
 
         hideMenu()
         clearInputs()
-        document.querySelector('.menu__Personal_page').innerHTML='Personal page'
+        changeButtons()
+
         return router.replace('/personal');
 
     }
@@ -89,4 +90,8 @@ function clearInputs() {
 function hideMenu() {
     document.querySelector('.reg_place').classList.replace("flex", "hidden"),
         document.querySelector('body').classList.remove('overflow-hidden')
+}
+
+function changeButtons(){
+    document.querySelector('.menu__Personal_page').innerHTML='Personal page'
 }

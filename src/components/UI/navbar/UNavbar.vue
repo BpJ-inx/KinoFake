@@ -16,16 +16,16 @@
         <ul
           class="lg:flex items-center justify-around bg-rgba(0, 0, 0, 0.95) first-letter:text-base text-white  py-3 lg:pt-0">
           <li>
-            <urandombut class="mt-3 lg:p-2 py-2 px-0 block mr-10" @click="$router.push('/movepage')">Random film
-            </urandombut>
+            <ubutton class="mt-3 lg:p-2 py-2 px-0 block mr-10" @click="$router.push('/movepage')">Random film
+            </ubutton>
           </li>
           <li>
             <usearchinputapi class="mt-1 lg:p-2 py-2 px-0 mr-20">
             </usearchinputapi>
           </li>
           <li>
-            <urandombut class="menu__Personal_page mt-3 lg:p-2 py-2 px-0 block mr-10" @click="authorizationСheck">Sign In
-            </urandombut>
+            <ubutton class="menu__Personal_page mt-3 lg:p-2 py-2 px-0 block mr-10" @click="authorizationСheck">Sign In
+            </ubutton>
           </li>
         </ul>
       </nav>
