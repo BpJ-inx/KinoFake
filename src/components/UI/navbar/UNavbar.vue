@@ -11,12 +11,12 @@
       </svg></label>
     <input class="hidden " type="checkbox" id="menu-toggle" />
 
-    <div class="hidden  lg:flex lg:items-center lg:w-auto w-full" id="menu">
+    <div class="menu hidden  lg:flex lg:items-center lg:w-auto w-full" id="menu">
       <nav>
         <ul
           class="lg:flex items-center justify-around bg-rgba(0, 0, 0, 0.95) first-letter:text-base text-white  py-3 lg:pt-0">
           <li>
-            <ubutton class="mt-3 lg:p-2 py-2 px-0 block mr-10" @click="$router.push('/movepage')">Random film
+            <ubutton class="butRandom mt-3 lg:p-2 py-2 px-0 block mr-10" @click="$router.push('/movepage')">Random film
             </ubutton>
           </li>
           <li>
@@ -24,7 +24,11 @@
             </usearchinputapi>
           </li>
           <li>
-            <ubutton class="menu__Personal_page mt-3 lg:p-2 py-2 px-0 block mr-10" @click="authorizationСheck">Sign In
+            <ubutton class="menu__Personal_page mt-3 lg:p-2 py-2 px-0 block mr-5" @click="authorizationСheck">Sign In
+            </ubutton>
+          </li>
+          <li>
+            <ubutton class="menu__exit hidden mt-3 lg:p-2 py-2 px-0  mr-1" @click="exitFromProfile">Exit
             </ubutton>
           </li>
         </ul>
@@ -34,8 +38,8 @@
 </template>
 
 <script>
-import router from '../../../router/router';
-import { checkProfile } from '.././../../hooks/authorization'
+
+import { authorizationСheck , exitFromProfile } from '.././../../hooks/authorization.js'
 
 export default {
   name: 'navbar',
@@ -52,47 +56,19 @@ export default {
     }
   },
   methods: {
-    authorizationСheck() {
-     if (localStorage.getItem('logNAME') != ''){
-      
-      document.querySelector('.menu__Personal_page').addEventListener('click', router.replace('/personal'))
-     }else{
-      document.querySelector('.menu__Personal_page').addEventListener('click', this.openAuthoMenu())
-     }
-    },
-    openAuthoMenu() {
-      this.showMenu()
-      this.startListenerEnterBut()
-    },
 
-    showMenu() {
-      document.querySelector('.reg_place').classList.replace("hidden", "flex")
-      document.querySelector('body').classList.add('overflow-hidden')
-      this.hideMenu()
-    },
-
-    hideMenu() {
-      document.querySelector('.empty_window').addEventListener('click', () => {
-        document.querySelector('.reg_place').classList.replace("flex", "hidden"),
-          document.querySelector('body').classList.remove('overflow-hidden')
-      }
-      )
-    },
-    startListenerEnterBut() {
-      document.querySelector('.input_login').addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-          document.querySelector('.input_password').focus()
-        };
-      });
-
-      document.querySelector('.input_password').addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-          checkProfile()
-        };
-      });
-    }
+  
   },
+
+  setup() {
+    
+    return {
+      authorizationСheck,
+      exitFromProfile,
+    }
+  }
 }
+
 
 </script>
 
