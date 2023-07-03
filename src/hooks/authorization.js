@@ -5,7 +5,7 @@ localStorage.setItem('1', 2)
 localStorage.setItem('logNAME', '')
 
 export function authorizationСheck() {
-    if (localStorage.getItem('logNAME') != '') {
+    if (localStorage.getItem('logNAME')) {
 
         document.querySelector('.menu__Personal_page').addEventListener('click', router.replace('/personal'))
     } else {
