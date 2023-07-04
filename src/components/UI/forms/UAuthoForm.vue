@@ -46,7 +46,6 @@ export default {
     name: 'authoform',
 
     setup() {
-        
         return {
             checkProfile,
             switchForm,

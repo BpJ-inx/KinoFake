@@ -5,7 +5,8 @@
             <img class="posterFilm" :src="film.poster.previewUrl" @load="showFilm">
 
             <div class="movie_rating"> {{ film.rating.kp.toFixed(1) }} </div>
-            <button class="buttonOnKinoPoisk cursor-pointer" @click="openFilmOnKP">Открыть на КиноПоиске</button>
+            <button class="buttonFav cursor-pointer" v-if="isAutho">To favorites</button>
+            <button class="buttonOnKinoPoisk cursor-pointer" @click="openFilmOnKP">Open on КиноПоиске</button>
         </div>
 
         <div class="descSide">
@@ -33,7 +34,13 @@
 
 <script>
 import { showFilm } from '../hooks/show';
+import { isAutho } from '../hooks/authorization.js'
 export default {
+    data() {
+        return {
+            
+        }
+    },
     props: {
         responseMove: {
             type: Array,
@@ -41,8 +48,10 @@ export default {
         }
     },
     setup() {
+
         return {
-            showFilm
+            showFilm,
+            isAutho
         }
     },
     methods: {

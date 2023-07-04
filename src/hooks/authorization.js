@@ -3,11 +3,22 @@ import router from '../router/router'
 
 localStorage.setItem('1', 2)
 localStorage.setItem('logNAME', '')
+let isAutho = false
+
+export function changeAutho() {
+    if (isAutho == false) {
+        isAutho = true
+    } else {
+        isAutho = false
+    }
+}
 
 export function authorizationСheck() {
     if (localStorage.getItem('logNAME')) {
 
         document.querySelector('.menu__Personal_page').addEventListener('click', router.replace('/personal'))
+
+
     } else {
         document.querySelector('.menu__Personal_page').addEventListener('click', openAuthoMenu())
     }
@@ -21,8 +32,9 @@ export function checkProfile() {
         hideMenuAfterLogin()
         clearInputs()
         changeButtons()
+        changeAutho()
+        router.replace('/personal');
 
-        return router.replace('/personal');
 
     }
     if (localStorage.getItem(document.querySelector('.input__login').value) == null) {
@@ -94,5 +106,10 @@ export function exitFromProfile() {
     localStorage.setItem('logNAME', '')
     document.querySelector('.menu__Personal_page').innerHTML = 'Sign In'
     document.querySelector('.menu__exit').classList.replace('block', 'hidden')
+    changeAutho()
     router.replace('/')
+}
+
+export {
+    isAutho
 }

@@ -1,5 +1,5 @@
 import router from '../router/router'
-import { changeButtons , hideMenuAfterLogin } from '../hooks/authorization.js'
+import { changeButtons , hideMenuAfterLogin, changeAutho } from '../hooks/authorization.js'
 
 let easyPassword = [
     '123456', 'qwerty', '123qwe', 'qwe123', '1q2w3e', '111111', '222222', '333333', '444444', '555555', '666666', 'qqqqqq', 'wwwwww', 'eeeeee', 'rrrrrr', 'tttttt', 'yyyyyy',
@@ -62,7 +62,6 @@ export function easyValidation() {
     }
 
     if (r.test(document.querySelector('.input__password_reg').value)) {
-        // return console.log('+++');
         createNewAcc()
     } else {
         document.querySelector('.input__password_reg').value = '';
@@ -83,6 +82,7 @@ function createNewAcc() {
     changeButtons()
     hideMenuAfterLogin()
     switchForm()
+    changeAutho()
     router.replace('/personal')
 }
 else{
