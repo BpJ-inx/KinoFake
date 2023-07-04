@@ -13,7 +13,6 @@
     height: 100%;
     width: 30vw;
     align-items: center;
-    // background: rgb(60, 60, 60);
     background-color: #101011;
     color: black;
     z-index: 101;
@@ -51,8 +50,6 @@
     line-height: 24px;
     font-family: Tahoma, Arial, Verdana, sans-serif;
     letter-spacing: 1px;
-    // background: rgb(70, 70, 70);
-    // background-color: #4b4a4d;
     background-color: #3b3a3d;
     width: 100%;
     justify-content: center;
@@ -62,3 +59,18 @@
     padding: 10px;
 
 }
+
+.cancel {
+    display: flex;
+    border-radius: 100%;
+    position: relative;
+    height: 50px;
+    margin: 20px;
+    background-color: #404040;
+    cursor: pointer;
+    transition: ease-out all 0.5s;
+  }
+  
+  .cancel:hover {
+    background-color: #515151;
+  }

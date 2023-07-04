@@ -27,19 +27,4 @@ export default {
   
 <style lang="scss" scoped>
 @import '../assets/styles/Components_styles/AuthoAndRegFormStyle.scss';
-
-.cancel {
-  display: flex;
-  border-radius: 100%;
-  position: relative;
-  height: 50px;
-  margin: 20px;
-  background-color: #404040;
-  cursor: pointer;
-  transition: ease-out all 0.5s;
-}
-
-.cancel:hover {
-  background-color: #515151;
-}
 </style>

@@ -1,0 +1,23 @@
+.header {
+    display: flex;
+    font-family: Tahoma, Arial, Verdana, sans-serif;
+    font-size: 25px;
+    margin-top: 100px;
+    padding: 10px;
+    justify-content: center;
+}
+
+.person__name,
+.favorites,
+.reviews {
+    display: flex;
+    font-family: Tahoma, Arial, Verdana, sans-serif;
+    font-size: 25px;
+    padding: 10px;
+}
+
+@media (max-width: 1024px) {
+    .wrapper {
+        flex-wrap: wrap;
+    }
+}

@@ -40,6 +40,7 @@
 
 <script>
 import { checkProfile } from '../../../hooks/authorization'
+import {} from '../../../hooks/registration'
 export default {
     name: 'authoform',
 
