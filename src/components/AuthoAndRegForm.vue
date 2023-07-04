@@ -13,7 +13,9 @@
       <div class="section_title">
         <h1 class="section_title_name">Registration/Authorization</h1>
       </div>
-      <authoform></authoform>
+      <authoform class="form__authorization flex"></authoform>
+      <regform class="form__registration hidden"></regform>
+
     </div>
 
   </div>

@@ -5,6 +5,7 @@ import SearchError from "../SearchError.vue"
 import UButton from '../UI/button/UButton.vue'
 import ULogoBut from './button/ulogobut.vue'
 import UAuthoForm from './forms/uauthoform.vue'
+import URegForm from './forms/uregform.vue'
 
 
 
@@ -15,5 +16,6 @@ export default[
     SearchError,
     UButton,
     ULogoBut,
-    UAuthoForm
+    UAuthoForm,
+    URegForm
 ]

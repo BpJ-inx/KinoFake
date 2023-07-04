@@ -1,5 +1,4 @@
 .wrapper {
-    // display: flex;
     justify-content: center;
 }
 
@@ -11,8 +10,6 @@
     padding: 10px;
     padding-inline: 50px;
     margin: 25px;
-    // background: rgb(86, 86, 86);
-    // background-color: #4b4a4d;
     background-color: #3b3a3d;
     border-radius: 0.75rem;
 }
@@ -48,7 +45,7 @@
     background: #2c2b2f;
 }
 
-.header__autho_form{
+.header__reg_form{
     display: flex;
     font-family: Tahoma, Arial, Verdana, sans-serif;
     font-size: 20px;

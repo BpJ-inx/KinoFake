@@ -1,10 +1,10 @@
 <template>
     <div class="wrapper">
         <form class="form">
-            <p class="header mb-2 mt-2">Sign in to your account</p>
+            <p class="header__autho_form mb-2 mt-2">Sign in to your account</p>
 
             <div class="">
-                <label class="input_field_names">Login:</label>
+                <label class="input_field_names input__login">Login:</label>
 
                 <div class="">
                     <input class="inputs input_login text-sm rounded-lg  block w-72  p-2.5 px-5 
@@ -13,7 +13,7 @@
             </div>
 
             <div class="mb-2">
-                <label for="password" class="input_field_names">Password:</label>
+                <label for="password" class="input_field_names input__password">Password:</label>
 
                 <div class="">
                     <input type="password" class="inputs input_password text-sm rounded-lg  block w-72  p-2.5 px-5 
@@ -32,7 +32,8 @@
 
             <p class="">
                 No account?
-                <a class="cursor-pointer underline transition ease-in-out text-gray-400 hover:text-white">Sign up</a>
+                <a class="switch__button cursor-pointer underline transition ease-in-out text-gray-400 hover:text-white" 
+                @click="switchForm">Sign up</a>
             </p>
         </form>
     </div>
@@ -40,14 +41,15 @@
 
 <script>
 import { checkProfile } from '../../../hooks/authorization'
-import {} from '../../../hooks/registration'
+import {switchForm} from '../../../hooks/registration'
 export default {
     name: 'authoform',
 
     setup() {
         
         return {
-            checkProfile
+            checkProfile,
+            switchForm,
         }
     },
 
