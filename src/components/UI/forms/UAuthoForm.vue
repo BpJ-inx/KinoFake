@@ -4,19 +4,19 @@
             <p class="header__autho_form mb-2 mt-2">Sign in to your account</p>
 
             <div class="">
-                <label class="input_field_names input__login">Login:</label>
+                <label class="input_field_names ">Login:</label>
 
                 <div class="">
-                    <input class="inputs input_login text-sm rounded-lg  block w-72  p-2.5 px-5 
+                    <input class="inputs input__login text-sm rounded-lg  block w-72  p-2.5 px-5 
              dark:bg-gray-700  dark:placeholder-gray-400 text-white" placeholder="Enter login" />
                 </div>
             </div>
 
             <div class="mb-2">
-                <label for="password" class="input_field_names input__password">Password:</label>
+                <label for="password" class="input_field_names ">Password:</label>
 
                 <div class="">
-                    <input type="password" class="inputs input_password text-sm rounded-lg  block w-72  p-2.5 px-5 
+                    <input type="password" class="inputs input__password text-sm rounded-lg  block w-72  p-2.5 px-5 
              dark:bg-gray-700  dark:placeholder-gray-400 text-white" placeholder="••••••" />
 
                 </div>

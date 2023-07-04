@@ -14,8 +14,8 @@ export function authorizationСheck() {
 }
 
 export function checkProfile() {
-    if (localStorage.getItem(document.querySelector('.input_login').value) == document.querySelector('.input_password').value) {
-        localStorage.setItem('logNAME', document.querySelector('.input_login').value)
+    if (localStorage.getItem(document.querySelector('.input__login').value) == document.querySelector('.input__password').value) {
+        localStorage.setItem('logNAME', document.querySelector('.input__login').value)
 
 
         hideMenuAfterLogin()
@@ -25,28 +25,28 @@ export function checkProfile() {
         return router.replace('/personal');
 
     }
-    if (localStorage.getItem(document.querySelector('.input_login').value) == null) {
-        // typeOfAllert='Incorrect username'
+    if (localStorage.getItem(document.querySelector('.input__login').value) == null) {
+
         clearInputs()
         console.log('Incorrect username');
     } else {
-        //    typeOfAllert='Incorrect password'
+
         clearInputs()
         console.log('Incorrect password');
     }
 }
 
 function clearInputs() {
-    document.querySelector('.input_login').value = '';
-    document.querySelector('.input_password').value = ''
+    document.querySelector('.input__login').value = '';
+    document.querySelector('.input__password').value = ''
 }
 
-function hideMenuAfterLogin() {
-    document.querySelector('.reg_place').classList.replace("flex", "hidden"),
+export function hideMenuAfterLogin() {
+    document.querySelector('.autho_reg_place').classList.replace("flex", "hidden"),
         document.querySelector('body').classList.remove('overflow-hidden')
 }
 
-function changeButtons() {
+export function changeButtons() {
     document.querySelector('.menu__Personal_page').innerHTML = 'Personal page'
     document.querySelector('.menu__exit').classList.replace('hidden', 'block')
 }
@@ -58,27 +58,32 @@ function openAuthoMenu() {
 }
 
 function showMenu() {
-    document.querySelector('.reg_place').classList.replace("hidden", "flex")
+    document.querySelector('.autho_reg_place').classList.replace("hidden", "flex")
     document.querySelector('body').classList.add('overflow-hidden')
     hideMenuOnclick()
 }
 
 function hideMenuOnclick() {
     document.querySelector('.empty_window').addEventListener('click', () => {
-        document.querySelector('.reg_place').classList.replace("flex", "hidden"),
+        document.querySelector('.autho_reg_place').classList.replace("flex", "hidden"),
             document.querySelector('body').classList.remove('overflow-hidden')
+    })
+    if (document.querySelector('.form__authorization').classList.contains('hidden')) {
+        document.querySelector('.form__authorization').classList.replace('hidden', 'flex')
+        document.querySelector('.form__registration').classList.replace('flex', 'hidden')
+        document.querySelector('.input__login_reg').value = ''
+        document.querySelector('.input__password_reg').value = ''
     }
-    )
 }
 
 function startListenerEnterBut() {
-    document.querySelector('.input_login').addEventListener('keydown', (e) => {
+    document.querySelector('.input__login').addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
-            document.querySelector('.input_password').focus()
+            document.querySelector('.input__password').focus()
         };
     });
 
-    document.querySelector('.input_password').addEventListener('keydown', (e) => {
+    document.querySelector('.input__password').addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
             checkProfile()
         };

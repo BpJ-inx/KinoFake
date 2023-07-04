@@ -1,5 +1,5 @@
 <template>
-  <div class="reg_place hidden">
+  <div class="autho_reg_place hidden">
     <div class="empty_window">
       <div class="cancel">
         <svg viewBox="12 12 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
