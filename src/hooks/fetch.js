@@ -18,6 +18,7 @@ const response = ref([])
 const prevRespPremiers = ref([]);
 const prevRespTop = ref([]);
 const prevRespBest = ref([]);
+localStorage.setItem('filmID','')
 const fetchFunc = async () => {
 
     try {
@@ -219,6 +220,7 @@ export function fetchSearch() {
 
 export async function openFilmOnSelfPage() {
     selectedFimId.value = event.target.closest('div.filmCard').querySelector('.idFilm').innerHTML
+    localStorage.setItem('filmID',selectedFimId.value.trim())
     isRandom.value = false
     await router.replace('/movepage')
 }
