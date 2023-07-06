@@ -28,7 +28,7 @@
 <script>
 import { openFilmOnSelfPage } from '../hooks/fetch';
 import { showFilm } from '../hooks/show';
-import { isFav , checkFavOnlyPoster } from '../hooks/addFavorite';
+import { checkFavOnlyPoster } from '../hooks/addFavorite';
 
 export default {
   props: {
@@ -43,7 +43,6 @@ export default {
     return {
       openFilmOnSelfPage,
       showFilm,
-      isFav,
       checkFavOnlyPoster,
     }
   }

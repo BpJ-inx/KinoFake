@@ -65,3 +65,23 @@
     height: 30px;
     width: 275px;
 }
+
+.fav__star{
+    display: flex;
+    align-self: flex-end;
+    align-items:center;
+    user-select: none;
+    position: absolute;
+    margin-top: 15px;
+    margin-right:   20px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: #000000c4;
+    border: solid 2px red;
+    color: #ffffff;
+    font-size: 14px;
+    z-index: 1;
+    order:0;
+
+}
