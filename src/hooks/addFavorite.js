@@ -14,10 +14,10 @@ export function addFavoriteFilm() {
         document.querySelector('.fav__star').style.display = 'flex'
         document.querySelector('.buttonFav').innerHTML = 'From Favorites'
 
-    }else{
+    } else {
         document.querySelector('.buttonFav').innerHTML = 'To favorites'
         document.querySelector('.fav__star').style.display = 'none'
-        localStorage.setItem(`favorite.${localStorage.getItem('logNAME')}`, JSON.stringify(userFavFilms.replace('.'+ document.querySelector('.idFilm').innerHTML,'')))
+        localStorage.setItem(`favorite.${localStorage.getItem('logNAME')}`, JSON.stringify(userFavFilms.replace('.' + document.querySelector('.idFilm').innerHTML, '')))
     }
 
 }
@@ -39,3 +39,19 @@ export function checkIsFav() {
 
 }
 
+export function checkFavOnlyPoster(film, film2) {
+    userFavFilms = JSON.parse(localStorage.getItem(`favorite.${localStorage.getItem('logNAME')}`))
+    if (!film) {
+        film = film2
+    }
+    if (userFavFilms == null) {
+        return false
+    }
+    if (userFavFilms.includes(film)) {
+        return true
+
+    } else {
+        return false
+
+    }
+}

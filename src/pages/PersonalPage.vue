@@ -15,6 +15,7 @@
             <div class="favorites w-full">
                 <div>
                     <div class="ml-11">Favorites :</div>
+                    
                     <div class="favorites__place">
                     </div>
                 </div>

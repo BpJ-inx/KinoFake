@@ -2,7 +2,7 @@ import router from '../router/router'
 
 
 localStorage.setItem('1', 2)
-localStorage.setItem(`favorite.1`,JSON.stringify(``))
+localStorage.setItem(`favorite.1`, JSON.stringify(``))
 localStorage.setItem('logNAME', '')
 let isAutho = false
 
@@ -108,6 +108,9 @@ export function exitFromProfile() {
     document.querySelector('.menu__Personal_page').innerHTML = 'Sign In'
     document.querySelector('.menu__exit').classList.replace('block', 'hidden')
     changeAutho()
+    for (let i = 0; i < document.querySelectorAll('.fav__star').length; ++i) {
+        document.querySelectorAll('.fav__star')[i].style.display = 'none'
+    }
     router.replace('/')
 }
 
