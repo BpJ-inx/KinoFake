@@ -15,8 +15,8 @@
             <div class="favorites w-full">
                 <div>
                     <div class="ml-11">Favorites :</div>
-                    
                     <div class="favorites__place">
+                      
                     </div>
                 </div>
             </div>
@@ -30,7 +30,8 @@
 export default {
     data() {
         return {
-            name: localStorage.getItem('logNAME')
+            name: localStorage.getItem('logNAME'),
+           
         }
     }
 };

@@ -2,7 +2,7 @@ import router from '../router/router'
 
 
 localStorage.setItem('1', 2)
-localStorage.setItem(`favorite.1`, JSON.stringify(``))
+localStorage.setItem(`favorite.1`, JSON.stringify([]))
 localStorage.setItem('logNAME', '')
 let isAutho = false
 
