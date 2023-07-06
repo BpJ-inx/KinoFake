@@ -83,7 +83,7 @@ function createNewAcc() {
     hideMenuAfterLogin()
     switchForm()
     changeAutho()
-    localStorage.setItem(`favorite.${localStorage.setItem('logNAME')},''`)
+    localStorage.setItem(`favorite.${localStorage.getItem('logNAME')}`,JSON.stringify(``))
     router.replace('/personal')
 }
 else{
