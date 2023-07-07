@@ -1,7 +1,7 @@
 import axios from "axios";
 import { onMounted, ref } from 'vue'
 import router from '../router/router'
-import { basic_X_API_KEY, private_X_API_KEY, fetchFilm, fetchSearchName, fetchPremieres, fetchTopNow, fetchBest } from '../urlConfig.js'
+import { basic_X_API_KEY, private_X_API_KEY, fetchFilm, fetchSearchName, fetchPremieres, fetchTopNow, fetchBest, fetchFilmById, oneMore_X_API_KEY } from '../urlConfig.js'
 
 const isRandom = ref(true)
 const selectedFimId = ref('')
@@ -18,7 +18,8 @@ const response = ref([])
 const prevRespPremiers = ref([]);
 const prevRespTop = ref([]);
 const prevRespBest = ref([]);
-localStorage.setItem('filmID','')
+localStorage.setItem('filmID', '')
+
 const fetchFunc = async () => {
 
     try {
@@ -31,7 +32,6 @@ const fetchFunc = async () => {
             }
         )
 
-   
 
         if (whatPageRequest.value == 'main') {
             changeOnRequestMain(responseFromServer)
@@ -43,6 +43,8 @@ const fetchFunc = async () => {
             changeOnRequestPremier(responseFromServer)
         } else if (whatPageRequest.value == 'top/best') {
             changeOnRequestTopBest(responseFromServer)
+        } else if (whatPageRequest.value == 'fav') {
+            changeOnRequestFav(responseFromServer)
         }
     }
     catch (e) {
@@ -58,7 +60,7 @@ function changeOnRequestMain(responseFromServer) {
 }
 function changeOnRequestPremier(responseFromServer) {
     responseFilms.value = responseFromServer.data.items.slice(startSlice.value, endSlice.value)
-        startSlice.value += 20,
+    startSlice.value += 20,
         endSlice.value += 10
 }
 
@@ -87,6 +89,12 @@ function changeOnRequestSearch(responseFromServer) {
         document.querySelector('.errorPlace').classList.remove('hidden')
         document.querySelector('.textError').innerHTML = `Sorry, No results found for "${searchQuery.value}"`
     }
+}
+
+function changeOnRequestFav(responseFromServer) {
+
+    responseFilms.value = [...responseFilms.value,
+    responseFromServer.data]
 }
 
 
@@ -122,7 +130,7 @@ const fetchsMainPage = async () => {
 
 
 
-export function  fetchPremieresTop() {
+export function fetchPremieresTop() {
     whatPageRequest.value = 'premier'
     startSlice.value = 0
     endSlice.value = 20
@@ -131,7 +139,7 @@ export function  fetchPremieresTop() {
     X_API_KEY.value = private_X_API_KEY
 
     onMounted(fetchFunc)
-    
+
     return {
         responseFilms,
         startSlice,
@@ -211,6 +219,7 @@ export function fetchSearch() {
 
     onMounted(fetchFunc)
 
+
     return {
         responseSearchFilms,
         X_API_KEY,
@@ -220,9 +229,31 @@ export function fetchSearch() {
 
 export async function openFilmOnSelfPage() {
     selectedFimId.value = event.target.closest('div.filmCard').querySelector('.idFilm').innerHTML
-    localStorage.setItem('filmID',selectedFimId.value.trim())
+    localStorage.setItem('filmID', selectedFimId.value.trim())
     isRandom.value = false
     await router.replace('/movepage')
+}
+
+
+
+export function fetchFavFilms() {
+    whatPageRequest.value = 'fav'
+    X_API_KEY.value = oneMore_X_API_KEY
+    responseFilms.value = []
+
+    let IdFilmArray = JSON.parse(localStorage.getItem(`favorite.${localStorage.getItem('logNAME')}`))
+    if (IdFilmArray.length != 0) {
+        IdFilmArray.forEach(async function (id) {
+            fetchRequest.value = fetchFilmById + String(id);
+            await fetchFunc()
+        });
+
+    }
+
+    return {
+        responseFilms,
+
+    }
 }
 
 export default {

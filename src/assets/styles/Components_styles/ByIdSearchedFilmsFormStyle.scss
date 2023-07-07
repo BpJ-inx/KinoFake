@@ -1,10 +1,13 @@
 .posterFilm {
     display: flex;
+    align-items: center;
     justify-content: center;
-    height: 400px;
-    width: 300px;
+    margin-inline: auto;
+    height: 90%;
+    width: 90%;
+    max-width: 300px;
+    max-height: 400px;
     padding: 10px;
-    margin-top: -40px
 }
 
 .idFilm {
@@ -16,16 +19,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    align-self: flex-start;
     user-select: none;
-    position: relative;
-    top:15px;
-    right: 85px;
+    position: absolute;
+    margin-top: 15px;
+    margin-left: 20px;
     border-radius: 50%;
     width: 40px;
     height: 40px;
     background-color: #000000c4;
     color: #ffffff;
     font-size: 14px;
+    z-index: 1;
+    order:0;
 }
 
 .movie_rating_border_green {
@@ -42,8 +48,8 @@
 
 
 .filmCard {
-    width: 250px;
-    height: 400px;
+    width: 200px;
+    height: 300px;
     transition: all 0.5s ease;
 }
 
@@ -64,7 +70,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     height: 30px;
-    width: 275px;
+    font-size: 12px;
 }
 
 .fav__star{

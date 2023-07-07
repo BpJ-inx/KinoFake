@@ -15,8 +15,11 @@
             <div class="favorites w-full">
                 <div>
                     <div class="ml-11">Favorites :</div>
-                    <div class="favorites__place">
-                      
+                    <div class="favorites__place  flex flex-wrap   align-top">
+                        <ByIdSearchedFilmsForm 
+                        :responseFilms="responseFilms">
+                        </ByIdSearchedFilmsForm>
+
                     </div>
                 </div>
             </div>
@@ -25,13 +28,23 @@
 </template>
   
 <script>
-
+import { fetchFavFilms } from '../hooks/fetch.js'
+import ByIdSearchedFilmsForm from '../components/ByIdSearchedFilmsForm.vue'
 
 export default {
     data() {
         return {
             name: localStorage.getItem('logNAME'),
-           
+
+        }
+    },
+    components: {
+        ByIdSearchedFilmsForm,
+    },
+    setup() {
+        const { responseFilms } = fetchFavFilms()
+        return {
+            responseFilms
         }
     }
 };

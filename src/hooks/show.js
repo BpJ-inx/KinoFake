@@ -17,10 +17,12 @@ export function showFilm() {
 
 export function showSearchedFilms() {
     changeRating()
-    if (document.querySelector('.errorPlace').classList.contains('hidden')) {
-        document.querySelector('.resSearchFiveFilms').classList.remove('hidden');
-        document.querySelector('.resSearchFiveFilms').classList.add('flex');
-        document.querySelector('.spinner').classList.add('hidden');
+    if (document.querySelector('.errorPlace')) {
+        if (document.querySelector('.errorPlace').classList.contains('hidden')) {
+            document.querySelector('.resSearchFiveFilms').classList.remove('hidden');
+            document.querySelector('.resSearchFiveFilms').classList.add('flex');
+            document.querySelector('.spinner').classList.add('hidden');
+        }
     }
 }
 

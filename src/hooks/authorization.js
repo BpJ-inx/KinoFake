@@ -34,7 +34,7 @@ export function checkProfile() {
         clearInputs()
         changeButtons()
         changeAutho()
-        router.replace('/personal');
+      return router.replace('/personal');
 
 
     }
