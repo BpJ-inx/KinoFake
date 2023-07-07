@@ -10,7 +10,7 @@
 
 <script>
 import FilmForm from '../components/FilmForm.vue'
-import {fetchFilm} from '../urlConfig.js'
+import { fetchFilm } from '../urlConfig.js'
 import { fetchMove } from '../hooks/fetch';
 import axios from "axios";
 
@@ -37,10 +37,12 @@ export default {
                 )
                 this.responseMove = []
                 this.responseMove.push(responseFromServer.data)
+                
             }
             catch (e) {
                 console.log(e)
             }
+            localStorage.setItem('filmID', this.responseMove.id)
         }
 
 
@@ -51,6 +53,7 @@ export default {
     beforeUnmount() {
         document.querySelector('.butRandom ').removeEventListener('click', this.refreshPage)
         this.responseMove = []
+
     },
     setup() {
         const { responseMove, X_API_KEY, } = fetchMove()
