@@ -29,7 +29,7 @@
 <script>
 import { openFilmOnSelfPage } from '../hooks/fetch.js'
 import { showSearchedFilms } from '../hooks/show.js'
-import { checkFavOnlyPoster } from '../hooks/addFavorite';
+import { checkFavOnlyPoster } from '../hooks/favorite';
 
 export default {
   props: {

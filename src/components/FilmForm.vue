@@ -51,20 +51,30 @@
 <script>
 import { showFilm } from '../hooks/show';
 import { isAutho } from '../hooks/authorization.js'
-import { addFavoriteFilm, checkIsFav, isFav, nameFavBut } from '../hooks/addFavorite.js'
+import { addFavoriteFilm, checkIsFav, isFav, nameFavBut } from '../hooks/favorite.js'
 
 
 export default {
     data() {
         return {
-            isFav: this.isFav
+
         }
+    },
+    beforeUpdate() {
+        checkIsFav()
+        if(isFav == false){
+            this.isFav = false
+            this.nameFavBut = 'To favorites'
+        }
+        // return {
+        //     isFav
+        // }
     },
     props: {
         responseMove: {
             type: Array,
             required: true,
-        }
+        },
     },
     setup() {
         checkIsFav()

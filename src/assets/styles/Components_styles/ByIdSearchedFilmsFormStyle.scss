@@ -15,8 +15,8 @@
 }
 
 
-.movie_rating {
-    display: flex;
+.button__del_fav {
+    display: none;
     justify-content: center;
     align-items: center;
     align-self: flex-start;
@@ -27,24 +27,16 @@
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    background-color: #000000c4;
     color: #ffffff;
     font-size: 14px;
     z-index: 1;
-    order:0;
+    order: 0;
+    transition: all 0.5s ease;
+    border: 1px;
 }
 
-.movie_rating_border_green {
-    border: 2px solid green;
-}
 
-.movie_rating_border_orange {
-    border: 2px solid orange;
-}
 
-.movie_rating_border_red {
-    border: 2px solid red;
-}
 
 
 .filmCard {
@@ -54,11 +46,21 @@
 }
 
 
-.filmCard:hover{
+.filmCard:hover {
     -webkit-transform: scale(1.04);
     -ms-transform: scale(1.04);
-    transform: scale(1.04);
+    transform: scale(1.06);
+
+    .button__del_fav {
+        display: flex
+    }
 }
+.button__del_fav:hover{
+    -webkit-transform: scale(1.20);
+    -ms-transform: scale(1.20);
+    transform: scale(1.20);
+}
+
 
 .text {
     display: block;
@@ -70,17 +72,18 @@
     overflow: hidden;
     text-overflow: ellipsis;
     height: 30px;
+    width: 245px;
     font-size: 12px;
 }
 
-.fav__star{
+.fav__star {
     display: flex;
     align-self: flex-end;
-    align-items:center;
+    align-items: center;
     user-select: none;
     position: absolute;
     margin-top: 15px;
-    margin-right:   20px;
+    margin-right: 20px;
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -89,6 +92,6 @@
     color: #ffffff;
     font-size: 14px;
     z-index: 1;
-    order:0;
+    order: 0;
 
 }

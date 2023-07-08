@@ -45,6 +45,7 @@ export function checkIsFav() {
 
 export function checkFavOnlyPoster(film, film2) {
     userFavFilms = JSON.parse(localStorage.getItem(`favorite.${localStorage.getItem('logNAME')}`))
+
     if (!film) {
         film = film2
     }
@@ -58,4 +59,12 @@ export function checkFavOnlyPoster(film, film2) {
         return false
 
     }
+}
+
+export function deleteFromFav(){
+   let targetId = String(event.target.closest('div.filmCard').querySelector('.idFilm').innerHTML)
+    userFavFilms = JSON.parse(localStorage.getItem(`favorite.${localStorage.getItem('logNAME')}`))
+    userFavFilms.splice(userFavFilms.indexOf(targetId),1)
+    localStorage.setItem(`favorite.${localStorage.getItem('logNAME')}`, JSON.stringify(userFavFilms))
+    event.target.closest('div').classList.replace('flex','hidden')
 }

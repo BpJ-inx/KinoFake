@@ -1,9 +1,24 @@
 <template>
   <div class="filmCard flex flex-col  m-2 cursor-pointer items-center" @click="openFilmOnSelfPage()"
-    v-for="favFilm in responseFilms" :key="favFilm.kinopoiskId">
+    v-for="favFilm in responseFavFilms" :key="favFilm.kinopoiskId">
 
     <div class="idFilm hidden">{{ favFilm.kinopoiskId }}</div>
-    <div class="movie_rating"> {{favFilm.ratingKinopoisk.toFixed(1) }}</div>
+    <button class="button__del_fav" @click="deleteFromFav">
+
+
+      <svg class="del__icon" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1"
+        style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+        viewBox="0 0 500 500" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+        <g>
+          <circle style="stroke:#ED2F00;stroke-width:20" cx="250" cy="250" r="240" />
+          <path style="stroke:#B62400;stroke-width:30;stroke-linecap:round" d="M338 162l-176 176m176 0l-176 -176" />
+        </g>
+      </svg>
+
+
+
+    </button>
 
     <div class="fav__star" v-show="checkFavOnlyPoster(favFilm.kinopoiskId)">
       <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="50.000000pt" height="75.000000pt"
@@ -20,7 +35,7 @@
       </svg>
     </div>
 
-    <img class="posterFilm" :src='favFilm.posterUrl' @load="showSearchedFilms">
+    <img class="posterFilm" :src='favFilm.posterUrl'>
     <div class="nameFilm text"> {{ favFilm.nameRu }}</div>
 
   </div>
@@ -28,12 +43,11 @@
 
 <script>
 import { openFilmOnSelfPage } from '../hooks/fetch.js'
-import { showSearchedFilms } from '../hooks/show.js'
-import { checkFavOnlyPoster } from '../hooks/addFavorite';
+import { checkFavOnlyPoster, deleteFromFav } from '../hooks/favorite';
 
 export default {
   props: {
-    responseFilms: {
+    responseFavFilms: {
       type: Array,
       required: true
     }
@@ -42,8 +56,8 @@ export default {
   setup() {
     return {
       openFilmOnSelfPage,
-      showSearchedFilms,
       checkFavOnlyPoster,
+      deleteFromFav,
     }
 
   }

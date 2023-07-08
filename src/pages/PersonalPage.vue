@@ -17,7 +17,7 @@
                     <div class="ml-11">Favorites :</div>
                     <div class="favorites__place  flex flex-wrap   align-top">
                         <ByIdSearchedFilmsForm 
-                        :responseFilms="responseFilms">
+                        :responseFavFilms="responseFavFilms">
                         </ByIdSearchedFilmsForm>
 
                     </div>
@@ -42,9 +42,9 @@ export default {
         ByIdSearchedFilmsForm,
     },
     setup() {
-        const { responseFilms } = fetchFavFilms()
+        const { responseFavFilms } = fetchFavFilms()
         return {
-            responseFilms
+            responseFavFilms
         }
     }
 };

@@ -9,6 +9,7 @@ const fetchRequest = ref(``)
 const X_API_KEY = ref(basic_X_API_KEY)
 const responseMove = ref([])
 const responseFilms = ref([]);
+const responseFavFilms = ref([]);
 const startSlice = ref(0)
 const endSlice = ref(5)
 const whatPageRequest = ref('main')
@@ -93,7 +94,7 @@ function changeOnRequestSearch(responseFromServer) {
 
 function changeOnRequestFav(responseFromServer) {
 
-    responseFilms.value = [...responseFilms.value,
+    responseFavFilms.value = [...responseFavFilms.value,
     responseFromServer.data]
 }
 
@@ -228,10 +229,12 @@ export function fetchSearch() {
 }
 
 export async function openFilmOnSelfPage() {
-    selectedFimId.value = event.target.closest('div.filmCard').querySelector('.idFilm').innerHTML
-    localStorage.setItem('filmID', selectedFimId.value.trim())
-    isRandom.value = false
-    await router.replace('/movepage')
+    if (!event.target.closest('button.button__del_fav')) {
+        selectedFimId.value = event.target.closest('div.filmCard').querySelector('.idFilm').innerHTML
+        localStorage.setItem('filmID', selectedFimId.value.trim())
+        isRandom.value = false
+        await router.replace('/movepage')
+    }
 }
 
 
@@ -239,19 +242,19 @@ export async function openFilmOnSelfPage() {
 export function fetchFavFilms() {
     whatPageRequest.value = 'fav'
     X_API_KEY.value = oneMore_X_API_KEY
-    responseFilms.value = []
+    responseFavFilms.value = []
 
     let IdFilmArray = JSON.parse(localStorage.getItem(`favorite.${localStorage.getItem('logNAME')}`))
     if (IdFilmArray.length != 0) {
         IdFilmArray.forEach(async function (id) {
             fetchRequest.value = fetchFilmById + String(id);
-            await fetchFunc()
+             await fetchFunc() 
         });
 
     }
 
     return {
-        responseFilms,
+        responseFavFilms,
 
     }
 }
