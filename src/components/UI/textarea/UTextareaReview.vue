@@ -6,10 +6,11 @@
     <div class="flex w-full h-52">
         <textarea cols="20" rows="5" class="reviews__text_area" placeholder="Write review"></textarea>
     </div>
-    <ubutton class="send_but justify-center mt-3 lg:p-2 py-2 px-0 block ">Send</ubutton>
+    <ubutton class="send_but justify-center mt-3 lg:p-2 py-2 px-0 block " @click="sendFunction">Send</ubutton>
 </template>
 
 <script>
+
 export default {
     name: 'utextarearev',
     data() {
@@ -17,13 +18,19 @@ export default {
             userName: ''
         }
     },
-    mounted(){
-        if (localStorage.getItem('logNAME')){
+    props: {
+        sendFunction: {
+            type: Function,
+            required: true,
+        },
+    },
+    mounted() {
+        if (localStorage.getItem('logNAME')) {
             this.userName = localStorage.getItem('logNAME')
-        }else{
+        } else {
             this.userName = 'guest'
         }
-    }
+    },
 }
 </script>
 
