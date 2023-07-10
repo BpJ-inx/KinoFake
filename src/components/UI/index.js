@@ -6,6 +6,7 @@ import UButton from '../UI/button/UButton.vue'
 import ULogoBut from './button/ulogobut.vue'
 import UAuthoForm from './forms/uauthoform.vue'
 import URegForm from './forms/uregform.vue'
+import UTextareaReview from './textarea/utextareareview.vue'
 
 
 
@@ -17,5 +18,6 @@ export default[
     UButton,
     ULogoBut,
     UAuthoForm,
-    URegForm
+    URegForm,
+    UTextareaReview,
 ]

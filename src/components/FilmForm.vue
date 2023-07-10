@@ -1,5 +1,6 @@
 <template >
-    <div class="aboutFilm h-auto hidden" v-for="film in responseMove" :key="film.id">
+    <div class="filmPage flex-col justify-center hidden">
+    <div class="aboutFilm h-auto " v-for="film in responseMove" :key="film.id">
 
         <div class="imgSide ">
             <img class="posterFilm" :src="film.poster.previewUrl" @load="showFilm">
@@ -43,9 +44,14 @@
                 <div class="descriptText grayNameClass ">Description:</div>
                 <div class="descFilm"> {{ film.description }}</div>
             </div>
+
         </div>
 
     </div>
+    <div class="reviews">
+        <utextarearev></utextarearev>
+    </div>
+</div>
 </template>
 
 <script>
@@ -62,13 +68,11 @@ export default {
     },
     beforeUpdate() {
         checkIsFav()
-        if(isFav == false){
+        if (isFav == false) {
             this.isFav = false
             this.nameFavBut = 'To favorites'
         }
-        // return {
-        //     isFav
-        // }
+
     },
     props: {
         responseMove: {

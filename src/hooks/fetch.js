@@ -23,7 +23,7 @@ localStorage.setItem('filmID', '')
 
 const fetchFunc = async () => {
 
-    try {
+   try {
         let responseFromServer = await axios.get(fetchRequest.value,
             {
                 headers: {
@@ -50,7 +50,7 @@ const fetchFunc = async () => {
     }
     catch (e) {
         console.log(e)
-    }
+    } 
 
 }
 
@@ -247,8 +247,10 @@ export function fetchFavFilms() {
     let IdFilmArray = JSON.parse(localStorage.getItem(`favorite.${localStorage.getItem('logNAME')}`))
     if (IdFilmArray.length != 0) {
         IdFilmArray.forEach(async function (id) {
+            
             fetchRequest.value = fetchFilmById + String(id);
-             await fetchFunc() 
+             await fetchFunc()
+
         });
 
     }

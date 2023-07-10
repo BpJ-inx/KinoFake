@@ -1,8 +1,8 @@
 export function showFilm() {
 
-    if (document.querySelector('.aboutFilm')) {
-        document.querySelector('.aboutFilm').classList.remove('hidden');
-        document.querySelector('.aboutFilm').classList.add('flex');
+    if (document.querySelector('.filmPage')) {
+        document.querySelector('.filmPage').classList.remove('hidden');
+        document.querySelector('.filmPage').classList.add('flex');
 
         document.querySelector('.movie_rating').classList.remove('movie_rating_border_green', 'movie_rating_border_orange', 'movie_rating_border_red')
         changeRating()
