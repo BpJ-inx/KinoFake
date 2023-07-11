@@ -1,23 +1,21 @@
 export function addReview() {
     let descriptionRev = document.querySelector('.reviews__text_area').value
+
     if (descriptionRev) {
         let userName = ''
         let idFilm = localStorage.getItem('filmID')
-
         let x = 0
+        
         if (localStorage.getItem('logNAME')) {
             userName = localStorage.getItem('logNAME')
         } else {
             userName = 'guest'
         }
 
-
-
         let review = {
             Name: userName,
             ID: idFilm,
             Description: descriptionRev
-
         }
 
         if (localStorage.getItem('lengthRev')) {
@@ -29,10 +27,13 @@ export function addReview() {
         for (let i = 0; i < x + 1; ++i) {
             if (!localStorage.getItem(`Rev.${i}`)) {
                 localStorage.setItem(`Rev.${[i]}`, JSON.stringify(review))
+
+                let reviewsUser =JSON.parse(localStorage.getItem(`reviews.${localStorage.getItem('logNAME')}`))
+                reviewsUser.push(x)
+                localStorage.setItem(`reviews.${localStorage.getItem('logNAME')}`,JSON.stringify(reviewsUser))
                 localStorage.setItem('lengthRev', +x + 1)
             }
         }
-
 
         document.querySelector('.reviews__text_area').value = ''
     }

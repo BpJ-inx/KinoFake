@@ -84,6 +84,7 @@ function createNewAcc() {
     switchForm()
     changeAutho()
     localStorage.setItem(`favorite.${localStorage.getItem('logNAME')}`,JSON.stringify([]))
+    localStorage.setItem(`reviews.${localStorage.getItem('logNAME')}`,JSON.stringify([]))
     router.replace('/personal')
 }
 else{
