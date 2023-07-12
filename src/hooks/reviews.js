@@ -14,7 +14,7 @@ export function addReview() {
             if (localStorage.getItem('logNAME')) {
                 userName = localStorage.getItem('logNAME')
             } else {
-                userName = 'guest'
+                userName = localStorage.getItem('guestID')
             }
 
             let review = {

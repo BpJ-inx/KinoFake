@@ -3,7 +3,7 @@
         <div class="reviews__header">
             <div class="name_user">{{ oneRev.Name }}</div>
             <div class="rev__id_film hidden">{{ oneRev.ID }}</div>
-            <div class="remove_rev cursor-pointer">remove</div>
+            <div class="remove_rev cursor-pointer" v-if="ifRemove(oneRev.Name)">remove</div>
         </div>
         <div class="text_rev flex w-full ">
             {{ oneRev.Description }}
@@ -20,6 +20,20 @@ export default {
             required: true,
         },
     },
+    methods: {
+        ifRemove(name) {
+            if (localStorage.getItem('logNAME')) {
+                if (name == localStorage.getItem('logNAME')) {
+                    return true
+                } else {
+                    return false
+                }
+            } else if (name == localStorage.getItem('guestID')) {
+                return true
+            }
+            return false
+        }
+    }
 
 }
 </script>
