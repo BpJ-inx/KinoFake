@@ -23,7 +23,7 @@
                 </div>
 
                 <button class="buttonFav cursor-pointer" v-if="isAutho" @click="addFavoriteFilm"> {{ nameFavBut }}</button>
-                <button class="buttonOnKinoPoisk cursor-pointer" @click="click">Open on КиноПоиске</button>
+                <button class="buttonOnKinoPoisk cursor-pointer" @click="openFilmOnKP">Open on КиноПоиске</button>
             </div>
 
             <div class="descSide">
@@ -78,11 +78,20 @@ export default {
             }
         }
         this.arrayReviews.sort(function (a) {
-            if (a.Name == localStorage.getItem('logNAME')) {
-                return -1;
-            }
-            else {
-                return 1;
+            if (localStorage.getItem('logNAME')) {
+                if (a.Name == localStorage.getItem('logNAME')) {
+                    return -1;
+                }
+                else {
+                    return 1;
+                }
+            } else {
+                if (a.Name == localStorage.getItem('guestID')) {
+                    return -1;
+                }
+                else {
+                    return 1;
+                }
             }
         });
 
@@ -122,11 +131,6 @@ export default {
         openFilmOnKP() {
             window.open(`https://www.kinopoisk.ru/film/` + document.querySelector(".idFilm").innerHTML);
         },
-
-        click() {
-            this.arrayReviews.push({ Name: '666', ID: '"1044280"', Description: 'lol' }),
-                this.$forceUpdate()
-        }
     },
     beforeUnmount() {
         document.querySelector('.reviews__list').innerHTML = ''

@@ -67,3 +67,7 @@ export function addReview() {
         }
     }
 }
+
+// export function removeReview(a){
+   
+// }
