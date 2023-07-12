@@ -23,7 +23,7 @@
                 </div>
 
                 <button class="buttonFav cursor-pointer" v-if="isAutho" @click="addFavoriteFilm"> {{ nameFavBut }}</button>
-                <button class="buttonOnKinoPoisk cursor-pointer" @click="openFilmOnKP">Open on КиноПоиске</button>
+                <button class="buttonOnKinoPoisk cursor-pointer" @click="click">Open on КиноПоиске</button>
             </div>
 
             <div class="descSide">
@@ -51,6 +51,11 @@
         <div class="reviews">
             <utextarearev :sendFunction="addReview">
             </utextarearev>
+            <div class="reviews__list flex flex-col w-full h-full">
+                <ReviewForm :arrayReviews='arrayReviews'>
+                </ReviewForm>
+
+            </div>
         </div>
     </div>
 </template>
@@ -59,17 +64,39 @@
 import { showFilm } from '../hooks/show';
 import { isAutho } from '../hooks/authorization.js'
 import { addFavoriteFilm, checkIsFav, isFav, nameFavBut } from '../hooks/favorite.js'
-import { addReview } from '../hooks/reviews.js'
-
+import { addReview, arrayReviews } from '../hooks/reviews.js'
+import ReviewForm from './ReviewForm.vue';
 
 export default {
+
+    beforeMount() {
+        this.arrayReviews = []
+        let reviewNumbers = JSON.parse(localStorage.getItem(`reviewsFilm${localStorage.getItem('filmID')}`))
+        if (reviewNumbers) {
+            for (let i = 0; i < reviewNumbers.length; ++i) {
+                this.arrayReviews.push(JSON.parse(localStorage.getItem(`Rev.${reviewNumbers[i]}`)))
+            }
+        }
+        this.arrayReviews.sort(function (a) {
+            if (a.Name == localStorage.getItem('logNAME')) {
+                return -1;
+            }
+            else {
+                return 1;
+            }
+        });
+
+
+    },
     beforeUpdate() {
         checkIsFav()
         if (isFav == false) {
             this.isFav = false
             this.nameFavBut = 'To favorites'
         }
-
+    },
+    components: {
+        ReviewForm,
     },
     props: {
         responseMove: {
@@ -86,7 +113,8 @@ export default {
             isFav,
             checkIsFav,
             nameFavBut,
-            addReview
+            addReview,
+            arrayReviews,
 
         }
     },
@@ -94,7 +122,16 @@ export default {
         openFilmOnKP() {
             window.open(`https://www.kinopoisk.ru/film/` + document.querySelector(".idFilm").innerHTML);
         },
+
+        click() {
+            this.arrayReviews.push({ Name: '666', ID: '"1044280"', Description: 'lol' }),
+                this.$forceUpdate()
+        }
     },
+    beforeUnmount() {
+        document.querySelector('.reviews__list').innerHTML = ''
+        this.arrayReviews = []
+    }
 
 
 }

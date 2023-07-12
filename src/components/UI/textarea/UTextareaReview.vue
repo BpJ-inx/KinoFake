@@ -23,6 +23,7 @@ export default {
             type: Function,
             required: true,
         },
+
     },
     mounted() {
         if (localStorage.getItem('logNAME')) {
