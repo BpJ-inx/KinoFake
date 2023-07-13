@@ -15,7 +15,6 @@
 <script>
 import { removeReview } from '../hooks/reviews.js'
 export default {
-    name: 'reviewform',
     props: {
         arrayReviews: {
             type: Array,

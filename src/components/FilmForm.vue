@@ -68,16 +68,26 @@ import { addReview, arrayReviews } from '../hooks/reviews.js'
 import ReviewForm from './ReviewForm.vue';
 
 export default {
-
-    beforeMount() {
-        this.arrayReviews = []
-        let reviewNumbers = JSON.parse(localStorage.getItem(`reviewsFilm${localStorage.getItem('filmID')}`))
-        if (reviewNumbers) {
-            for (let i = 0; i < reviewNumbers.length; ++i) {
-                this.arrayReviews.push(JSON.parse(localStorage.getItem(`Rev.${reviewNumbers[i]}`)))
-            }
+    beforeUpdate() {
+        checkIsFav()
+        if (isFav == false) {
+            this.isFav = false
+            this.nameFavBut = 'To favorites'
         }
-        this.arrayReviews.sort(function (a) {
+
+
+        if (!localStorage.getItem(`reviewsFilm${localStorage.getItem('filmID')}`)) {
+            this.arrayReviews = []
+        } else {
+            this.arrayReviews = []
+            let reviewNumbers = JSON.parse(localStorage.getItem(`reviewsFilm${localStorage.getItem('filmID')}`))
+            if (reviewNumbers) {
+                for (let i = 0; i < reviewNumbers.length; ++i) {
+                    this.arrayReviews.push(JSON.parse(localStorage.getItem(`Rev.${reviewNumbers[i]}`)))
+                }
+            }
+
+            this.arrayReviews.sort(function (a) {
             if (localStorage.getItem('logNAME')) {
                 if (a.Name == localStorage.getItem('logNAME')) {
                     return -1;
@@ -94,15 +104,9 @@ export default {
                 }
             }
         });
-
-
-    },
-    beforeUpdate() {
-        checkIsFav()
-        if (isFav == false) {
-            this.isFav = false
-            this.nameFavBut = 'To favorites'
         }
+
+
     },
     components: {
         ReviewForm,

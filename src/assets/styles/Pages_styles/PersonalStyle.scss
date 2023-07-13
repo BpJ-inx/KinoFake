@@ -16,13 +16,23 @@
     padding: 10px;
 }
 
+.reviews {
+    display: flex;
+    flex-direction: column;
+}
+
+.favorites {
+    margin-top: 57px;
+}
+
 @media (max-width: 1024px) {
     .wrapper {
         flex-wrap: wrap;
     }
 }
 
-.favorites__place{
+.favorites__place {
     display: flex;
     justify-content: center;
 }
+

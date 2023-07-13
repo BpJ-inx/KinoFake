@@ -10,6 +10,7 @@ const X_API_KEY = ref(basic_X_API_KEY)
 const responseMove = ref([])
 const responseFilms = ref([]);
 const responseFavFilms = ref([]);
+const responseReviews = ref([]);
 const startSlice = ref(0)
 const endSlice = ref(5)
 const whatPageRequest = ref('main')
@@ -23,7 +24,7 @@ localStorage.setItem('filmID', '')
 
 const fetchFunc = async () => {
 
-   try {
+    try {
         let responseFromServer = await axios.get(fetchRequest.value,
             {
                 headers: {
@@ -50,7 +51,7 @@ const fetchFunc = async () => {
     }
     catch (e) {
         console.log(e)
-    } 
+    }
 
 }
 
@@ -247,9 +248,9 @@ export function fetchFavFilms() {
     let IdFilmArray = JSON.parse(localStorage.getItem(`favorite.${localStorage.getItem('logNAME')}`))
     if (IdFilmArray.length != 0) {
         IdFilmArray.forEach(async function (id) {
-            
+
             fetchRequest.value = fetchFilmById + String(id);
-             await fetchFunc()
+            await fetchFunc()
 
         });
 
@@ -260,6 +261,27 @@ export function fetchFavFilms() {
 
     }
 }
+
+
+export function fetchRev() {
+    responseReviews.value = [];
+    let name = localStorage.getItem('logNAME')
+    if (JSON.parse(localStorage.getItem(`reviews.${name}`)).length != 0) {
+        let arrayIdRev = JSON.parse(localStorage.getItem(`reviews.${name}`))
+        for (let i = 0; i < arrayIdRev.length; ++i) {
+            let rev = JSON.parse(localStorage.getItem(`Rev.${arrayIdRev[i]}`))
+
+            responseReviews.value = [...responseReviews.value, rev]
+
+
+        }
+    }
+
+    return {
+        responseReviews
+    }
+}
+
 
 export default {
     searchQuery

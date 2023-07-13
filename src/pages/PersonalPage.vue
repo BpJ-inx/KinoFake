@@ -8,8 +8,10 @@
                 </div>
                 <div class="reviews ml-11">
                     Reviews :
-                    <div class="reviews__place">
-                    </div>
+                    <ReviewFormPersonalPage
+                    :responseReviews="responseReviews"
+                    ></ReviewFormPersonalPage>
+
                 </div>
             </div>
             <div class="favorites w-full">
@@ -28,23 +30,27 @@
 </template>
   
 <script>
-import { fetchFavFilms } from '../hooks/fetch.js'
+import { fetchFavFilms,fetchRev } from '../hooks/fetch.js'
 import ByIdSearchedFilmsForm from '../components/ByIdSearchedFilmsForm.vue'
+import ReviewFormPersonalPage from '../components/ReviewFormPersonalPage.vue';
 
 export default {
     data() {
         return {
             name: localStorage.getItem('logNAME'),
-
         }
     },
     components: {
         ByIdSearchedFilmsForm,
+        ReviewFormPersonalPage
     },
     setup() {
         const { responseFavFilms } = fetchFavFilms()
+        const { responseReviews } = fetchRev()
         return {
-            responseFavFilms
+            responseFavFilms,
+            responseReviews
+            
         }
     }
 };
