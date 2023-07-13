@@ -17,11 +17,7 @@ export function addReview() {
                 userName = localStorage.getItem('guestID')
             }
 
-            let review = {
-                Name: userName,
-                ID: idFilm,
-                Description: descriptionRev
-            }
+
 
             if (localStorage.getItem('lengthRev')) {
                 x = +localStorage.getItem('lengthRev')
@@ -31,6 +27,13 @@ export function addReview() {
             }
             for (let i = 0; i < x + 1; ++i) {
                 if (!localStorage.getItem(`Rev.${i}`)) {
+
+                    let review = {
+                        Name: userName,
+                        ID: idFilm,
+                        Description: descriptionRev,
+                        reviewID: i
+                    }
 
                     localStorage.setItem(`Rev.${[i]}`, JSON.stringify(review))
 
@@ -68,6 +71,23 @@ export function addReview() {
     }
 }
 
-// export function removeReview(a){
-   
-// }
+export function removeReview(index, arrayReviews, oneRev) {
+    let revID = oneRev.reviewID
+
+    localStorage.removeItem(`Rev.${revID}`)
+    let userArray = JSON.parse(localStorage.getItem(`reviews.${oneRev.Name}`))
+    let indexRemoveFromUserArray = userArray.indexOf(revID)
+    userArray.splice(indexRemoveFromUserArray, 1)
+    localStorage.setItem(`reviews.${oneRev.Name}`, JSON.stringify(userArray))
+
+    let FilmArray= JSON.parse(localStorage.getItem(`reviewsFilm${oneRev.ID}`))
+    let indexRemoveFromFilmArray = FilmArray.indexOf(revID)
+    FilmArray.splice(indexRemoveFromFilmArray, 1)
+    localStorage.setItem(`reviewsFilm${oneRev.ID}`,JSON.stringify(FilmArray))
+
+    localStorage.setItem('lengthRev', +localStorage.getItem('lengthRev') - 1)
+
+    arrayReviews.splice(index, 1)
+
+
+}

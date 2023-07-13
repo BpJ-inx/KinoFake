@@ -4,7 +4,7 @@
             <div class="name_user">{{ oneRev.Name }}</div>
             <div class="rev__id_film hidden">{{ oneRev.ID }}</div>
             <div class="remove_rev cursor-pointer" v-if="ifRemove(oneRev.Name)"
-                @click="removeReview(index, arrayReviews, oneRev, key)">remove</div>
+                @click="removeReview(index, arrayReviews, oneRev)">remove</div>
         </div>
         <div class="text_rev flex w-full ">
             {{ oneRev.Description }}
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-// import { removeReview } from '../hooks/reviews.js'
+import { removeReview } from '../hooks/reviews.js'
 export default {
     name: 'reviewform',
     props: {
@@ -35,30 +35,11 @@ export default {
             }
             return false
         },
-        removeReview(index, arrayReviews, oneRev, key) {
 
-            let arrayUserRev = JSON.parse(localStorage.getItem(`reviews.${arrayReviews[index].Name}`))
-
-            for (let i = 0; i < arrayUserRev.length; ++i) {
-               if(JSON.parse(localStorage.getItem(`Rev.${arrayUserRev[i]}`)).Description == oneRev.Description){
-                localStorage.removeItem(`Rev.${arrayUserRev[i]}`)
-
-               let indexRemoveFromUserArray = JSON.parse(localStorage.getItem(`reviews.${oneRev.Name}`)).indexOf(arrayUserRev[i])
-               let userArrayAfterRemove = JSON.parse(localStorage.getItem(`reviews.${oneRev.Name}`))
-               userArrayAfterRemove.splice(indexRemoveFromUserArray, 1)
-               localStorage.setItem(`reviews.${oneRev.Name}`,JSON.stringify(userArrayAfterRemove))
-               localStorage.setItem('lengthRev',+localStorage.getItem('lengthRev')-1)
-               let indexRemoveFromFilmArray = JSON.parse(localStorage.getItem(`reviewsFilm${oneRev.ID}`)).indexOf(arrayUserRev[i])
-               let FilmArrayAfterRemove = JSON.parse(localStorage.getItem(`reviewsFilm${oneRev.ID}`))
-               FilmArrayAfterRemove.splice(indexRemoveFromFilmArray, 1)
-               localStorage.setItem(`reviewsFilm${oneRev.ID}`,JSON.stringify(FilmArrayAfterRemove))
-               }
-                
-            }
-            arrayReviews.splice(index, 1)
-
-
-
+    },
+    setup(){
+        return{
+            removeReview
         }
     }
 
