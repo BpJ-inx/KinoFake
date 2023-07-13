@@ -2,10 +2,10 @@
     <div class="reviews__place" v-for="review in responseReviews" :key="review.ID">
         <div class="review">
             <div class="review__header">
-                <div class="review__header__name_film">{{review.ID}}</div>
+                <div class="review__header__name_film">"{{ review.FilmName }}"</div>
                 <button class="review__header__button_remove">X</button>
             </div>
-            <div class="review__description">{{review.Description}}</div>
+            <div class="review__description">{{ review.Description }}</div>
         </div>
     </div>
 </template>

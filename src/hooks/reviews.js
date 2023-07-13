@@ -2,13 +2,14 @@ import { ref } from 'vue'
 
 export const arrayReviews = ref([])
 
-export function addReview() {
+export function addReview(FilmName) {
     if (localStorage.getItem('logNAME') || localStorage.getItem('guestID')) {
         let descriptionRev = document.querySelector('.reviews__text_area').value
 
         if (descriptionRev) {
             let userName = ''
             let idFilm = localStorage.getItem('filmID')
+
             let x = 0
 
             if (localStorage.getItem('logNAME')) {
@@ -32,7 +33,8 @@ export function addReview() {
                         Name: userName,
                         ID: idFilm,
                         Description: descriptionRev,
-                        reviewID: i
+                        reviewID: i,
+                        FilmName: localStorage.getItem('filmName')
                     }
 
                     localStorage.setItem(`Rev.${[i]}`, JSON.stringify(review))
@@ -42,7 +44,7 @@ export function addReview() {
                         let reviewsUser = JSON.parse(localStorage.getItem(`reviews.${localStorage.getItem('logNAME')}`))
                         reviewsUser.push(x)
                         localStorage.setItem(`reviews.${localStorage.getItem('logNAME')}`, JSON.stringify(reviewsUser))
-                    }else{
+                    } else {
                         let reviewsUser = JSON.parse(localStorage.getItem(`reviews.${localStorage.getItem('guestID')}`))
                         reviewsUser.push(x)
                         localStorage.setItem(`reviews.${localStorage.getItem('guestID')}`, JSON.stringify(reviewsUser))
@@ -80,10 +82,10 @@ export function removeReview(index, arrayReviews, oneRev) {
     userArray.splice(indexRemoveFromUserArray, 1)
     localStorage.setItem(`reviews.${oneRev.Name}`, JSON.stringify(userArray))
 
-    let FilmArray= JSON.parse(localStorage.getItem(`reviewsFilm${oneRev.ID}`))
+    let FilmArray = JSON.parse(localStorage.getItem(`reviewsFilm${oneRev.ID}`))
     let indexRemoveFromFilmArray = FilmArray.indexOf(revID)
     FilmArray.splice(indexRemoveFromFilmArray, 1)
-    localStorage.setItem(`reviewsFilm${oneRev.ID}`,JSON.stringify(FilmArray))
+    localStorage.setItem(`reviewsFilm${oneRev.ID}`, JSON.stringify(FilmArray))
 
     localStorage.setItem('lengthRev', +localStorage.getItem('lengthRev') - 1)
 

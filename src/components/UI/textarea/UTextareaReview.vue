@@ -15,7 +15,7 @@ export default {
     name: 'utextarearev',
     data() {
         return {
-            userName: ''
+            userName: '',
         }
     },
     props: {
@@ -23,6 +23,10 @@ export default {
             type: Function,
             required: true,
         },
+        filmName: {
+            type: String,
+            required: true,
+        }
 
     },
     mounted() {
