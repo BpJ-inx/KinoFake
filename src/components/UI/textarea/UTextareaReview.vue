@@ -23,11 +23,6 @@ export default {
             type: Function,
             required: true,
         },
-        filmName: {
-            type: String,
-            required: true,
-        }
-
     },
     mounted() {
         if (localStorage.getItem('logNAME')) {
