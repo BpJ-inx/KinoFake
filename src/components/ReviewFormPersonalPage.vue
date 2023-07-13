@@ -3,8 +3,9 @@
         <div class="review">
             <div class="review__header">
                 <a class="review__header__name_film" @click="openFilmOnSelfPage(review.ID)">"{{ review.FilmName }}"</a>
-                <div class="hidden idFilm">{{review.ID}}</div>
-                <button class="review__header__button_remove">X</button>
+                <div class="hidden idFilm">{{ review.ID }}</div>
+                <button class="review__header__button_remove"
+                    @click="removeReview(index, responseReviews, review)">X</button>
             </div>
             <div class="review__description">{{ review.Description }}</div>
         </div>
@@ -13,6 +14,7 @@
 
 <script>
 import { openFilmOnSelfPage } from '../hooks/fetch.js';
+import { removeReview } from '../hooks/reviews.js'
 
 export default {
     props: {
@@ -21,9 +23,10 @@ export default {
             required: true,
         },
     },
-    setup(){
-        return{
-            openFilmOnSelfPage
+    setup() {
+        return {
+            openFilmOnSelfPage,
+            removeReview
         }
     }
 
