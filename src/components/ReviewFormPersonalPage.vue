@@ -2,7 +2,8 @@
     <div class="reviews__place" v-for="review in responseReviews" :key="review.ID">
         <div class="review">
             <div class="review__header">
-                <div class="review__header__name_film">"{{ review.FilmName }}"</div>
+                <a class="review__header__name_film" @click="openFilmOnSelfPage(review.ID)">"{{ review.FilmName }}"</a>
+                <div class="hidden idFilm">{{review.ID}}</div>
                 <button class="review__header__button_remove">X</button>
             </div>
             <div class="review__description">{{ review.Description }}</div>
@@ -11,6 +12,7 @@
 </template>
 
 <script>
+import { openFilmOnSelfPage } from '../hooks/fetch.js';
 
 export default {
     props: {
@@ -19,6 +21,11 @@ export default {
             required: true,
         },
     },
+    setup(){
+        return{
+            openFilmOnSelfPage
+        }
+    }
 
 }
 </script>

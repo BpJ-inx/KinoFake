@@ -53,7 +53,8 @@
             :sendFunction="addReview">
             </utextarearev>
             <div class="reviews__list flex flex-col w-full h-full">
-                <ReviewForm :arrayReviews='arrayReviews'>
+                <ReviewForm 
+                :arrayReviews='arrayReviews'>
                 </ReviewForm>
 
             </div>
@@ -69,11 +70,6 @@ import { addReview, arrayReviews } from '../hooks/reviews.js'
 import ReviewForm from './ReviewForm.vue';
 
 export default {
-    data(){
-        return{
-            filmName:''
-        }
-    },
     beforeUpdate() {
         checkIsFav()
         if (isFav == false) {
@@ -114,9 +110,6 @@ export default {
 
 
     },
-
-        
-
     components: {
         ReviewForm,
     },

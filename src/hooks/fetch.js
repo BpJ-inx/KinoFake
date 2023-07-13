@@ -230,16 +230,25 @@ export function fetchSearch() {
     }
 }
 
-export async function openFilmOnSelfPage() {
+export async function openFilmOnSelfPage(revID) {
     if (!event.target.closest('button.button__del_fav')) {
-        selectedFimId.value = event.target.closest('div.filmCard').querySelector('.idFilm').innerHTML
-        localStorage.setItem('filmName', (event.target.closest('div.filmCard').querySelector('.nameFilm').innerHTML).trim())
-        localStorage.setItem('filmID', selectedFimId.value.trim())
+        if (event.target.closest('div.filmCard')) {
+            selectedFimId.value = event.target.closest('div.filmCard').querySelector('.idFilm').innerHTML
+            localStorage.setItem('filmName', (event.target.closest('div.filmCard').querySelector('.nameFilm').innerHTML).trim())
+            localStorage.setItem('filmID', selectedFimId.value.trim())
+        }else{
+            selectedFimId.value = revID
+            localStorage.setItem('filmName', (event.target.closest('div.review__header').querySelector('.review__header__name_film').innerHTML).trim())
+            localStorage.setItem('filmID', selectedFimId.value.trim())
+        }
         isRandom.value = false
         await router.replace('/movepage')
     }
 }
 
+export function lomka(revID){
+    alert(revID)
+}
 
 
 export function fetchFavFilms() {
