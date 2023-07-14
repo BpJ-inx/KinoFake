@@ -1,11 +1,10 @@
 <template>
-    <div class="reviews__place" v-for="review in responseReviews" :key="review.ID">
+    <div class="reviews__place" v-for="(review, index) in fiveRev" :key="review.ID">
         <div class="review">
             <div class="review__header">
                 <a class="review__header__name_film" @click="openFilmOnSelfPage(review.ID)">"{{ review.FilmName }}"</a>
                 <div class="hidden idFilm">{{ review.ID }}</div>
-                <button class="review__header__button_remove"
-                    @click="removeReview(index, responseReviews, review)">X</button>
+                <button class="review__header__button_remove" @click="removeReview(index, arrayReviews, review)">X</button>
             </div>
             <div class="review__description">{{ review.Description }}</div>
         </div>
@@ -14,19 +13,32 @@
 
 <script>
 import { openFilmOnSelfPage } from '../hooks/fetch.js';
-import { removeReview } from '../hooks/reviews.js'
+import { removeReview, fiveRev, page } from '../hooks/reviews.js'
 
 export default {
     props: {
-        responseReviews: {
+        arrayReviews: {
             type: Array,
             required: true,
         },
     },
+    beforeMount() {
+
+        if (this.page == 1) {
+            this.fiveRev = this.arrayReviews.slice(0, 5)
+        }
+    },
+    beforeUpdate() {
+        if (this.page == 1) {
+            this.fiveRev = this.arrayReviews.slice(0, 5)
+        }
+    },
     setup() {
         return {
             openFilmOnSelfPage,
-            removeReview
+            removeReview,
+            fiveRev,
+            page,
         }
     }
 

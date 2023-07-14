@@ -283,12 +283,13 @@ export function fetchRev() {
             let rev = JSON.parse(localStorage.getItem(`Rev.${arrayIdRev[i]}`))
 
             responseReviews.value = [...responseReviews.value, rev]
-
+            responseReviews.value = [...responseReviews.value]
 
         }
     }
-
+    
     return {
+        
         responseReviews
     }
 }

@@ -3,7 +3,7 @@
         <div class="reviews__header">
             <div class="name_user">{{ oneRev.Name }}</div>
             <div class="rev__id_film hidden">{{ oneRev.ID }}</div>
-            <div class="remove_rev cursor-pointer" v-if="ifRemove(oneRev.Name)"
+            <div class="remove_rev cursor-pointer select-none" v-if="ifRemove(oneRev.Name)"
                 @click="removeReview(index, arrayReviews, oneRev)">remove</div>
         </div>
         <div class="text_rev flex w-full ">
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { removeReview, fiveRev } from '../hooks/reviews.js'
+import { removeReview, fiveRev, page } from '../hooks/reviews.js'
 export default {
     props: {
         arrayReviews: {
@@ -37,12 +37,15 @@ export default {
 
     },
     beforeUpdate() {
-        this.fiveRev = this.arrayReviews.slice(0, 5)
+        if (this.page == 1) {
+            this.fiveRev = this.arrayReviews.slice(0, 5)
+        }
     },
     setup() {
         return {
             removeReview,
-            fiveRev
+            fiveRev,
+            page
         }
     }
 

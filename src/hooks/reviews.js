@@ -3,6 +3,7 @@ import { ref } from 'vue'
 export const arrayReviews = ref([])
 export const fiveRev = ref([])
 export const pages = ref()
+export const page = ref(1)
 
 export function addReview() {
     if (localStorage.getItem('logNAME') || localStorage.getItem('guestID')) {
@@ -65,8 +66,10 @@ export function addReview() {
 
                     if (Math.ceil(arrayReviews.length / 5) == 1) {
                         pages.value = 0
+
                     } else {
                         pages.value = Math.ceil(arrayReviews.length / 5)
+
                     }
                 }
             }
@@ -95,9 +98,21 @@ export function removeReview(index, arrayReviews, oneRev) {
 
     arrayReviews.splice(index, 1)
     fiveRev.value.splice(index, 1)
+
     if (Math.ceil(arrayReviews.length / 5) == 1) {
         pages.value = 0
     } else {
         pages.value = Math.ceil(arrayReviews.length / 5)
+    }
+}
+
+
+export function toPage(selectedPage) {
+    page.value = selectedPage
+    fiveRev.value = []
+    if (this.arrayReviews.value) {
+        fiveRev.value = this.arrayReviews.value.slice(5 * selectedPage - 5, 5 * selectedPage)
+    } else {
+        fiveRev.value = arrayReviews.value.slice(5 * selectedPage - 5, 5 * selectedPage)
     }
 }

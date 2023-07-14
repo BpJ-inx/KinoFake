@@ -107,10 +107,10 @@ export default {
             });
         }
 
-        if ( Math.ceil(this.arrayReviews.length / 5) == 1) {
+        if (Math.ceil(this.arrayReviews.length / 5) == 1) {
             this.pages = 0
         } else {
-            this.pages =  Math.ceil(this.arrayReviews.length / 5)
+            this.pages = Math.ceil(this.arrayReviews.length / 5)
         }
 
     },
