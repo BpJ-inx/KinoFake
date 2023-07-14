@@ -179,6 +179,11 @@
     margin: auto;
     background-color: rgba(0, 0, 0, .6);
     width: 70%;
-    padding-bottom: 50px;
     margin-bottom: 25px;
+}
+
+.reviews__pagination_place{
+    display: flex;
+    justify-content: center;
+    order: 1;
 }

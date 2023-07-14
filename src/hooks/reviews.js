@@ -2,6 +2,7 @@ import { ref } from 'vue'
 
 export const arrayReviews = ref([])
 export const fiveRev = ref([])
+export const pages = ref()
 
 export function addReview() {
     if (localStorage.getItem('logNAME') || localStorage.getItem('guestID')) {
@@ -61,6 +62,12 @@ export function addReview() {
                     localStorage.setItem('lengthRev', +x + 1)
                     arrayReviews.value.unshift(JSON.parse(localStorage.getItem(`Rev.${i}`)))
                     fiveRev.value.unshift(JSON.parse(localStorage.getItem(`Rev.${i}`)))
+
+                    if (Math.ceil(arrayReviews.length / 5) == 1) {
+                        pages.value = 0
+                    } else {
+                        pages.value = Math.ceil(arrayReviews.length / 5)
+                    }
                 }
             }
 
@@ -87,7 +94,10 @@ export function removeReview(index, arrayReviews, oneRev) {
     localStorage.setItem('lengthRev', +localStorage.getItem('lengthRev') - 1)
 
     arrayReviews.splice(index, 1)
-
     fiveRev.value.splice(index, 1)
-
+    if (Math.ceil(arrayReviews.length / 5) == 1) {
+        pages.value = 0
+    } else {
+        pages.value = Math.ceil(arrayReviews.length / 5)
+    }
 }

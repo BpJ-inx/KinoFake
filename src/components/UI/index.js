@@ -7,6 +7,7 @@ import ULogoBut from './button/ulogobut.vue'
 import UAuthoForm from './forms/uauthoform.vue'
 import URegForm from './forms/uregform.vue'
 import UTextareaReview from './textarea/utextareareview.vue'
+import UPaginationReviews from './pagination/upaginationreviews.vue'
 
 
 
@@ -20,4 +21,5 @@ export default[
     UAuthoForm,
     URegForm,
     UTextareaReview,
+    UPaginationReviews,
 ]

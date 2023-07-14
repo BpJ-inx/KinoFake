@@ -54,8 +54,10 @@
             <div class="reviews__list flex flex-col w-full h-full">
                 <ReviewForm :arrayReviews='arrayReviews'>
                 </ReviewForm>
-
             </div>
+        </div>
+        <div class="reviews__pagination_place">
+            <upaginationreviews :pages="pages"></upaginationreviews>
         </div>
     </div>
 </template>
@@ -64,7 +66,7 @@
 import { showFilm } from '../hooks/show';
 import { isAutho } from '../hooks/authorization.js'
 import { addFavoriteFilm, checkIsFav, isFav, nameFavBut } from '../hooks/favorite.js'
-import { addReview, arrayReviews } from '../hooks/reviews.js'
+import { addReview, arrayReviews, pages } from '../hooks/reviews.js'
 import ReviewForm from './ReviewForm.vue';
 
 export default {
@@ -104,6 +106,13 @@ export default {
                 }
             });
         }
+
+        if ( Math.ceil(this.arrayReviews.length / 5) == 1) {
+            this.pages = 0
+        } else {
+            this.pages =  Math.ceil(this.arrayReviews.length / 5)
+        }
+
     },
     components: {
         ReviewForm,
@@ -125,6 +134,7 @@ export default {
             nameFavBut,
             addReview,
             arrayReviews,
+            pages,
 
         }
     },
