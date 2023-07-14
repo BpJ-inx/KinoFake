@@ -1,5 +1,5 @@
 <template>
-    <div class="oneRev" v-for="(oneRev, index) in arrayReviews" :key="oneRev.ID">
+    <div class="oneRev" v-for="(oneRev, index) in fiveRev" :key="oneRev.ID">
         <div class="reviews__header">
             <div class="name_user">{{ oneRev.Name }}</div>
             <div class="rev__id_film hidden">{{ oneRev.ID }}</div>
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { removeReview } from '../hooks/reviews.js'
+import { removeReview, fiveRev } from '../hooks/reviews.js'
 export default {
     props: {
         arrayReviews: {
@@ -36,9 +36,13 @@ export default {
         },
 
     },
-    setup(){
-        return{
-            removeReview
+    beforeUpdate() {
+        this.fiveRev = this.arrayReviews.slice(0, 5)
+    },
+    setup() {
+        return {
+            removeReview,
+            fiveRev
         }
     }
 

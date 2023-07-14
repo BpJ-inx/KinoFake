@@ -49,12 +49,10 @@
 
         </div>
         <div class="reviews">
-            <utextarearev 
-            :sendFunction="addReview">
+            <utextarearev :sendFunction="addReview">
             </utextarearev>
             <div class="reviews__list flex flex-col w-full h-full">
-                <ReviewForm 
-                :arrayReviews='arrayReviews'>
+                <ReviewForm :arrayReviews='arrayReviews'>
                 </ReviewForm>
 
             </div>
@@ -77,7 +75,6 @@ export default {
             this.nameFavBut = 'To favorites'
         }
 
-
         if (!localStorage.getItem(`reviewsFilm${localStorage.getItem('filmID')}`)) {
             this.arrayReviews = []
         } else {
@@ -90,25 +87,23 @@ export default {
             }
 
             this.arrayReviews.sort(function (a) {
-            if (localStorage.getItem('logNAME')) {
-                if (a.Name == localStorage.getItem('logNAME')) {
-                    return -1;
+                if (localStorage.getItem('logNAME')) {
+                    if (a.Name == localStorage.getItem('logNAME')) {
+                        return -1;
+                    }
+                    else {
+                        return 1;
+                    }
+                } else {
+                    if (a.Name == localStorage.getItem('guestID')) {
+                        return -1;
+                    }
+                    else {
+                        return 1;
+                    }
                 }
-                else {
-                    return 1;
-                }
-            } else {
-                if (a.Name == localStorage.getItem('guestID')) {
-                    return -1;
-                }
-                else {
-                    return 1;
-                }
-            }
-        });
+            });
         }
-
-
     },
     components: {
         ReviewForm,
@@ -142,10 +137,7 @@ export default {
         document.querySelector('.reviews__list').innerHTML = ''
         this.arrayReviews = []
     }
-
-
 }
-
 </script>
 
 <style lang="scss" scoped>

@@ -1,15 +1,15 @@
 import { ref } from 'vue'
 
 export const arrayReviews = ref([])
+export const fiveRev = ref([])
 
-export function addReview(FilmName) {
+export function addReview() {
     if (localStorage.getItem('logNAME') || localStorage.getItem('guestID')) {
         let descriptionRev = document.querySelector('.reviews__text_area').value
 
         if (descriptionRev) {
             let userName = ''
             let idFilm = localStorage.getItem('filmID')
-
             let x = 0
 
             if (localStorage.getItem('logNAME')) {
@@ -18,14 +18,13 @@ export function addReview(FilmName) {
                 userName = localStorage.getItem('guestID')
             }
 
-
-
             if (localStorage.getItem('lengthRev')) {
                 x = +localStorage.getItem('lengthRev')
             } else {
                 localStorage.setItem('lengthRev', 0)
 
             }
+
             for (let i = 0; i < x + 1; ++i) {
                 if (!localStorage.getItem(`Rev.${i}`)) {
 
@@ -39,7 +38,6 @@ export function addReview(FilmName) {
 
                     localStorage.setItem(`Rev.${[i]}`, JSON.stringify(review))
 
-
                     if (localStorage.getItem('logNAME')) {
                         let reviewsUser = JSON.parse(localStorage.getItem(`reviews.${localStorage.getItem('logNAME')}`))
                         reviewsUser.push(x)
@@ -49,8 +47,6 @@ export function addReview(FilmName) {
                         reviewsUser.push(x)
                         localStorage.setItem(`reviews.${localStorage.getItem('guestID')}`, JSON.stringify(reviewsUser))
                     }
-
-
 
                     if (localStorage.getItem(`reviewsFilm${idFilm}`)) {
                         let reviewsFilm = JSON.parse(localStorage.getItem(`reviewsFilm${idFilm}`))
@@ -64,6 +60,7 @@ export function addReview(FilmName) {
 
                     localStorage.setItem('lengthRev', +x + 1)
                     arrayReviews.value.unshift(JSON.parse(localStorage.getItem(`Rev.${i}`)))
+                    fiveRev.value.unshift(JSON.parse(localStorage.getItem(`Rev.${i}`)))
                 }
             }
 
@@ -91,5 +88,6 @@ export function removeReview(index, arrayReviews, oneRev) {
 
     arrayReviews.splice(index, 1)
 
+    fiveRev.value.splice(index, 1)
 
 }
