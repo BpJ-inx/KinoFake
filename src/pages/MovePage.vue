@@ -2,8 +2,7 @@
     <div>
         <spinner></spinner>
 
-        <FilmForm 
-        :responseMove='responseMove'>
+        <FilmForm :responseMove='responseMove'>
         </FilmForm>
 
     </div>
@@ -40,8 +39,8 @@ export default {
                 )
                 this.responseMove = []
                 this.responseMove.push(responseFromServer.data)
-                localStorage.setItem('filmID', responseFromServer.data.id)
-                localStorage.setItem('filmName', responseFromServer.data.name)
+                localStorage.setItem('filmID', this.responseMove[0].id)
+                localStorage.setItem('filmName', this.responseMove[0].name)
 
 
             }
@@ -56,7 +55,6 @@ export default {
 
     mounted() {
         document.querySelector('.butRandom ').addEventListener('click', this.refreshPage)
-
     },
     beforeUnmount() {
         document.querySelector('.butRandom ').removeEventListener('click', this.refreshPage)

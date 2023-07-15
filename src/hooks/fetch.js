@@ -74,6 +74,9 @@ function changeOnRequestTopBest(responseFromServer) {
 function changeOnRequestMove(responseFromServer) {
     responseMove.value = []
     responseMove.value.push(responseFromServer.data)
+
+    localStorage.setItem('filmID', responseMove.value[0].id)
+    localStorage.setItem('filmName', responseMove.value[0].name)
 }
 
 function changeOnRequestSearch(responseFromServer) {
