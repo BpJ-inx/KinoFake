@@ -111,9 +111,5 @@ export function removeReview(index, arrayReviews, oneRev) {
 export function toPage(selectedPage) {
     page.value = selectedPage
     fiveRev.value = []
-    if (this.arrayReviews.value) {
-        fiveRev.value = this.arrayReviews.value.slice(5 * selectedPage - 5, 5 * selectedPage)
-    } else {
-        fiveRev.value = arrayReviews.value.slice(5 * selectedPage - 5, 5 * selectedPage)
-    }
+    fiveRev.value = arrayReviews.value.slice(5 * selectedPage - 5, 5 * selectedPage)
 }

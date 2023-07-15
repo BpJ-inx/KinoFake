@@ -84,6 +84,4 @@ export default {
 
 <style lang="scss" scoped>
 @import '../assets/styles/Pages_styles/MainStyle.scss';
-
-
 </style>

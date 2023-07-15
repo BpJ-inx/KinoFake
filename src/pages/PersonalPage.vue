@@ -1,32 +1,43 @@
 <template >
-    <div class=' '>
+    <div class=''>
         <h1 class="header">Personal page :</h1>
+
         <div class="wrapper flex justify-between mt-7">
             <div class="w-full">
                 <div class="person__name ml-11">
                     Name : {{ name }}
                 </div>
+
                 <div class="reviews ml-11">
-                    <div class="reviews__pagination_place">
+
+                    <div class="pagination_place">
                         <upaginationreviews :pages="pages">
                         </upaginationreviews>
                     </div>
-                    Reviews :
 
-                    <ReviewFormPersonalPage :arrayReviews="arrayReviews">
+                    Reviews :
+                    <ReviewFormPersonalPage 
+                    :arrayReviews="arrayReviews">
                     </ReviewFormPersonalPage>
 
                 </div>
             </div>
+
             <div class="favorites  w-full">
 
-                <div class="ml-11">Favorites :</div>
-                <div class="reviews__pagination_place">
-                    <upaginationfavorites :favPages="favPages">
-                    </upaginationfavorites>
+                <div class="ml-11">
+                        Favorites :
                 </div>
+
+                <div class="pagination_place">
+                        <upaginationfavorites 
+                        :favPages="favPages">
+                        </upaginationfavorites>
+                    </div>
+
                 <div class="favorites__place  flex flex-wrap   align-top">
-                    <ByIdSearchedFilmsForm :responseFavFilms="responseFavFilms">
+                    <ByIdSearchedFilmsForm 
+                    :responseFavFilms="responseFavFilms">
                     </ByIdSearchedFilmsForm>
 
                 </div>

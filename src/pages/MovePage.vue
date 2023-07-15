@@ -14,7 +14,7 @@ import FilmForm from '../components/FilmForm.vue'
 import { fetchFilm } from '../urlConfig.js'
 import { fetchMove } from '../hooks/fetch';
 import axios from "axios";
-import { checkIsFav , isFav } from '../hooks/favorite.js'
+import { checkIsFav, isFav } from '../hooks/favorite.js'
 
 export default {
     components: {
@@ -23,9 +23,9 @@ export default {
     methods: {
         async refreshPage() {
 
-            if (document.querySelector('.aboutFilm').classList.contains('flex')) {
-                document.querySelector('.aboutFilm').classList.remove('flex');
-                document.querySelector('.aboutFilm').classList.add('hidden');
+            if (document.querySelector('.filmPage').classList.contains('flex')) {
+                document.querySelector('.filmPage').classList.remove('flex');
+                document.querySelector('.filmPage').classList.add('hidden');
                 document.querySelector('.spinner').classList.remove('hidden');
             }
 
@@ -41,7 +41,9 @@ export default {
                 this.responseMove = []
                 this.responseMove.push(responseFromServer.data)
                 localStorage.setItem('filmID', responseFromServer.data.id)
-                
+                localStorage.setItem('filmName', responseFromServer.data.name)
+
+
             }
             catch (e) {
                 console.log(e)
@@ -73,5 +75,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

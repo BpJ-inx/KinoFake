@@ -75,13 +75,6 @@ export function deleteFromFav() {
 
     IdFilmsArray.value.splice(targetId, 1)
 
-    // if (Math.ceil(IdFilmsArray.length / 3) == 1) {
-    //     // this.favPages = 0
-    //     favPages.value = Math.ceil(IdFilmsArray.length / 3)
-    // } else {
-    //     favPages.value = Math.ceil(IdFilmsArray.length / 3)
-    // }
-
     fetchFavFilms()
 }
 

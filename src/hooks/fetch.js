@@ -264,7 +264,7 @@ export function fetchFavFilms() {
     if (favPage.value == 1) {
         trheeFilms = IdFilmsArray.value.slice(0, 3)
     } else {
-        trheeFilms = IdFilmsArray.value.slice(3*favPage.value-3, 3*favPage.value)
+        trheeFilms = IdFilmsArray.value.slice(3 * favPage.value - 3, 3 * favPage.value)
     }
     if (trheeFilms.length != 0) {
         trheeFilms.forEach(async function (id) {

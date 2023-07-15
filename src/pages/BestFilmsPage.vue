@@ -5,7 +5,8 @@
 
   <div class="resSearchFiveFilms hidden flex-wrap gap-7 items-center align-top">
 
-    <FilmsFormWithoutRating :responseFilms="responseFilms">
+    <FilmsFormWithoutRating 
+    :responseFilms="responseFilms">
     </FilmsFormWithoutRating>
 
   </div>
