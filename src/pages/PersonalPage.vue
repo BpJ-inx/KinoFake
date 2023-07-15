@@ -18,15 +18,19 @@
 
                 </div>
             </div>
-            <div class="favorites w-full">
-                <div>
-                    <div class="ml-11">Favorites :</div>
-                    <div class="favorites__place  flex flex-wrap   align-top">
-                        <ByIdSearchedFilmsForm :responseFavFilms="responseFavFilms">
-                        </ByIdSearchedFilmsForm>
+            <div class="favorites  w-full">
 
-                    </div>
+                <div class="ml-11">Favorites :</div>
+                <div class="reviews__pagination_place">
+                    <upaginationfavorites :favPages="favPages">
+                    </upaginationfavorites>
                 </div>
+                <div class="favorites__place  flex flex-wrap   align-top">
+                    <ByIdSearchedFilmsForm :responseFavFilms="responseFavFilms">
+                    </ByIdSearchedFilmsForm>
+
+                </div>
+
             </div>
         </div>
     </div>
@@ -37,6 +41,7 @@ import { fetchFavFilms, fetchRev } from '../hooks/fetch.js'
 import ByIdSearchedFilmsForm from '../components/ByIdSearchedFilmsForm.vue'
 import ReviewFormPersonalPage from '../components/ReviewFormPersonalPage.vue';
 import { arrayReviews, fiveRev, page, pages } from '../hooks/reviews.js'
+import { IdFilmsArray, favPage, favPages } from '../hooks/favorite.js'
 
 export default {
     data() {
@@ -51,19 +56,36 @@ export default {
     },
     beforeUpdate() {
         if (Math.ceil(this.arrayReviews.length / 5) == 1) {
-            this.pages = 0
+            // this.pages = 0
+            this.pages = Math.ceil(this.arrayReviews.length / 5)
         } else {
             this.pages = Math.ceil(this.arrayReviews.length / 5)
+        }
+
+        if (Math.ceil(this.IdFilmsArray.length / 3) == 1) {
+            // this.favPages = 0
+            this.favPages = Math.ceil(this.IdFilmsArray.length / 3)
+        } else {
+            this.favPages = Math.ceil(this.IdFilmsArray.length / 3)
         }
     },
 
     beforeMount() {
         this.arrayReviews = this.responseReviews
         if (Math.ceil(this.arrayReviews.length / 5) == 1) {
-            this.pages = 0
+            // this.pages = 0
+            this.pages = Math.ceil(this.arrayReviews.length / 5)
         } else {
             this.pages = Math.ceil(this.arrayReviews.length / 5)
         }
+
+        if (Math.ceil(this.IdFilmsArray.length / 3) == 1) {
+            // this.favPages = 0
+            this.favPages = Math.ceil(this.IdFilmsArray.length / 3)
+        } else {
+            this.favPages = Math.ceil(this.IdFilmsArray.length / 3)
+        }
+
 
 
     },
@@ -78,6 +100,9 @@ export default {
             fiveRev,
             pages,
             page,
+            IdFilmsArray,
+            favPage,
+            favPages
 
         }
     }

@@ -236,7 +236,7 @@ export async function openFilmOnSelfPage(revID) {
             selectedFimId.value = event.target.closest('div.filmCard').querySelector('.idFilm').innerHTML
             localStorage.setItem('filmName', (event.target.closest('div.filmCard').querySelector('.nameFilm').innerHTML).trim())
             localStorage.setItem('filmID', selectedFimId.value.trim())
-        }else{
+        } else {
             selectedFimId.value = revID
             localStorage.setItem('filmName', (event.target.closest('div.review__header').querySelector('.review__header__name_film').innerHTML).trim())
             localStorage.setItem('filmID', selectedFimId.value.trim())
@@ -246,19 +246,28 @@ export async function openFilmOnSelfPage(revID) {
     }
 }
 
-export function lomka(revID){
+export function lomka(revID) {
     alert(revID)
 }
 
+
+import { IdFilmsArray, favPage } from '../hooks/favorite.js'
 
 export function fetchFavFilms() {
     whatPageRequest.value = 'fav'
     X_API_KEY.value = oneMore_X_API_KEY
     responseFavFilms.value = []
+    let trheeFilms;
 
-    let IdFilmArray = JSON.parse(localStorage.getItem(`favorite.${localStorage.getItem('logNAME')}`))
-    if (IdFilmArray.length != 0) {
-        IdFilmArray.forEach(async function (id) {
+    IdFilmsArray.value = JSON.parse(localStorage.getItem(`favorite.${localStorage.getItem('logNAME')}`))
+
+    if (favPage.value == 1) {
+        trheeFilms = IdFilmsArray.value.slice(0, 3)
+    } else {
+        trheeFilms = IdFilmsArray.value.slice(3*favPage.value-3, 3*favPage.value)
+    }
+    if (trheeFilms.length != 0) {
+        trheeFilms.forEach(async function (id) {
 
             fetchRequest.value = fetchFilmById + String(id);
             await fetchFunc()
@@ -287,9 +296,9 @@ export function fetchRev() {
 
         }
     }
-    
+
     return {
-        
+
         responseReviews
     }
 }

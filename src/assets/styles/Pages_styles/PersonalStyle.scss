@@ -22,6 +22,8 @@
 }
 
 .favorites {
+    display: flex;
+    flex-direction: column;
     margin-top: 57px;
 }
 
@@ -34,9 +36,10 @@
 .favorites__place {
     display: flex;
     justify-content: center;
+    order: 1;
 }
 
-.reviews__pagination_place{
+.reviews__pagination_place {
     display: flex;
     justify-content: center;
     order: 1;

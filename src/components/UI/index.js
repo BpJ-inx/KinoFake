@@ -8,6 +8,7 @@ import UAuthoForm from './forms/uauthoform.vue'
 import URegForm from './forms/uregform.vue'
 import UTextareaReview from './textarea/utextareareview.vue'
 import UPaginationReviews from './pagination/upaginationreviews.vue'
+import UPaginationFavorites from './pagination/upaginationfavorites.vue'
 
 
 
@@ -22,4 +23,6 @@ export default[
     URegForm,
     UTextareaReview,
     UPaginationReviews,
+    UPaginationFavorites,
+    
 ]

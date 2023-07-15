@@ -100,7 +100,8 @@ export function removeReview(index, arrayReviews, oneRev) {
     fiveRev.value.splice(index, 1)
 
     if (Math.ceil(arrayReviews.length / 5) == 1) {
-        pages.value = 0
+        // pages.value = 0
+        pages.value = Math.ceil(arrayReviews.length / 5)
     } else {
         pages.value = Math.ceil(arrayReviews.length / 5)
     }

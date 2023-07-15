@@ -1,6 +1,11 @@
+import { ref } from "vue"
+
+export const IdFilmsArray = ref([])
+export const favPage = ref(1)
+export const favPages = ref()
 
 let userFavFilms = []
- userFavFilms = JSON.parse(localStorage.getItem(`favorite.${localStorage.getItem('logNAME')}`))
+userFavFilms = JSON.parse(localStorage.getItem(`favorite.${localStorage.getItem('logNAME')}`))
 
 export let nameFavBut = 'To favorites'
 export let isFav = false
@@ -19,8 +24,8 @@ export function addFavoriteFilm() {
     } else {
         document.querySelector('.buttonFav').innerHTML = 'To favorites'
         document.querySelector('.fav__star').style.display = 'none'
-        
-        userFavFilms.splice(userFavFilms.indexOf(document.querySelector('.idFilm').innerHTML),1)
+
+        userFavFilms.splice(userFavFilms.indexOf(document.querySelector('.idFilm').innerHTML), 1)
         localStorage.setItem(`favorite.${localStorage.getItem('logNAME')}`, JSON.stringify(userFavFilms))
     }
 
@@ -52,7 +57,7 @@ export function checkFavOnlyPoster(film, film2) {
     if (userFavFilms == null) {
         return false
     }
-    if (userFavFilms.includes( String(film))) {
+    if (userFavFilms.includes(String(film))) {
         return true
 
     } else {
@@ -61,10 +66,30 @@ export function checkFavOnlyPoster(film, film2) {
     }
 }
 
-export function deleteFromFav(){
-   let targetId = String(event.target.closest('div.filmCard').querySelector('.idFilm').innerHTML)
+export function deleteFromFav() {
+    let targetId = String(event.target.closest('div.filmCard').querySelector('.idFilm').innerHTML)
     userFavFilms = JSON.parse(localStorage.getItem(`favorite.${localStorage.getItem('logNAME')}`))
-    userFavFilms.splice(userFavFilms.indexOf(targetId),1)
+    userFavFilms.splice(userFavFilms.indexOf(targetId), 1)
     localStorage.setItem(`favorite.${localStorage.getItem('logNAME')}`, JSON.stringify(userFavFilms))
-    event.target.closest('div').classList.replace('flex','hidden')
+    event.target.closest('div').classList.replace('flex', 'hidden')
+
+    IdFilmsArray.value.splice(targetId, 1)
+
+    // if (Math.ceil(IdFilmsArray.length / 3) == 1) {
+    //     // this.favPages = 0
+    //     favPages.value = Math.ceil(IdFilmsArray.length / 3)
+    // } else {
+    //     favPages.value = Math.ceil(IdFilmsArray.length / 3)
+    // }
+
+    fetchFavFilms()
+}
+
+import { fetchFavFilms } from '../hooks/fetch.js'
+
+export function toPage(selectedPage) {
+    favPage.value = selectedPage
+
+    fetchFavFilms()
+
 }
