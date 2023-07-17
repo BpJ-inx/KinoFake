@@ -19,7 +19,7 @@ export default {
     AuthoAndRegForm,
   },
   mounted() {
-    localStorage.setItem('freeIDUser', 0) ///уникальные id пользоавтелей которые бы хронились на сервере...
+    localStorage.setItem('freeIDUser', 0) 
 
     if (localStorage.getItem('guestID') || document.cookie.match(new RegExp("(?:^|; )" + 'cookie__user_id'.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"))) {
       localStorage.setItem('guestID', `guest${document.cookie.match(new RegExp("(?:^|; )" + 'cookie__user_id'.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"))[1]}`)

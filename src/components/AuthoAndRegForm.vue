@@ -13,8 +13,12 @@
       <div class="section_title">
         <h1 class="section_title_name">Registration/Authorization</h1>
       </div>
-      <authoform class="form__authorization flex"></authoform>
-      <regform class="form__registration hidden"></regform>
+      <transition name="autho_reg_forms-trans">
+        <authoform class="form__authorization flex fixed mt-10" v-if="show"></authoform>
+      </transition>
+      <transition name="autho_reg_forms-trans">
+        <regform class="form__registration flex fixed mt-10" v-if="!show"></regform>
+      </transition>
 
     </div>
 
@@ -22,9 +26,23 @@
 </template>
   
 <script>
+import { Transition } from 'vue';
+import {show} from '../hooks/registration.js'
 
 export default {
+  data() {
+    return {
+      show: show
+    }
+  },
+  components: { Transition },
+  setup() {
+    return{
+      show
+    }
+  }
 }
+
 </script>
   
 <style lang="scss" scoped>

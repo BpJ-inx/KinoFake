@@ -16,7 +16,7 @@
             <div class="mb-2">
                 <label for="password" class="input_field_names ">Password:</label>
                 <div class="recommendations  w-72">
-                    (Password must be at least 6 characters  long and 
+                    (Password must be at least 6 characters long and
                     contain uppercase, lowercase letters and numbers)
                 </div>
                 <div class="">
@@ -44,15 +44,18 @@
 </template>
 
 <script>
-import { switchForm , easyValidation  } from '../../../hooks/registration.js'
+import { switchForm, easyValidation, startListenerEnterBut } from '../../../hooks/registration.js'
 export default {
     name: 'regform',
-
+    mounted() {
+        startListenerEnterBut()
+    },
     setup() {
 
         return {
             switchForm,
-            easyValidation
+            easyValidation,
+            startListenerEnterBut
         }
     },
 

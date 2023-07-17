@@ -1,4 +1,5 @@
 import router from '../router/router'
+import { show } from './registration'
 
 
 localStorage.setItem('1', 2)
@@ -36,7 +37,7 @@ export function checkProfile() {
         clearInputs()
         changeButtons()
         changeAutho()
-      return router.replace('/personal');
+        return router.replace('/personal');
 
 
     }
@@ -69,7 +70,6 @@ export function changeButtons() {
 
 function openAuthoMenu() {
     showMenu()
-    startListenerEnterBut()
 }
 
 function showMenu() {
@@ -82,16 +82,18 @@ function hideMenuOnclick() {
     document.querySelector('.empty_window').addEventListener('click', () => {
         document.querySelector('.autho_reg_place').classList.replace("flex", "hidden"),
             document.querySelector('body').classList.remove('overflow-hidden')
+        if (document.querySelector('.input__login')) {
+            document.querySelector('.input__login').value = ''
+            document.querySelector('.input__password').value = ''
+        } else {
+            document.querySelector('.input__login_reg').value = ''
+            document.querySelector('.input__password_reg').value = ''
+            show.value = true
+        }
     })
-    if (document.querySelector('.form__authorization').classList.contains('hidden')) {
-        document.querySelector('.form__authorization').classList.replace('hidden', 'flex')
-        document.querySelector('.form__registration').classList.replace('flex', 'hidden')
-        document.querySelector('.input__login_reg').value = ''
-        document.querySelector('.input__password_reg').value = ''
-    }
 }
 
-function startListenerEnterBut() {
+export function startListenerEnterButAutho() {
     document.querySelector('.input__login').addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
             document.querySelector('.input__password').focus()
