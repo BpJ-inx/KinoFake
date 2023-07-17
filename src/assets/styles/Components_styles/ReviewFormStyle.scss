@@ -38,3 +38,17 @@
     flex-direction: column;
     margin-bottom: 25px;
 }
+
+
+.reviews-list-enter-active,
+.reviews-list-leave-active {
+  transition: all 0.4s ease;
+}
+.reviews-list-enter-from {
+  opacity: 0;
+  transform: translateX(130px);
+}
+.reviews-list-leave-to {
+  opacity: 0;
+  transform: translateX(-130px);
+}

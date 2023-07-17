@@ -52,3 +52,11 @@
     font-family: Tahoma, Arial, Verdana, sans-serif;
     font-size: 15px;
 }
+
+.reviews-list-leave-active {
+  transition: all 0.4s ease;
+}
+.reviews-list-leave-to {
+  opacity: 0;
+  transform: translateX(-130px);
+}

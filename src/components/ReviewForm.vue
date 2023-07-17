@@ -1,4 +1,5 @@
 <template>
+    <transition-group name="reviews-list">
     <div class="oneRev" v-for="(oneRev, index) in fiveRev" :key="oneRev.ID">
         <div class="reviews__header">
             <div class="name_user">{{ oneRev.Name }}</div>
@@ -10,11 +11,15 @@
             {{ oneRev.Description }}
         </div>
     </div>
+</transition-group>
 </template>
 
 <script>
 import { removeReview, fiveRev, page } from '../hooks/reviews.js'
+import { TransitionGroup } from 'vue';
+
 export default {
+    components:{ TransitionGroup },
     props: {
         arrayReviews: {
             type: Array,
