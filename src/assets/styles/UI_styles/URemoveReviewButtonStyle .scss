@@ -1,0 +1,14 @@
+.but {
+    font-family: Tahoma, Arial, Verdana, sans-serif;
+    font-size: 15px;
+    padding-inline: 10px;
+    background-color: #232222;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s;
+    align-items: center;
+}
+
+.but:hover {
+    background: #3b3b3b;
+}

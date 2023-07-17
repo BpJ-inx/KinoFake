@@ -27,14 +27,15 @@ export function startListenerEnterBut() {
             document.querySelector('.input__password_reg').focus()
         };
     });
-}
 
-if (document.querySelector('.input__password_reg')) {
+
+
     document.querySelector('.input__password_reg').addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
             easyValidation()
         };
     });
+
 
 }
 

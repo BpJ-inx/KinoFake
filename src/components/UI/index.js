@@ -9,6 +9,7 @@ import URegForm from './forms/uregform.vue'
 import UTextareaReview from './textarea/utextareareview.vue'
 import UPaginationReviews from './pagination/upaginationreviews.vue'
 import UPaginationFavorites from './pagination/upaginationfavorites.vue'
+import URemoveReviewBut from './button/URemoveReviewBut.vue'
 
 
 
@@ -24,5 +25,7 @@ export default[
     UTextareaReview,
     UPaginationReviews,
     UPaginationFavorites,
+    URemoveReviewBut,
+    
     
 ]

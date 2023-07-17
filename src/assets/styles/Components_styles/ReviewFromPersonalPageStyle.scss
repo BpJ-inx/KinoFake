@@ -1,9 +1,8 @@
-
 .reviews__place {
     display: flex;
     justify-content: center;
     width: 100%;
-    order:1;
+    order: 1;
 }
 
 .review {
@@ -17,16 +16,18 @@
     order: 1;
 }
 
+
 .review__header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: rgb(16, 16, 16);
+    background-color: #232222;
     padding-inline: 15px;
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
 }
-.review__header__name_film{
+
+.review__header__name_film {
     display: flex;
     font-family: Tahoma, Arial, Verdana, sans-serif;
     font-size: 25px;
@@ -36,7 +37,7 @@
 
 .review__header__button_remove {
     display: flex;
-    user-select:none;
+    user-select: none;
     cursor: pointer;
 }
 
@@ -54,9 +55,10 @@
 }
 
 .reviews-list-leave-active {
-  transition: all 0.4s ease;
+    transition: all 0.4s ease;
 }
+
 .reviews-list-leave-to {
-  opacity: 0;
-  transform: translateX(-130px);
+    opacity: 0;
+    transform: translateX(-130px);
 }

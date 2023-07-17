@@ -1,42 +1,38 @@
-
 .reviews__header {
-    display: flex;
-    padding-left: 15px;
-    border-top-left-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
-    border-width: 2px;
-    border-color: rgba(255, 255, 255, .05);
-    background-color: #232222;
-    justify-content: space-between;
-    align-items: center;
-    padding-right: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #232222;
+  padding-inline: 15px;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
 
 .name_user {
-    display: flex;
-    font-family: Tahoma, Arial, Verdana, sans-serif;
-    font-size: 25px;
-    height: 100%;
-    width: 100%;
+  display: flex;
+  font-family: Tahoma, Arial, Verdana, sans-serif;
+  font-size: 25px;
+  height: 100%;
+  width: 100%;
 }
 
 .text_rev {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    background-color: #3b3b3b;
-    padding-inline: 15px;
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
-    padding: 15px;
-    font-family: Tahoma, Arial, Verdana, sans-serif;
-    font-size: 15px;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background-color: #3b3b3b;
+  padding-inline: 15px;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  padding: 15px;
+  font-family: Tahoma, Arial, Verdana, sans-serif;
+  font-size: 15px;
 }
 
 .oneRev {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
 }
 
 
@@ -44,10 +40,12 @@
 .reviews-list-leave-active {
   transition: all 0.4s ease;
 }
+
 .reviews-list-enter-from {
   opacity: 0;
   transform: translateX(130px);
 }
+
 .reviews-list-leave-to {
   opacity: 0;
   transform: translateX(-130px);
