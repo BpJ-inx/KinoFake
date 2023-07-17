@@ -1,0 +1,37 @@
+
+
+.error__authorization_registration {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: black;
+    margin: 25px;
+    background-color: #3b3a3d;
+    border-radius: 0.75rem;
+    border: solid 2px rgba(255, 0, 0, 0.479);
+    margin-top: 70px;
+    width: 25%;
+}
+
+.error_header {
+    display: flex;
+    font-size: 20px;
+    line-height: 10px;
+    font-family: Tahoma, Arial, Verdana, sans-serif;
+    letter-spacing: 1px;
+    background-color: #646464;
+    width: 100%;
+    justify-content: center;
+    border-top-left-radius: 0.75rem;
+    border-top-right-radius: 0.75rem;
+    padding: 10px;
+}
+
+.error__body {
+    color: rgb(188, 188, 188);
+    padding: 10px;
+    font-size: 20px;
+    line-height: 10px;
+    font-family: Tahoma, Arial, Verdana, sans-serif;
+}

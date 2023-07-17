@@ -91,3 +91,18 @@
   opacity: 0;
   transform: translateX(-50px);
 }
+
+.data_error-trans-enter-active,
+.data_error-trans-leave-active{
+  transition: all 0.3s ease;
+}
+
+.data_error-trans-enter-from{
+  opacity: 0;
+  transform: translateY(50px);
+ 
+}
+.data_error-trans-leave-to {
+  opacity: 0;
+  transform: translateY(-50px);
+}

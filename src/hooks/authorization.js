@@ -1,6 +1,9 @@
 import router from '../router/router'
 import { show } from './registration'
+import { ref } from 'vue'
 
+export const errorType = ref('')
+export const ifErrorData = ref(false)
 
 localStorage.setItem('1', 2)
 localStorage.setItem(`favorite.1`, JSON.stringify([]))
@@ -24,7 +27,7 @@ export function authorizationСheck() {
 
 
     } else {
-        document.querySelector('.menu__Personal_page').addEventListener('click', openAuthoMenu())
+        document.querySelector('.menu__Personal_page').addEventListener('click', showMenu())
     }
 }
 
@@ -44,11 +47,17 @@ export function checkProfile() {
     if (localStorage.getItem(document.querySelector('.input__login').value) == null) {
 
         clearInputs()
-        console.log('Incorrect username');
+        ifErrorData.value = true
+        errorType.value = 'Incorrect username'
+        setTimeout(() => { ifErrorData.value = false }, 1000)
+        document.querySelector('.input__login').focus()
     } else {
 
         clearInputs()
-        console.log('Incorrect password');
+        ifErrorData.value = true
+        errorType.value = 'Incorrect password'
+        setTimeout(() => { ifErrorData.value = false }, 1000)
+        document.querySelector('.input__login').focus()
     }
 }
 
@@ -67,13 +76,9 @@ export function changeButtons() {
     document.querySelector('.menu__exit').classList.replace('hidden', 'block')
 }
 
-
-function openAuthoMenu() {
-    showMenu()
-}
-
 function showMenu() {
     document.querySelector('.autho_reg_place').classList.replace("hidden", "flex")
+    document.querySelector('.input__login').focus()
     document.querySelector('body').classList.add('overflow-hidden')
     hideMenuOnclick()
 }

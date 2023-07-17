@@ -1,6 +1,7 @@
 import router from '../router/router'
 import { changeButtons, hideMenuAfterLogin, changeAutho } from '../hooks/authorization.js'
 import { ref } from 'vue'
+import { errorType, ifErrorData } from '../hooks/authorization.js'
 
 
 export const show = ref(true)
@@ -47,29 +48,50 @@ export function easyValidation() {
         document.querySelector('.input__password_reg').value = '';
 
 
-        console.log('Login is short');
 
+        ifErrorData.value = true
+        errorType.value = 'Login is short'
+        setTimeout(() => { ifErrorData.value = false }, 1000)
+        document.querySelector('.input__login_reg').focus()
+        return
     }
 
     if (document.querySelector('.input__password_reg').value.length >= 6) {
         if ((easyPassword.includes(document.querySelector('.input__password_reg').value)) || (easyPassword.map(e => e.toUpperCase()).includes(document.querySelector('.input__password_reg').value))) {
             document.querySelector('.input__password_reg').value = '';
 
+            ifErrorData.value = true
+            errorType.value = 'Password not secure'
+            setTimeout(() => { ifErrorData.value = false }, 1000)
+            document.querySelector('.input__password_reg').focus()
 
-            return console.log('Password not secure');
+            return
         }
 
     } else {
         document.querySelector('.input__password_reg').value = '';
 
-        return console.log('Password not secure');
+        ifErrorData.value = true
+        errorType.value = 'Password not secure'
+        setTimeout(() => { ifErrorData.value = false }, 1000)
+        document.querySelector('.input__password_reg').focus()
+
+
+        return
     }
 
     if (r.test(document.querySelector('.input__password_reg').value)) {
         createNewAcc()
     } else {
         document.querySelector('.input__password_reg').value = '';
-        return console.log('Password not secure');
+
+        ifErrorData.value = true
+        errorType.value = 'Password not secure'
+        setTimeout(() => { ifErrorData.value = false }, 1000)
+        document.querySelector('.input__password_reg').focus()
+
+
+        return
     }
 
 
@@ -95,6 +117,12 @@ function createNewAcc() {
 
         document.querySelector('.input__login_reg').value = ''
         document.querySelector('.input__password_reg').value = ''
-        return console.log('This name already exists');
+
+        ifErrorData.value = true
+        errorType.value = 'This name already exists'
+        setTimeout(() => { ifErrorData.value = false }, 1000)
+        document.querySelector('.input__login_reg').focus()
+
+        return
     }
 }

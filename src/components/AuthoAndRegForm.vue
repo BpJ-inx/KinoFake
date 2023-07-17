@@ -19,6 +19,9 @@
       <transition name="autho_reg_forms-trans">
         <regform class="form__registration flex fixed mt-10" v-if="!show"></regform>
       </transition>
+      <transition name="data_error-trans">
+        <data-error v-if="ifErrorData"></data-error>
+      </transition>
 
     </div>
 
@@ -27,18 +30,19 @@
   
 <script>
 import { Transition } from 'vue';
-import {show} from '../hooks/registration.js'
+import DataError from '../components/DataError.vue'
+import { show } from '../hooks/registration.js'
+import { ifErrorData } from '../hooks/authorization.js'
 
 export default {
-  data() {
-    return {
-      show: show
-    }
+  components: {
+    Transition,
+    DataError
   },
-  components: { Transition },
   setup() {
-    return{
-      show
+    return {
+      show,
+      ifErrorData
     }
   }
 }
