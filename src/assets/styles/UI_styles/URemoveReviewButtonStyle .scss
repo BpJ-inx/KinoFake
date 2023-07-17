@@ -12,3 +12,9 @@
 .but:hover {
     background: #3b3b3b;
 }
+
+@media (max-width: 1024px) {
+    .but {
+        background: #3b3b3b;
+    }
+}

@@ -4,11 +4,11 @@
 
         <div class="wrapper flex justify-between mt-7">
             <div class="w-full">
-                <div class="person__name ml-11">
+                <div class="person__name">
                     Name : {{ name }}
                 </div>
 
-                <div class="reviews ml-11">
+                <div class="reviews">
 
                     <div class="pagination_place">
                         <upaginationreviews :pages="pages">
@@ -25,7 +25,7 @@
 
             <div class="favorites  w-full">
 
-                <div class="ml-11">
+                <div class="">
                         Favorites :
                 </div>
 

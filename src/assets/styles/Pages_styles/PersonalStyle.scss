@@ -14,11 +14,15 @@
     font-family: Tahoma, Arial, Verdana, sans-serif;
     font-size: 25px;
     padding: 10px;
+    margin-left: 2.75rem;
 }
 
 .reviews {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+   
+
 }
 
 .favorites {
@@ -30,6 +34,12 @@
 @media (max-width: 1024px) {
     .wrapper {
         flex-wrap: wrap;
+    }
+
+    .person__name,
+    .favorites,
+    .reviews {
+        margin-left: 0px;
     }
 }
 
