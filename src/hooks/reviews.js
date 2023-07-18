@@ -42,21 +42,21 @@ export function addReview() {
 
                     if (localStorage.getItem('logNAME')) {
                         let reviewsUser = JSON.parse(localStorage.getItem(`reviews.${localStorage.getItem('logNAME')}`))
-                        reviewsUser.push(x)
+                        reviewsUser.push(i)
                         localStorage.setItem(`reviews.${localStorage.getItem('logNAME')}`, JSON.stringify(reviewsUser))
                     } else {
                         let reviewsUser = JSON.parse(localStorage.getItem(`reviews.${localStorage.getItem('guestID')}`))
-                        reviewsUser.push(x)
+                        reviewsUser.push(i)
                         localStorage.setItem(`reviews.${localStorage.getItem('guestID')}`, JSON.stringify(reviewsUser))
                     }
 
                     if (localStorage.getItem(`reviewsFilm${idFilm}`)) {
                         let reviewsFilm = JSON.parse(localStorage.getItem(`reviewsFilm${idFilm}`))
-                        reviewsFilm.push(x)
+                        reviewsFilm.push(i)
                         localStorage.setItem(`reviewsFilm${idFilm}`, JSON.stringify(reviewsFilm))
                     } else {
                         let reviewsFilm = []
-                        reviewsFilm.push(x)
+                        reviewsFilm.push(i)
                         localStorage.setItem(`reviewsFilm${idFilm}`, JSON.stringify(reviewsFilm))
                     }
 
@@ -82,7 +82,7 @@ export function addReview() {
     }
 }
 
-export function removeReview(index, arrayReviews, oneRev) {
+export function removeReview(index, arrayRevs, oneRev) {
     let revID = oneRev.reviewID
 
     localStorage.removeItem(`Rev.${revID}`)
@@ -98,14 +98,26 @@ export function removeReview(index, arrayReviews, oneRev) {
 
     localStorage.setItem('lengthRev', +localStorage.getItem('lengthRev') - 1)
 
-    arrayReviews.splice(index, 1)
+
+    arrayReviews.value = arrayReviews.value.toSpliced(index, 1)
+    arrayRevs = arrayRevs.toSpliced(index, 1)
+
     fiveRev.value.splice(index, 1)
 
-    if (Math.ceil(arrayReviews.length / 5) == 1) {
+    if (fiveRev.value.length == 0) {
+        if (page.value > 1) {
+            page.value = page.value - 1
+            fiveRev.value = arrayReviews.value.slice(5 * page.value - 5, 5 * page.value)
+        } else {
+            page.value = 1
+        }
+    }
+
+    if (Math.ceil(arrayReviews.value.length / 5) == 1) {
         // pages.value = 0
-        pages.value = Math.ceil(arrayReviews.length / 5)
+        pages.value = Math.ceil(arrayReviews.value.length / 5)
     } else {
-        pages.value = Math.ceil(arrayReviews.length / 5)
+        pages.value = Math.ceil(arrayReviews.value.length / 5)
     }
 }
 

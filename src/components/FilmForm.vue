@@ -49,21 +49,18 @@
 
         </div>
         <div class="reviews">
-            <utextarearev 
-            :sendFunction="addReview">
+            <utextarearev :sendFunction="addReview">
             </utextarearev>
 
             <div class="reviews__list flex flex-col w-full h-full">
-                <ReviewForm 
-                :arrayReviews='arrayReviews'>
+                <ReviewForm :arrayReviews='arrayReviews'>
                 </ReviewForm>
             </div>
 
         </div>
 
         <div class="reviews__pagination_place">
-            <upaginationreviews 
-            :pages="pages"></upaginationreviews>
+            <upaginationreviews :pages="pages"></upaginationreviews>
         </div>
 
     </div>
