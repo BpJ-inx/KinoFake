@@ -42,27 +42,29 @@ export function addReview() {
 
                     if (localStorage.getItem('logNAME')) {
                         let reviewsUser = JSON.parse(localStorage.getItem(`reviews.${localStorage.getItem('logNAME')}`))
-                        reviewsUser.push(i)
+                        reviewsUser.push(x)
                         localStorage.setItem(`reviews.${localStorage.getItem('logNAME')}`, JSON.stringify(reviewsUser))
                     } else {
                         let reviewsUser = JSON.parse(localStorage.getItem(`reviews.${localStorage.getItem('guestID')}`))
-                        reviewsUser.push(i)
+                        reviewsUser.push(x)
                         localStorage.setItem(`reviews.${localStorage.getItem('guestID')}`, JSON.stringify(reviewsUser))
                     }
 
                     if (localStorage.getItem(`reviewsFilm${idFilm}`)) {
                         let reviewsFilm = JSON.parse(localStorage.getItem(`reviewsFilm${idFilm}`))
-                        reviewsFilm.push(i)
+                        reviewsFilm.push(x)
                         localStorage.setItem(`reviewsFilm${idFilm}`, JSON.stringify(reviewsFilm))
                     } else {
                         let reviewsFilm = []
-                        reviewsFilm.push(i)
+                        reviewsFilm.push(x)
                         localStorage.setItem(`reviewsFilm${idFilm}`, JSON.stringify(reviewsFilm))
                     }
 
                     localStorage.setItem('lengthRev', +x + 1)
                     arrayReviews.value.unshift(JSON.parse(localStorage.getItem(`Rev.${i}`)))
-                    fiveRev.value.unshift(JSON.parse(localStorage.getItem(`Rev.${i}`)))
+
+                    fiveRev.value = []
+                    fiveRev.value = arrayReviews.value.slice(5 * page.value - 5, 5 * page.value)
 
                     if (Math.ceil(arrayReviews.length / 5) == 1) {
                         pages.value = 0
