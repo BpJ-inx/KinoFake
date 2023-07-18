@@ -1,5 +1,5 @@
 <template>
-    <transition-group name="reviews-list">
+    <TransitionGroup name="reviews-list">
         <div class="oneRev" v-for="(oneRev, index) in fiveRev" :key="oneRev.ID">
             <div class="reviews__header">
                 <div class="name_user">{{ oneRev.Name }}</div>
@@ -19,7 +19,7 @@
                 {{ oneRev.Description }}
             </div>
         </div>
-    </transition-group>
+    </TransitionGroup>
 </template>
 
 <script>

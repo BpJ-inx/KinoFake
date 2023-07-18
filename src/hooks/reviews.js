@@ -42,21 +42,21 @@ export function addReview() {
 
                     if (localStorage.getItem('logNAME')) {
                         let reviewsUser = JSON.parse(localStorage.getItem(`reviews.${localStorage.getItem('logNAME')}`))
-                        reviewsUser.push(x)
+                        reviewsUser.push(i)
                         localStorage.setItem(`reviews.${localStorage.getItem('logNAME')}`, JSON.stringify(reviewsUser))
                     } else {
                         let reviewsUser = JSON.parse(localStorage.getItem(`reviews.${localStorage.getItem('guestID')}`))
-                        reviewsUser.push(x)
+                        reviewsUser.push(i)
                         localStorage.setItem(`reviews.${localStorage.getItem('guestID')}`, JSON.stringify(reviewsUser))
                     }
 
                     if (localStorage.getItem(`reviewsFilm${idFilm}`)) {
                         let reviewsFilm = JSON.parse(localStorage.getItem(`reviewsFilm${idFilm}`))
-                        reviewsFilm.push(x)
+                        reviewsFilm.push(i)
                         localStorage.setItem(`reviewsFilm${idFilm}`, JSON.stringify(reviewsFilm))
                     } else {
                         let reviewsFilm = []
-                        reviewsFilm.push(x)
+                        reviewsFilm.push(i)
                         localStorage.setItem(`reviewsFilm${idFilm}`, JSON.stringify(reviewsFilm))
                     }
 
