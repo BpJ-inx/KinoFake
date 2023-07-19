@@ -8,7 +8,7 @@
     <AuthoAndRegForm></AuthoAndRegForm>
   </main>
 
-  <footer>
+  <footer class="flex h-20">
   </footer>
 </template>
 

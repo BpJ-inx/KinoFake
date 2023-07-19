@@ -6,7 +6,7 @@ import { encryptPass } from './registration'
 export const errorType = ref('')
 export const ifErrorData = ref(false)
 
-localStorage.setItem('1', 2)
+localStorage.setItem('1', '22a')
 localStorage.setItem(`favorite.1`, JSON.stringify([]))
 localStorage.setItem('reviews.1', JSON.stringify([]))
 localStorage.setItem('logNAME', '')
