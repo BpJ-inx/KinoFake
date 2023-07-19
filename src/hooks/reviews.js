@@ -101,6 +101,7 @@ export function removeReview(index, arrayRevs, oneRev) {
 
     let delObject = fiveRev.value.splice(index, 1)
 
+    arrayRevs = arrayRevs.toSpliced(index, 1)
     arrayReviews.value = arrayReviews.value.toSpliced(arrayReviews.value.indexOf(delObject[0]), 1)
 
     if (fiveRev.value.length == 0) {
