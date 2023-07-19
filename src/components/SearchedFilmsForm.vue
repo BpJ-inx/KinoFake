@@ -1,5 +1,5 @@
 <template>
-  <div class="filmCard flex flex-col  m-2 cursor-pointer items-center" @click="openFilmOnSelfPage()"
+  <div class="filmCard hover:shadow-gray-700 hover:shadow-2xl flex flex-col  m-2 cursor-pointer items-center" @click="openFilmOnSelfPage()"
     v-for="film in responseSearchFilms" :key="film.id">
 
     <div class="idFilm hidden">{{ film.id }}</div>
