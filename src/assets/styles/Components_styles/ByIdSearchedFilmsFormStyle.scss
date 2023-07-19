@@ -5,8 +5,8 @@
     margin-inline: auto;
     height: 90%;
     width: 90%;
-    max-width: 300px;
-    max-height: 400px;
+    height: 100%;
+    width: 100%;
     padding: 10px;
 }
 
@@ -58,8 +58,15 @@
     .button__del_fav {
         display: flex
     }
+
+    .text {
+        opacity: 1;
+        visibility: visible;
+        height: 30px;
+    }
 }
-.button__del_fav:hover{
+
+.button__del_fav:hover {
     -webkit-transform: scale(1.20);
     -ms-transform: scale(1.20);
     transform: scale(1.20);
@@ -68,6 +75,9 @@
 
 .text {
     display: block;
+    position: fixed;
+    opacity: 0;
+    top: 100%;
     text-align: center;
     padding-bottom: 5px;
     padding-inline: 30px;
@@ -75,9 +85,12 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    height: 30px;
-    width: 245px;
+    height: 0px;
     font-size: 12px;
+    width: 100%;
+    visibility: hidden;
+    transition: all 0.3s ease;
+
 }
 
 .fav__star {

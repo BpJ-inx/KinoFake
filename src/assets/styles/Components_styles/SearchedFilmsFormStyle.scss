@@ -20,7 +20,7 @@
     align-items: center;
     user-select: none;
     position: relative;
-    top:15px;
+    top: 15px;
     right: 85px;
     border-radius: 50%;
     width: 40px;
@@ -50,11 +50,12 @@
 }
 
 
-.filmCard:hover{
+.filmCard:hover {
     -webkit-transform: scale(1.04);
     -ms-transform: scale(1.04);
     transform: scale(1.04);
-    .text{
+
+    .text {
         opacity: 1;
         visibility: visible;
         height: 30px;
@@ -79,14 +80,14 @@
     transition: all 0.3s ease;
 }
 
-.fav__star{
+.fav__star {
     display: flex;
     align-self: flex-end;
-    align-items:center;
+    align-items: center;
     user-select: none;
     position: absolute;
     margin-top: 15px;
-    margin-right:   20px;
+    margin-right: 20px;
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -95,6 +96,6 @@
     color: #ffffff;
     font-size: 14px;
     z-index: 1;
-    order:0;
+    order: 0;
 
 }
