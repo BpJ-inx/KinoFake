@@ -90,7 +90,6 @@ export function easyValidation() {
         setTimeout(() => { ifErrorData.value = false }, 1000)
         document.querySelector('.input__password_reg').focus()
 
-
         return
     }
 
@@ -98,8 +97,12 @@ export function easyValidation() {
 }
 
 function createNewAcc() {
+    let password = document.querySelector('.input__password_reg').value
+
+    password = encryptPass(password)
+
     if (!localStorage.getItem(document.querySelector('.input__login_reg').value)) {
-        localStorage.setItem(document.querySelector('.input__login_reg').value, document.querySelector('.input__password_reg').value)
+        localStorage.setItem(document.querySelector('.input__login_reg').value, password)
 
         localStorage.setItem('logNAME', document.querySelector('.input__login_reg').value)
         document.querySelector('.input__login_reg').value = ''
@@ -125,4 +128,13 @@ function createNewAcc() {
 
         return
     }
+}
+
+export function encryptPass(password) {
+    let encrypted = "";
+    let alphabet = "abcdefghijklmnopqrstuvwxyz";
+    for (let i = 0; i < password.length; i++) {
+        encrypted += alphabet[i % alphabet.length] + "2" + password[i];
+    }
+    return encrypted.split("").reverse().join("");
 }

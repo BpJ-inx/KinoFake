@@ -1,6 +1,7 @@
 import router from '../router/router'
 import { show } from './registration'
 import { ref } from 'vue'
+import { encryptPass } from './registration'
 
 export const errorType = ref('')
 export const ifErrorData = ref(false)
@@ -32,9 +33,12 @@ export function authorizationСheck() {
 }
 
 export function checkProfile() {
-    if (localStorage.getItem(document.querySelector('.input__login').value) == document.querySelector('.input__password').value) {
-        localStorage.setItem('logNAME', document.querySelector('.input__login').value)
+    let password = document.querySelector('.input__password').value
 
+    password = encryptPass(password)
+
+    if (localStorage.getItem(document.querySelector('.input__login').value) == password) {
+        localStorage.setItem('logNAME', document.querySelector('.input__login').value)
 
         hideMenuAfterLogin()
         clearInputs()
