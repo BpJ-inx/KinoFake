@@ -29,9 +29,11 @@
 }
 
 .error__body {
+    display: flex;
     color: rgb(188, 188, 188);
     padding: 10px;
     font-size: 20px;
+    white-space: nowrap;
     line-height: 10px;
     font-family: Tahoma, Arial, Verdana, sans-serif;
 }

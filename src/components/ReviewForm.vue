@@ -49,11 +49,6 @@ export default {
         },
 
     },
-    beforeUpdate() {
-        if (this.page == 1) {
-            this.fiveRev = this.arrayReviews.slice(0, 5)
-        }
-    },
     setup() {
         return {
             removeReview,
