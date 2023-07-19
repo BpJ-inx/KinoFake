@@ -73,7 +73,11 @@ export function deleteFromFav() {
     localStorage.setItem(`favorite.${localStorage.getItem('logNAME')}`, JSON.stringify(userFavFilms))
     event.target.closest('div').classList.replace('flex', 'hidden')
 
-    IdFilmsArray.value.splice(targetId, 1)
+
+    IdFilmsArray.value.splice(IdFilmsArray.value.indexOf(targetId), 1)
+
+    favPage.value = Math.ceil(IdFilmsArray.value.length / 3)
+
 
     fetchFavFilms()
 }
