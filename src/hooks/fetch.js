@@ -1,12 +1,12 @@
 import axios from "axios";
 import { onMounted, ref } from 'vue'
 import router from '../router/router'
-import { basic_X_API_KEY, private_X_API_KEY, fetchFilm, fetchSearchName, fetchPremieres, fetchTopNow, fetchBest, fetchFilmById, oneMore_X_API_KEY } from '../urlConfig.js'
+import { move_and_search_X_API_KEY, categories_X_API_KEY, fetchFilm, fetchSearchName, fetchPremieres, fetchTopNow, fetchBest, fetchFilmById, favorite_movies_X_API_KEY } from '../urlConfig.js'
 
 const isRandom = ref(true)
 const selectedFimId = ref('')
 const fetchRequest = ref(``)
-const X_API_KEY = ref(basic_X_API_KEY)
+const X_API_KEY = ref(move_and_search_X_API_KEY)
 const responseMove = ref([])
 const responseFilms = ref([]);
 const responseFavFilms = ref([]);
@@ -21,13 +21,14 @@ const prevRespPremiers = ref([]);
 const prevRespTop = ref([]);
 const prevRespBest = ref([]);
 export const isLoaded = ref(false)
+const responseFromServer = ref([])
 localStorage.setItem('filmID', '')
 localStorage.setItem('filmName', '')
 
 const fetchFunc = async () => {
 
     try {
-        let responseFromServer = await axios.get(fetchRequest.value,
+        responseFromServer.value = await axios.get(fetchRequest.value,
             {
                 headers: {
                     'accept': 'application/json',
@@ -39,16 +40,15 @@ const fetchFunc = async () => {
 
         if (whatPageRequest.value == 'main') {
             changeOnRequestMain(responseFromServer)
-        } else if (whatPageRequest.value == 'move') {
+        }
+        else if (whatPageRequest.value == 'move') {
             changeOnRequestMove(responseFromServer)
-        } else if (whatPageRequest.value == 'search') {
+        }else if (whatPageRequest.value == 'search') {
             changeOnRequestSearch(responseFromServer)
         } else if (whatPageRequest.value == 'premier') {
             changeOnRequestPremier(responseFromServer)
         } else if (whatPageRequest.value == 'top/best') {
             changeOnRequestTopBest(responseFromServer)
-        } else if (whatPageRequest.value == 'fav') {
-            changeOnRequestFav(responseFromServer)
         }
     }
     catch (e) {
@@ -58,31 +58,31 @@ const fetchFunc = async () => {
 }
 
 
-function changeOnRequestMain(responseFromServer) {
-    response.value = responseFromServer
+function changeOnRequestMain() {
+    response.value = responseFromServer.value
 
 }
-function changeOnRequestPremier(responseFromServer) {
-    responseFilms.value = responseFromServer.data.items.slice(startSlice.value, endSlice.value)
+function changeOnRequestPremier() {
+    responseFilms.value = responseFromServer.value.data.items.slice(startSlice.value, endSlice.value)
     startSlice.value += 20,
         endSlice.value += 10
 }
 
-function changeOnRequestTopBest(responseFromServer) {
-    responseFilms.value = responseFromServer.data.films.slice(startSlice.value, endSlice.value)
+function changeOnRequestTopBest() {
+    responseFilms.value = responseFromServer.value.data.films.slice(startSlice.value, endSlice.value)
 }
 
-function changeOnRequestMove(responseFromServer) {
+function changeOnRequestMove() {
     responseMove.value = []
-    responseMove.value.push(responseFromServer.data)
+    responseMove.value.push(responseFromServer.value.data)
 
     localStorage.setItem('filmID', responseMove.value[0].id)
     localStorage.setItem('filmName', responseMove.value[0].name)
 }
 
-function changeOnRequestSearch(responseFromServer) {
-    if (responseFromServer.data.docs.length != 0) {
-        responseSearchFilms.value = responseFromServer.data.docs
+function changeOnRequestSearch() {
+    if (responseFromServer.value.data.docs.length != 0) {
+        responseSearchFilms.value = responseFromServer.value.data.docs
 
         for (let i = 0; i < responseSearchFilms.value.length; ++i) {
             if (!responseSearchFilms.value[i].poster) {
@@ -98,20 +98,13 @@ function changeOnRequestSearch(responseFromServer) {
     }
 }
 
-function changeOnRequestFav(responseFromServer) {
-
-    responseFavFilms.value = [...responseFavFilms.value,
-    responseFromServer.data]
-}
-
-
 export function fetchMainTop() {
     whatPageRequest.value = 'main'
     startSlice.value = 0
     endSlice.value = 5
 
     fetchRequest.value = fetchPremieres
-    X_API_KEY.value = private_X_API_KEY
+    X_API_KEY.value = categories_X_API_KEY
 
     onMounted(fetchsMainPage)
 
@@ -132,7 +125,7 @@ const fetchsMainPage = async () => {
 
     fetchRequest.value = fetchBest + `1`
     await fetchFunc()
-    prevRespBest.value =  response.value.data.films.slice(startSlice.value, endSlice.value)
+    prevRespBest.value = response.value.data.films.slice(startSlice.value, endSlice.value)
 }
 
 
@@ -143,7 +136,7 @@ export function fetchPremieresTop() {
     endSlice.value = 20
 
     fetchRequest.value = fetchPremieres
-    X_API_KEY.value = private_X_API_KEY
+    X_API_KEY.value = categories_X_API_KEY
 
     onMounted(fetchFunc)
 
@@ -161,7 +154,7 @@ export function fetchPopNow() {
     let pageNumber = '1'
 
     fetchRequest.value = fetchTopNow + pageNumber
-    X_API_KEY.value = private_X_API_KEY
+    X_API_KEY.value = categories_X_API_KEY
 
     onMounted(fetchFunc)
 
@@ -180,7 +173,7 @@ export function fetchBestFilms() {
     let pageNumber = '1'
 
     fetchRequest.value = fetchBest + pageNumber
-    X_API_KEY.value = private_X_API_KEY
+    X_API_KEY.value = categories_X_API_KEY
 
     onMounted(fetchFunc)
 
@@ -196,13 +189,14 @@ export function fetchBestFilms() {
 
 export function fetchMove() {
     whatPageRequest.value = 'move'
-    X_API_KEY.value = basic_X_API_KEY
+    X_API_KEY.value = move_and_search_X_API_KEY
 
     isRandom.value ?
         fetchRequest.value = fetchFilm + 'random' :
         fetchRequest.value = fetchFilm + selectedFimId.value
 
     onMounted(fetchFunc)
+
 
     isRandom.value = true
 
@@ -215,7 +209,7 @@ export function fetchMove() {
 
 export function fetchSearch() {
     whatPageRequest.value = 'search'
-    X_API_KEY.value = basic_X_API_KEY
+    X_API_KEY.value = move_and_search_X_API_KEY
 
     responseSearchFilms.value = []
     document.querySelector('.searchInput').blur()
@@ -254,8 +248,7 @@ import { IdFilmsArray, favPage } from '../hooks/favorite.js'
 
 export function fetchFavFilms() {
     isLoaded.value = false
-    whatPageRequest.value = 'fav'
-    X_API_KEY.value = oneMore_X_API_KEY
+    X_API_KEY.value = favorite_movies_X_API_KEY
     responseFavFilms.value = []
     let trheeFilms = [];
 
@@ -271,11 +264,13 @@ export function fetchFavFilms() {
 
             fetchRequest.value = fetchFilmById + String(id);
             await fetchFunc()
-            isLoaded.value = true
+
+            responseFavFilms.value = [...responseFavFilms.value,
+            responseFromServer.value.data]
         });
 
     }
-
+    isLoaded.value = true
     return {
         responseFavFilms,
 
