@@ -82,10 +82,12 @@ export function deleteFromFav() {
     fetchFavFilms()
 }
 
-import { fetchFavFilms,isLoaded } from '../hooks/fetch.js'
+import { fetchFavFilms, isLoaded } from '../hooks/fetch.js'
 
 export function toPage(selectedPage) {
-    isLoaded.value = false
-    favPage.value = selectedPage
-    fetchFavFilms()
+    if (!(favPage.value == selectedPage)) {
+        isLoaded.value = false
+        favPage.value = selectedPage
+        fetchFavFilms()
+    }
 }

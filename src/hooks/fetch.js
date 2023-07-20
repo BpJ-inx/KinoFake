@@ -43,7 +43,7 @@ const fetchFunc = async () => {
         }
         else if (whatPageRequest.value == 'move') {
             changeOnRequestMove(responseFromServer)
-        }else if (whatPageRequest.value == 'search') {
+        } else if (whatPageRequest.value == 'search') {
             changeOnRequestSearch(responseFromServer)
         } else if (whatPageRequest.value == 'premier') {
             changeOnRequestPremier(responseFromServer)
@@ -247,9 +247,11 @@ export async function openFilmOnSelfPage(revID) {
 import { IdFilmsArray, favPage } from '../hooks/favorite.js'
 
 export function fetchFavFilms() {
+
     isLoaded.value = false
     X_API_KEY.value = favorite_movies_X_API_KEY
     responseFavFilms.value = []
+
     let trheeFilms = [];
 
     IdFilmsArray.value = JSON.parse(localStorage.getItem(`favorite.${localStorage.getItem('logNAME')}`))
@@ -276,6 +278,7 @@ export function fetchFavFilms() {
 
     }
 }
+
 
 
 export function fetchRev() {
