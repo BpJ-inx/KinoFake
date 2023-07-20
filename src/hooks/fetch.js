@@ -20,6 +20,7 @@ const response = ref([])
 const prevRespPremiers = ref([]);
 const prevRespTop = ref([]);
 const prevRespBest = ref([]);
+export const isLoaded = ref(false)
 localStorage.setItem('filmID', '')
 localStorage.setItem('filmName', '')
 
@@ -257,6 +258,7 @@ export function lomka(revID) {
 import { IdFilmsArray, favPage } from '../hooks/favorite.js'
 
 export function fetchFavFilms() {
+    isLoaded.value = false
     whatPageRequest.value = 'fav'
     X_API_KEY.value = oneMore_X_API_KEY
     responseFavFilms.value = []
@@ -274,7 +276,7 @@ export function fetchFavFilms() {
 
             fetchRequest.value = fetchFilmById + String(id);
             await fetchFunc()
-
+            isLoaded.value = true
         });
 
     }

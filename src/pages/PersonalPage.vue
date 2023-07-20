@@ -29,13 +29,14 @@
                         Favorites :
                 </div>
 
-                <div class="pagination_place">
+                <spinner v-if="!isLoaded"></spinner>
+                <div class="pagination_place" v-if="isLoaded">
                         <upaginationfavorites 
                         :favPages="favPages">
                         </upaginationfavorites>
                     </div>
 
-                <div class="favorites__place  flex flex-wrap   align-top">
+                <div class="favorites__place  flex flex-wrap   align-top" v-if="isLoaded">
                     <ByIdSearchedFilmsForm 
                     :responseFavFilms="responseFavFilms">
                     </ByIdSearchedFilmsForm>
@@ -48,7 +49,7 @@
 </template>
   
 <script>
-import { fetchFavFilms, fetchRev } from '../hooks/fetch.js'
+import { fetchFavFilms, fetchRev,isLoaded } from '../hooks/fetch.js'
 import ByIdSearchedFilmsForm from '../components/ByIdSearchedFilmsForm.vue'
 import ReviewFormPersonalPage from '../components/ReviewFormPersonalPage.vue';
 import { arrayReviews, fiveRev, page, pages } from '../hooks/reviews.js'
@@ -113,7 +114,8 @@ export default {
             page,
             IdFilmsArray,
             favPage,
-            favPages
+            favPages,
+            isLoaded
 
         }
     }
