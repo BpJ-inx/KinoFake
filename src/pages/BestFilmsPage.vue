@@ -1,12 +1,11 @@
 <template >
   <h1 class="header">Лучшие за все время :</h1>
 
-  <spinner></spinner>
+  <spinner v-if="!isLoaded"></spinner>
 
-  <div class="resSearchFiveFilms hidden flex-wrap gap-7 items-center align-top">
+  <div v-if="isLoaded" class="resSearchFiveFilms hidden flex-wrap gap-7 items-center align-top">
 
-    <FilmsFormWithoutRating 
-    :responseFilms="responseFilms">
+    <FilmsFormWithoutRating :responseFilms="responseFilms">
     </FilmsFormWithoutRating>
 
   </div>
@@ -15,7 +14,7 @@
 </template>
   
 <script>
-import { fetchBestFilms } from '../hooks/fetch.js'
+import { fetchBestFilms, isLoaded } from '../hooks/fetch.js'
 import FilmsFormWithoutRating from "../components/FilmsFormWithoutRating.vue";
 import axios from "axios";
 
@@ -25,10 +24,10 @@ export default {
   },
   methods: {
     async loadMoreFilms() {
-      this.pageNumber ++
+      this.pageNumber++
 
       try {
-        let responseFromServer = await axios.get(this.fetchRequest + this.pageNumber , {
+        let responseFromServer = await axios.get(this.fetchRequest + this.pageNumber, {
           headers: {
             accept: "application/json",
             "X-API-KEY": this.X_API_KEY,
@@ -58,13 +57,14 @@ export default {
   },
   setup() {
     const { responseFilms, fetchRequest, X_API_KEY, pageNumber } =
-    fetchBestFilms();
+      fetchBestFilms();
 
     return {
       responseFilms,
       fetchRequest,
       X_API_KEY,
-      pageNumber
+      pageNumber,
+      isLoaded
     };
   },
 };

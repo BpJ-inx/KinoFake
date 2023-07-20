@@ -21,6 +21,8 @@ const prevRespPremiers = ref([]);
 const prevRespTop = ref([]);
 const prevRespBest = ref([]);
 export const isLoaded = ref(false)
+export const isErrorSearch = ref(false)
+export const textError = ref('')
 const responseFromServer = ref([])
 localStorage.setItem('filmID', '')
 localStorage.setItem('filmName', '')
@@ -66,10 +68,12 @@ function changeOnRequestPremier() {
     responseFilms.value = responseFromServer.value.data.items.slice(startSlice.value, endSlice.value)
     startSlice.value += 20,
         endSlice.value += 10
+    isLoaded.value = true
 }
 
 function changeOnRequestTopBest() {
     responseFilms.value = responseFromServer.value.data.films.slice(startSlice.value, endSlice.value)
+    isLoaded.value = true
 }
 
 function changeOnRequestMove() {
@@ -78,6 +82,7 @@ function changeOnRequestMove() {
 
     localStorage.setItem('filmID', responseMove.value[0].id)
     localStorage.setItem('filmName', responseMove.value[0].name)
+    isLoaded.value = true
 }
 
 function changeOnRequestSearch() {
@@ -90,15 +95,15 @@ function changeOnRequestSearch() {
                 responseSearchFilms.value[i].poster.url = 'src/assets/img/nonPoster.png'
             }
         }
+        isLoaded.value = true
     } else {
-        document.querySelector('.spinner').classList.add('hidden')
-        document.querySelector('.resSearchFiveFilms').classList.add('hidden')
-        document.querySelector('.errorPlace').classList.remove('hidden')
-        document.querySelector('.textError').innerHTML = `Sorry, No results found for "${searchQuery.value}"`
+        isErrorSearch.value = true
+        textError.value = `Sorry, No results found for "${searchQuery.value}"`
     }
 }
 
 export function fetchMainTop() {
+    isLoaded.value = false
     whatPageRequest.value = 'main'
     startSlice.value = 0
     endSlice.value = 5
@@ -126,11 +131,13 @@ const fetchsMainPage = async () => {
     fetchRequest.value = fetchBest + `1`
     await fetchFunc()
     prevRespBest.value = response.value.data.films.slice(startSlice.value, endSlice.value)
+    isLoaded.value = true
 }
 
 
 
 export function fetchPremieresTop() {
+    isLoaded.value = false
     whatPageRequest.value = 'premier'
     startSlice.value = 0
     endSlice.value = 20
@@ -150,6 +157,7 @@ export function fetchPremieresTop() {
 }
 
 export function fetchPopNow() {
+    isLoaded.value = false
     whatPageRequest.value = 'top/best'
     let pageNumber = '1'
 
@@ -188,6 +196,7 @@ export function fetchBestFilms() {
 }
 
 export function fetchMove() {
+    isLoaded.value = false
     whatPageRequest.value = 'move'
     X_API_KEY.value = move_and_search_X_API_KEY
 
@@ -208,6 +217,7 @@ export function fetchMove() {
 }
 
 export function fetchSearch() {
+    isLoaded.value = false
     whatPageRequest.value = 'search'
     X_API_KEY.value = move_and_search_X_API_KEY
 

@@ -1,17 +1,14 @@
 <template>
-    <div>
-        <spinner></spinner>
+    <spinner v-if="!isLoaded"></spinner>
 
-        <FilmForm :responseMove='responseMove'>
-        </FilmForm>
-
-    </div>
+    <FilmForm v-if="isLoaded" :responseMove='responseMove'>
+    </FilmForm>
 </template>
 
 <script>
 import FilmForm from '../components/FilmForm.vue'
 import { fetchFilm } from '../urlConfig.js'
-import { fetchMove } from '../hooks/fetch';
+import { fetchMove, isLoaded } from '../hooks/fetch';
 import axios from "axios";
 import { checkIsFav, isFav } from '../hooks/favorite.js'
 
@@ -21,13 +18,7 @@ export default {
     },
     methods: {
         async refreshPage() {
-
-            if (document.querySelector('.filmPage').classList.contains('flex')) {
-                document.querySelector('.filmPage').classList.remove('flex');
-                document.querySelector('.filmPage').classList.add('hidden');
-                document.querySelector('.spinner').classList.remove('hidden');
-            }
-
+            this.isLoaded = false
             try {
                 let responseFromServer = await axios.get(fetchFilm + 'random',
                     {
@@ -47,7 +38,7 @@ export default {
             catch (e) {
                 console.log(e)
             }
-
+            this.isLoaded = true
         }
 
 
@@ -66,7 +57,8 @@ export default {
             responseMove,
             X_API_KEY,
             checkIsFav,
-            isFav
+            isFav,
+            isLoaded
         }
     }
 

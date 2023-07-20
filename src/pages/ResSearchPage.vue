@@ -1,26 +1,28 @@
 <template>
     <h1 class="header">Результаты по вашему запросу :</h1>
 
-    <spinner></spinner>
+    <div v-if="!isErrorSearch">
+        <spinner v-if="!isLoaded"></spinner>
 
-    <div class="resSearchFiveFilms hidden flex-wrap justify-center gap-7 items-center align-top">
 
-        <SearchedFilmsForm 
-        :responseSearchFilms="responseSearchFilms">
-        </SearchedFilmsForm>
+        <div v-if="isLoaded" class="resSearchFiveFilms flex flex-wrap justify-center gap-7 items-center align-top">
 
+            <SearchedFilmsForm :responseSearchFilms="responseSearchFilms">
+            </SearchedFilmsForm>
+
+        </div>
     </div>
 
-    <div class="errorPlace hidden">
+    <div v-if="isErrorSearch" class="errorPlace">
         <SearchError></SearchError>
     </div>
 </template>
 
 <script>
 import SearchError from '../components/SearchError.vue';
-import {fetchSearchName} from '../urlConfig.js'
+import { fetchSearchName } from '../urlConfig.js'
 import SearchedFilmsForm from '../components/SearchedFilmsForm.vue'
-import { fetchSearch } from '../hooks/fetch';
+import { fetchSearch, isLoaded, isErrorSearch, textError } from '../hooks/fetch';
 import axios from "axios";
 
 export default {
@@ -30,12 +32,9 @@ export default {
     },
     methods: {
         async listenerFunction() {
-            document.querySelector('.spinner').classList.remove('hidden')
-            document.querySelector('.resSearchFiveFilms').classList.add('hidden')
+            this.isLoaded = false
 
-            if (document.querySelector('.errorPlace')) {
-                document.querySelector('.errorPlace').classList.add('hidden')
-            }
+            this.isErrorSearch = false
 
             this.searchQuery = document.querySelector('.searchInput').value
             document.querySelector('.searchInput').value = ''
@@ -60,16 +59,16 @@ export default {
                         }
                     }
                 } else {
-                    document.querySelector('.spinner').classList.add('hidden')
-                    document.querySelector('.resSearchFiveFilms').classList.add('hidden')
+                    isErrorSearch.value = true
                     document.querySelector('.searchInput').value = ''
-                    document.querySelector('.errorPlace').classList.remove('hidden')
-                    document.querySelector('.textError').innerHTML = `Sorry, No results found for "${this.searchQuery}"`
+                    this.textError = `Sorry, No results found for "${this.searchQuery}"`
                 }
+
             }
             catch (e) {
                 console.log(e)
             }
+            this.isLoaded = true
         }
     },
     mounted() {
@@ -77,6 +76,7 @@ export default {
     },
     beforeUnmount() {
         document.querySelector('.searchInputButton').removeEventListener('click', this.listenerFunction)
+        this.isErrorSearch = false
     },
     setup() {
         const { responseSearchFilms, X_API_KEY, searchQuery } = fetchSearch()
@@ -84,7 +84,10 @@ export default {
         return {
             responseSearchFilms,
             X_API_KEY,
-            searchQuery
+            searchQuery,
+            isLoaded,
+            isErrorSearch,
+            textError
         }
     }
 

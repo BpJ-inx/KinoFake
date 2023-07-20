@@ -1,9 +1,9 @@
 <template >
-    <div class="filmPage flex-col justify-center hidden">
+    <div class="filmPage flex-col justify-center flex">
         <div class="aboutFilm h-auto " v-for="film in responseMove" :key="film.id">
 
             <div class="imgSide ">
-                <img class="posterFilm" :src="film.poster.previewUrl" @load="showFilm">
+                <img class="posterFilm" :src="film.poster.previewUrl" @load="changeRating">
 
 
                 <div class="movie_rating"> {{ film.rating.kp.toFixed(1) }} </div>
@@ -67,10 +67,11 @@
 </template>
 
 <script>
-import { showFilm } from '../hooks/show';
+import { changeRating } from '../hooks/show';
 import { isAutho } from '../hooks/authorization.js'
 import { addFavoriteFilm, checkIsFav, isFav, nameFavBut } from '../hooks/favorite.js'
 import { addReview, arrayReviews, pages } from '../hooks/reviews.js'
+import { isLoaded } from '../hooks/fetch.js'
 import ReviewForm from './ReviewForm.vue';
 
 export default {
@@ -130,7 +131,7 @@ export default {
     setup() {
         checkIsFav()
         return {
-            showFilm,
+            changeRating,
             isAutho,
             addFavoriteFilm,
             isFav,
@@ -139,6 +140,7 @@ export default {
             addReview,
             arrayReviews,
             pages,
+            isLoaded
 
         }
     },

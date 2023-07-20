@@ -19,7 +19,7 @@
       </svg>
     </div>
 
-    <img class="posterFilm" :src="film.posterUrl" @load="showFilm" />
+    <img class="posterFilm" :src="film.posterUrl"/>
     <div class="nameFilm text ">{{ film.nameRu }}</div>
 
   </div>
@@ -27,7 +27,6 @@
 
 <script>
 import { openFilmOnSelfPage } from '../hooks/fetch';
-import { showFilm } from '../hooks/show';
 import { checkFavOnlyPoster } from '../hooks/favorite';
 
 export default {
@@ -42,7 +41,6 @@ export default {
   setup() {
     return {
       openFilmOnSelfPage,
-      showFilm,
       checkFavOnlyPoster,
     }
   }
