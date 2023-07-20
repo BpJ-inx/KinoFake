@@ -70,11 +70,14 @@
 import { changeRating } from '../hooks/show';
 import { isAutho } from '../hooks/authorization.js'
 import { addFavoriteFilm, checkIsFav, isFav, nameFavBut } from '../hooks/favorite.js'
-import { addReview, arrayReviews, pages } from '../hooks/reviews.js'
+import { addReview, arrayReviews, pages,chengeArrayReview } from '../hooks/reviews.js'
 import { isLoaded } from '../hooks/fetch.js'
 import ReviewForm from './ReviewForm.vue';
 
 export default {
+    mounted() {
+        chengeArrayReview()
+    },
     beforeUpdate() {
         checkIsFav()
         if (isFav == false) {
@@ -82,41 +85,7 @@ export default {
             this.nameFavBut = 'To favorites'
         }
 
-        if (!localStorage.getItem(`reviewsFilm${localStorage.getItem('filmID')}`)) {
-            this.arrayReviews = []
-        } else {
-            this.arrayReviews = []
-            let reviewNumbers = JSON.parse(localStorage.getItem(`reviewsFilm${localStorage.getItem('filmID')}`))
-            if (reviewNumbers) {
-                for (let i = 0; i < reviewNumbers.length; ++i) {
-                    this.arrayReviews.push(JSON.parse(localStorage.getItem(`Rev.${reviewNumbers[i]}`)))
-                }
-            }
-
-            this.arrayReviews.sort(function (a) {
-                if (localStorage.getItem('logNAME')) {
-                    if (a.Name == localStorage.getItem('logNAME')) {
-                        return -1;
-                    }
-                    else {
-                        return 1;
-                    }
-                } else {
-                    if (a.Name == localStorage.getItem('guestID')) {
-                        return -1;
-                    }
-                    else {
-                        return 1;
-                    }
-                }
-            });
-        }
-
-        if (Math.ceil(this.arrayReviews.length / 5) == 1) {
-            this.pages = 0
-        } else {
-            this.pages = Math.ceil(this.arrayReviews.length / 5)
-        }
+        chengeArrayReview()
 
     },
     components: {
@@ -140,7 +109,8 @@ export default {
             addReview,
             arrayReviews,
             pages,
-            isLoaded
+            isLoaded,
+            chengeArrayReview
 
         }
     },

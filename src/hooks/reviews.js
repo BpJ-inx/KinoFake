@@ -127,3 +127,42 @@ export function toPage(selectedPage) {
     fiveRev.value = []
     fiveRev.value = arrayReviews.value.slice(5 * selectedPage - 5, 5 * selectedPage)
 }
+
+
+export function chengeArrayReview() {
+    if (!localStorage.getItem(`reviewsFilm${localStorage.getItem('filmID')}`)) {
+        arrayReviews.value.value = []
+    } else {
+        arrayReviews.value = []
+        let reviewNumbers = JSON.parse(localStorage.getItem(`reviewsFilm${localStorage.getItem('filmID')}`))
+        if (reviewNumbers) {
+            for (let i = 0; i < reviewNumbers.length; ++i) {
+                arrayReviews.value.push(JSON.parse(localStorage.getItem(`Rev.${reviewNumbers[i]}`)))
+            }
+        }
+
+        arrayReviews.value.sort(function (a) {
+            if (localStorage.getItem('logNAME')) {
+                if (a.Name == localStorage.getItem('logNAME')) {
+                    return -1;
+                }
+                else {
+                    return 1;
+                }
+            } else {
+                if (a.Name == localStorage.getItem('guestID')) {
+                    return -1;
+                }
+                else {
+                    return 1;
+                }
+            }
+        });
+    }
+
+    if (Math.ceil(arrayReviews.value.length / 5) == 1) {
+        pages.value = 0
+    } else {
+        pages.value = Math.ceil(arrayReviews.value.length / 5)
+    }
+}
