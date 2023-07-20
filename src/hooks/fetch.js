@@ -124,15 +124,15 @@ export function fetchMainTop() {
 
 const fetchsMainPage = async () => {
     await fetchFunc()
-    prevRespPremiers.value = response.value = response.value.data.items.slice(startSlice.value, endSlice.value)
+    prevRespPremiers.value = response.value.data.items.slice(startSlice.value, endSlice.value)
 
     fetchRequest.value = fetchTopNow + `1`
     await fetchFunc()
-    prevRespTop.value = response.value = response.value.data.films.slice(startSlice.value, endSlice.value)
+    prevRespTop.value = response.value.data.films.slice(startSlice.value, endSlice.value)
 
     fetchRequest.value = fetchBest + `1`
     await fetchFunc()
-    prevRespBest.value = response.value = response.value.data.films.slice(startSlice.value, endSlice.value)
+    prevRespBest.value =  response.value.data.films.slice(startSlice.value, endSlice.value)
 }
 
 
@@ -250,11 +250,6 @@ export async function openFilmOnSelfPage(revID) {
     }
 }
 
-export function lomka(revID) {
-    alert(revID)
-}
-
-
 import { IdFilmsArray, favPage } from '../hooks/favorite.js'
 
 export function fetchFavFilms() {
@@ -262,7 +257,7 @@ export function fetchFavFilms() {
     whatPageRequest.value = 'fav'
     X_API_KEY.value = oneMore_X_API_KEY
     responseFavFilms.value = []
-    let trheeFilms;
+    let trheeFilms = [];
 
     IdFilmsArray.value = JSON.parse(localStorage.getItem(`favorite.${localStorage.getItem('logNAME')}`))
 
