@@ -1,6 +1,6 @@
 <template>
     <TransitionGroup name="reviews-list">
-        <div class="oneRev" v-for="(oneRev, index) in fiveRev" :key="oneRev.ID">
+        <div class="oneRev" v-for="(oneRev, index) in fiveRev" :key="oneRev.reviewID">
             <div class="reviews__header">
                 <div class="name_user">{{ oneRev.Name }}</div>
                 <div class="rev__id_film hidden">{{ oneRev.ID }}</div>

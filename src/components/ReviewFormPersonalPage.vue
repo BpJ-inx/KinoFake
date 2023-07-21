@@ -1,6 +1,6 @@
 <template>
     <transition-group name="reviews-list">
-        <div class="reviews__place" v-for="(review, index) in fiveRev" :key="review.ID">
+        <div class="reviews__place" v-for="(review, index) in fiveRev" :key="review.reviewID">
             <div class="review">
                 <div class="review__header">
                     <a class="review__header__name_film" @click="openFilmOnSelfPage(review.ID)">"{{ review.FilmName }}"</a>

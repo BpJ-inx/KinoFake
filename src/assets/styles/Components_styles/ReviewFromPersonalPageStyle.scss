@@ -54,11 +54,21 @@
     font-size: 15px;
 }
 
+.reviews-list-move,
+.reviews-list-enter-active,
 .reviews-list-leave-active {
     transition: all 0.4s ease;
 }
 
+.reviews-list-enter-from {
+    opacity: 0;
+    transform: translateY(-50px);
+    order: 1;
+}
+
 .reviews-list-leave-to {
     opacity: 0;
+    order: 2;
     transform: translateX(-50px);
+
 }
