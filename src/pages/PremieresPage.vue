@@ -1,5 +1,5 @@
 <template >
-  <h1 class="header">Премьеры в этом месяце :</h1>
+  <h1 class="header">Premieres this month :</h1>
 
   <spinner v-if="!isLoaded"></spinner>
 

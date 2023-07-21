@@ -1,5 +1,5 @@
 <template >
-  <h1 class="header">Популярные сейчас :</h1>
+  <h1 class="header">Popular now :</h1>
 
   <spinner v-if="!isLoaded"></spinner>
 

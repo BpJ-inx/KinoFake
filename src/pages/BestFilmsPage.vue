@@ -1,9 +1,9 @@
 <template >
-  <h1 class="header">Лучшие за все время :</h1>
+  <h1 class="header">Best of all time :</h1>
 
   <spinner v-if="!isLoaded"></spinner>
 
-  <div v-if="isLoaded" class="resSearchFiveFilms hidden flex-wrap gap-7 items-center align-top">
+  <div v-if="isLoaded" class="resSearchFiveFilms flex flex-wrap gap-7 items-center align-top">
 
     <FilmsFormWithoutRating :responseFilms="responseFilms">
     </FilmsFormWithoutRating>

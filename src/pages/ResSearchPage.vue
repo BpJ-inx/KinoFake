@@ -1,5 +1,5 @@
 <template>
-    <h1 class="header">Результаты по вашему запросу :</h1>
+    <h1 class="header">Results for your request :</h1>
 
     <div v-if="!isErrorSearch">
         <spinner v-if="!isLoaded"></spinner>
