@@ -20,7 +20,7 @@ export default {
     name: 'cookieask',
 
     mounted() {
-        if (!isCookie) {
+        if (isCookie) {
             document.querySelector('body').classList.add('overflow-hidden')
         }
         localStorage.setItem('freeIDUser', 0)
