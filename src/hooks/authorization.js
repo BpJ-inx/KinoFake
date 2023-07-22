@@ -5,6 +5,7 @@ import { encryptPass } from './registration'
 
 export const errorType = ref('')
 export const ifErrorData = ref(false)
+export const isCookie = ref(false)
 
 localStorage.setItem('1', '22a')
 localStorage.setItem(`favorite.1`, JSON.stringify([]))
@@ -129,4 +130,12 @@ export function exitFromProfile() {
 
 export {
     isAutho
+}
+
+export function checkGuest() {
+    if (document.cookie.match('cookie__user_id')) {
+        isCookie.value = false
+    } else {
+        isCookie.value = true
+    }
 }

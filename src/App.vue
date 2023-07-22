@@ -1,4 +1,5 @@
 <template>
+  <cookieAsk v-if="isCookie"></cookieAsk>
   <header>
     <navbar></navbar>
   </header>
@@ -14,31 +15,22 @@
 
 <script>
 import AuthoAndRegForm from './components/AuthoAndRegForm.vue'
+import CookieAsk from './components/cookieAsk.vue'
+import { isCookie, checkGuest } from './hooks/authorization.js'
+
 export default {
   components: {
     AuthoAndRegForm,
+    CookieAsk
   },
   mounted() {
-    localStorage.setItem('freeIDUser', 0) 
-
-    if (localStorage.getItem('guestID') || document.cookie.match(new RegExp("(?:^|; )" + 'cookie__user_id'.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"))) {
-      localStorage.setItem('guestID', `guest${document.cookie.match(new RegExp("(?:^|; )" + 'cookie__user_id'.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"))[1]}`)
-    }
-
-    if (!document.cookie.match(new RegExp("(?:^|; )" + 'cookie__user_id'.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"))) {
-      let freeIDUser = localStorage.getItem('freeIDUser')
-      let ask = confirm("We use cookies. Its OK?")
-      if (ask) {
-        document.cookie = (`cookie__user_id= ${freeIDUser}`)
-        localStorage.setItem('guestID', `guest${document.cookie.match(new RegExp("(?:^|; )" + 'cookie__user_id'.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"))[1]}`)
-        localStorage.setItem(`reviews.${localStorage.getItem('guestID')}`,JSON.stringify([]))
-        localStorage.setItem('freeIDUser', +localStorage.getItem('freeIDUser') + 1)
-      } else {
-        localStorage.removeItem('guestID')
-      }
-    }
-
+    checkGuest()
   },
+  setup(){
+    return{
+      isCookie
+    }
+  }
 }
 </script>
 
