@@ -11,14 +11,12 @@
                 <div class="reviews">
 
                     <div class="pagination_place">
-                        <upaginationreviews 
-                        :pages="pages">
+                        <upaginationreviews :pages="pages">
                         </upaginationreviews>
                     </div>
 
                     Reviews :
-                    <ReviewFormPersonalPage 
-                    :arrayReviews="arrayReviews">
+                    <ReviewFormPersonalPage :arrayReviews="arrayReviews">
                     </ReviewFormPersonalPage>
 
                 </div>
@@ -32,14 +30,12 @@
 
                 <spinner v-if="!isLoaded"></spinner>
                 <div class="pagination_place" v-if="isLoaded">
-                    <upaginationfavorites 
-                    :favPages="favPages">
+                    <upaginationfavorites :favPages="favPages">
                     </upaginationfavorites>
                 </div>
 
                 <div class="favorites__place  flex flex-wrap   align-top" v-if="isLoaded">
-                    <ByIdSearchedFilmsForm 
-                    :responseFavFilms="responseFavFilms">
+                    <ByIdSearchedFilmsForm :responseFavFilms="responseFavFilms">
                     </ByIdSearchedFilmsForm>
 
                 </div>
@@ -69,15 +65,15 @@ export default {
     },
     beforeUpdate() {
         if (Math.ceil(this.arrayReviews.length / 5) == 1) {
-            // this.pages = 0
-            this.pages = Math.ceil(this.arrayReviews.length / 5)
+            this.pages = 0
+
         } else {
             this.pages = Math.ceil(this.arrayReviews.length / 5)
         }
 
         if (Math.ceil(this.IdFilmsArray.length / 3) == 1) {
-            // this.favPages = 0
-            this.favPages = Math.ceil(this.IdFilmsArray.length / 3)
+            this.favPages = 0
+
         } else {
             this.favPages = Math.ceil(this.IdFilmsArray.length / 3)
         }
@@ -86,15 +82,15 @@ export default {
     beforeMount() {
         this.arrayReviews = this.responseReviews
         if (Math.ceil(this.arrayReviews.length / 5) == 1) {
-            // this.pages = 0
-            this.pages = Math.ceil(this.arrayReviews.length / 5)
+            this.pages = 0
+
         } else {
             this.pages = Math.ceil(this.arrayReviews.length / 5)
         }
 
         if (Math.ceil(this.IdFilmsArray.length / 3) == 1) {
-            // this.favPages = 0
-            this.favPages = Math.ceil(this.IdFilmsArray.length / 3)
+            this.favPages = 0
+
         } else {
             this.favPages = Math.ceil(this.IdFilmsArray.length / 3)
         }
