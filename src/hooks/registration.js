@@ -111,7 +111,7 @@ function createNewAcc() {
 
         hideMenuAfterLogin()
         switchForm()
-        changeAutho()
+        changeAuth()
         localStorage.setItem(`favorite.${localStorage.getItem('logNAME')}`, JSON.stringify([]))
         localStorage.setItem(`reviews.${localStorage.getItem('logNAME')}`, JSON.stringify([]))
         router.replace('/personal')

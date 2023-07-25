@@ -102,22 +102,18 @@
 }
 
 .buttonFav {
+    display: flex;
     align-self: center;
-    width: 230px;
     justify-content: center;
-    padding: 14px;
-    font-size: 15px;
-    font-weight: 600;
     border-radius: 1000px;
-    background: linear-gradient(135deg, #0a0a0a 69.93%, #3b3b3b);
+    background:  #2c2b2f;
     transition: all 0.5s ease;
-    margin-bottom: 10px;
 }
 
 .buttonFav:hover {
-    -webkit-transform: scale(1.05);
-    -ms-transform: scale(1.05);
-    transform: scale(1.05);
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 

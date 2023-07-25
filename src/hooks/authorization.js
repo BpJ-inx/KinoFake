@@ -24,7 +24,7 @@ export function changeAuth() {
 }
 
 export function checkAuth() {
-    if (localStorage.getItem('logNAME')) {
+    if (isAuth.value) {
 
         document.querySelector('.menu__Personal_page').addEventListener('click', router.replace('/personal'))
 

@@ -114,8 +114,8 @@ export function removeReview(index, arrayRevs, oneRev) {
     }
 
     if (Math.ceil(arrayReviews.value.length / 5) == 1) {
-        // pages.value = 0
-        pages.value = Math.ceil(arrayReviews.value.length / 5)
+        pages.value = 0
+ 
     } else {
         pages.value = Math.ceil(arrayReviews.value.length / 5)
     }
