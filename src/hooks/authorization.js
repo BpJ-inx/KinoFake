@@ -118,8 +118,9 @@ export function exitFromProfile() {
     document.querySelector('.menu__Personal_page').innerHTML = 'Sign In'
     document.querySelector('.menu__exit').classList.replace('block', 'hidden')
     changeAuth()
-    for (let i = 0; i < document.querySelectorAll('.fav__star').length; ++i) {
-        document.querySelectorAll('.fav__star')[i].style.display = 'none'
+    let allFavStar =  document.querySelectorAll('.fav__star')
+    for (let i = 0; i <allFavStar.length; ++i) {
+        allFavStar[i].style.display = 'none'
     }
     router.replace('/')
 }

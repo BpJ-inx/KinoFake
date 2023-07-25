@@ -51,6 +51,8 @@ import ByIdSearchedFilmsForm from '../components/ByIdSearchedFilmsForm.vue'
 import ReviewFormPersonalPage from '../components/ReviewFormPersonalPage.vue';
 import { arrayReviews, fiveRev, page, pages } from '../hooks/reviews.js'
 import { IdFilmsArray, favPage, favPages } from '../hooks/favorite.js'
+import { isAuth } from '../hooks/authorization';
+import router from '../router/router'
 
 export default {
     data() {
@@ -78,42 +80,45 @@ export default {
             this.favPages = Math.ceil(this.IdFilmsArray.length / 3)
         }
     },
-
     beforeMount() {
-        this.arrayReviews = this.responseReviews
-        if (Math.ceil(this.arrayReviews.length / 5) == 1) {
-            this.pages = 0
+        if (isAuth.value) {
+            this.arrayReviews = this.responseReviews
+            if (Math.ceil(this.arrayReviews.length / 5) == 1) {
+                this.pages = 0
 
-        } else {
-            this.pages = Math.ceil(this.arrayReviews.length / 5)
+            } else {
+                this.pages = Math.ceil(this.arrayReviews.length / 5)
+            }
+
+            if (Math.ceil(this.IdFilmsArray.length / 3) == 1) {
+                this.favPages = 0
+
+            } else {
+                this.favPages = Math.ceil(this.IdFilmsArray.length / 3)
+            }
         }
-
-        if (Math.ceil(this.IdFilmsArray.length / 3) == 1) {
-            this.favPages = 0
-
-        } else {
-            this.favPages = Math.ceil(this.IdFilmsArray.length / 3)
-        }
-
-
 
     },
     setup() {
-        const { responseFavFilms } = fetchFavFilms()
-        const { responseReviews } = fetchRev()
+        if (!isAuth.value) {
+            router.replace('/')
+        } else {
+            const { responseFavFilms } = fetchFavFilms()
+            const { responseReviews } = fetchRev()
+            return {
+                responseFavFilms,
+                responseReviews,
+                arrayReviews,
+                fiveRev,
+                pages,
+                page,
+                IdFilmsArray,
+                favPage,
+                favPages,
+                isLoaded,
+                isAuth
 
-        return {
-            responseFavFilms,
-            responseReviews,
-            arrayReviews,
-            fiveRev,
-            pages,
-            page,
-            IdFilmsArray,
-            favPage,
-            favPages,
-            isLoaded
-
+            }
         }
     }
 };
