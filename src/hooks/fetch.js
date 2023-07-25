@@ -258,15 +258,15 @@ import { IdFilmsArray, favPage } from '../hooks/favorite.js'
 
 export function fetchFavFilms() {
 
-    isLoaded.value = false
-    X_API_KEY.value = favorite_movies_X_API_KEY
-    responseFavFilms.value = []
-
+    isLoaded.value = false;
+    X_API_KEY.value = favorite_movies_X_API_KEY;
+    responseFavFilms.value = [];
+    IdFilmsArray.value = [];
     let trheeFilms = [];
 
     IdFilmsArray.value = JSON.parse(localStorage.getItem(`favorite.${localStorage.getItem('logNAME')}`))
 
-    if (favPage.value == 1) {
+    if (favPage.value == 0) {
         trheeFilms = IdFilmsArray.value.slice(0, 3)
     } else {
         trheeFilms = IdFilmsArray.value.slice(3 * favPage.value - 3, 3 * favPage.value)
@@ -279,6 +279,7 @@ export function fetchFavFilms() {
 
             responseFavFilms.value = [...responseFavFilms.value,
             responseFromServer.value.data]
+
         });
 
     }

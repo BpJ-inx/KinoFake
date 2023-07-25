@@ -66,6 +66,7 @@ export default {
         ReviewFormPersonalPage
     },
     beforeUpdate() {
+
         if (Math.ceil(this.arrayReviews.length / 5) == 1) {
             this.pages = 0
 
@@ -81,6 +82,7 @@ export default {
         }
     },
     beforeMount() {
+
         if (isAuth.value) {
             this.arrayReviews = this.responseReviews
             if (Math.ceil(this.arrayReviews.length / 5) == 1) {
@@ -95,10 +97,12 @@ export default {
 
             } else {
                 this.favPages = Math.ceil(this.IdFilmsArray.length / 3)
+
             }
         }
 
     },
+
     setup() {
         if (!isAuth.value) {
             router.replace('/')
