@@ -93,7 +93,5 @@ export function toPage(selectedPage) {
 export function chengeColorStarButIfFav() {
     if (isFav == true) {
         document.querySelector('.star_but').style.fill = 'red'
-    }else{
-        document.querySelector('.star_but').style.fill = '#2c2b2f'
     }
 }

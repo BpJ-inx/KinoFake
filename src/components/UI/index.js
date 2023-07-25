@@ -10,6 +10,14 @@ import UTextareaReview from './textarea/utextareareview.vue'
 import UPaginationReviews from './pagination/upaginationreviews.vue'
 import UPaginationFavorites from './pagination/upaginationfavorites.vue'
 import URemoveReviewBut from './button/URemoveReviewBut.vue'
+import UStarOnBut from './svg/UStarOnBut.vue'
+import ULoupeOnBut from './svg/ULoupeOnBut.vue'
+import ULoupe from './svg/ULoupe.vue'
+import UBigCross from './svg/UBigCross.vue'
+import UCrossOnCard from './svg/UCrossOnCard.vue'
+import UStarOnCard from './svg/UStarOnCard.vue'
+import UCrossOnBut from './svg/UCrossOnBut.vue'
+import URightArrow from './svg/URightArrow.vue'
 
 
 
@@ -26,6 +34,13 @@ export default[
     UPaginationReviews,
     UPaginationFavorites,
     URemoveReviewBut,
-    
+    UStarOnBut,
+    ULoupeOnBut,
+    ULoupe,
+    UBigCross,
+    UCrossOnCard,
+    UStarOnCard,
+    UCrossOnBut,
+    URightArrow,
     
 ]
