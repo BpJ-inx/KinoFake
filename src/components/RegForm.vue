@@ -44,9 +44,8 @@
 </template>
 
 <script>
-import { switchForm, easyValidation, startListenerEnterBut } from '../../../hooks/registration.js'
+import { switchForm, easyValidation, startListenerEnterBut } from '../hooks/registration.js'
 export default {
-    name: 'regform',
     mounted() {
         startListenerEnterBut()
     },
@@ -63,5 +62,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../../assets/styles/UI_styles/URegFormStyle.scss';
+@import '../assets/styles/Components_styles/RegFormStyle.scss';
 </style>

@@ -6,7 +6,7 @@
 
   <main>
     <router-view></router-view>
-    <AuthoAndRegForm></AuthoAndRegForm>
+    <AuthAndRegForm></AuthAndRegForm>
   </main>
 
   <footer class="flex h-20">
@@ -14,20 +14,20 @@
 </template>
 
 <script>
-import AuthoAndRegForm from './components/AuthoAndRegForm.vue'
+import AuthAndRegForm from './components/AuthAndRegForm.vue'
 import CookieAsk from './components/cookieAsk.vue'
 import { isCookie, checkGuest } from './hooks/authorization.js'
 
 export default {
   components: {
-    AuthoAndRegForm,
+    AuthAndRegForm,
     CookieAsk
   },
   mounted() {
     checkGuest()
   },
-  setup(){
-    return{
+  setup() {
+    return {
       isCookie
     }
   }

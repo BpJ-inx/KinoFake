@@ -32,20 +32,19 @@
 
             <p class="">
                 No account?
-                <a class="switch__button cursor-pointer underline transition ease-in-out text-gray-400 hover:text-white" 
-                @click="switchForm">Sign up</a>
+                <a class="switch__button cursor-pointer underline transition ease-in-out text-gray-400 hover:text-white"
+                    @click="switchForm">Sign up</a>
             </p>
         </form>
     </div>
 </template>
 
 <script>
-import { checkProfile,startListenerEnterButAuth} from '../../../hooks/authorization'
-import {switchForm} from '../../../hooks/registration'
+import { checkProfile, startListenerEnterButAuth } from '../hooks/authorization.js'
+import { switchForm } from '../hooks/registration.js'
 
 export default {
-    name: 'authoform',
-    mounted(){
+    mounted() {
         startListenerEnterButAuth()
     },
     setup() {
@@ -60,5 +59,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../../assets/styles/UI_styles/UAuthoFormStyle.scss';
+@import '../assets/styles/Components_styles/AuthFormStyle.scss';
 </style>

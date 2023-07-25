@@ -10,10 +10,10 @@
         <h1 class="section_title_name">Registration/Authorization</h1>
       </div>
       <transition name="autho_reg_forms-trans">
-        <authoform class="form__authorization flex fixed mt-10" v-if="show"></authoform>
+        <AuthForm class="form__authorization flex fixed mt-10" v-if="show"></AuthForm>
       </transition>
       <transition name="autho_reg_forms-trans">
-        <regform class="form__registration flex fixed mt-10" v-if="!show"></regform>
+        <RegForm class="form__registration flex fixed mt-10" v-if="!show"></RegForm>
       </transition>
       <transition name="data_error-trans">
         <data-error v-if="ifErrorData"></data-error>
@@ -25,6 +25,8 @@
 </template>
   
 <script>
+import AuthForm from './AuthForm.vue';
+import RegForm from './RegForm.vue';
 import { Transition } from 'vue';
 import DataError from '../components/DataError.vue'
 import { show } from '../hooks/registration.js'
@@ -33,7 +35,9 @@ import { ifErrorData } from '../hooks/authorization.js'
 export default {
   components: {
     Transition,
-    DataError
+    DataError,
+    AuthForm,
+    RegForm
   },
   setup() {
     return {
@@ -46,5 +50,5 @@ export default {
 </script>
   
 <style lang="scss" scoped>
-@import '../assets/styles/Components_styles/AuthoAndRegFormStyle.scss';
+@import '../assets/styles/Components_styles/AuthAndRegFormStyle.scss';
 </style>

@@ -4,8 +4,6 @@ import Spinner from './Spinner.vue'
 import SearchError from "../SearchError.vue"
 import UButton from '../UI/button/UButton.vue'
 import ULogoBut from './button/ulogobut.vue'
-import UAuthoForm from './forms/uauthoform.vue'
-import URegForm from './forms/uregform.vue'
 import UTextareaReview from './textarea/utextareareview.vue'
 import UPaginationReviews from './pagination/upaginationreviews.vue'
 import UPaginationFavorites from './pagination/upaginationfavorites.vue'
@@ -21,15 +19,13 @@ import URightArrow from './svg/URightArrow.vue'
 
 
 
-export default[
+export default [
     Navbar,
     USearchInput,
     Spinner,
     SearchError,
     UButton,
     ULogoBut,
-    UAuthoForm,
-    URegForm,
     UTextareaReview,
     UPaginationReviews,
     UPaginationFavorites,
@@ -42,5 +38,5 @@ export default[
     UStarOnCard,
     UCrossOnBut,
     URightArrow,
-    
+
 ]
