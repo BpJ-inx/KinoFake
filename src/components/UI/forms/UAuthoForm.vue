@@ -40,19 +40,19 @@
 </template>
 
 <script>
-import { checkProfile,startListenerEnterButAutho} from '../../../hooks/authorization'
+import { checkProfile,startListenerEnterButAuth} from '../../../hooks/authorization'
 import {switchForm} from '../../../hooks/registration'
 
 export default {
     name: 'authoform',
     mounted(){
-        startListenerEnterButAutho()
+        startListenerEnterButAuth()
     },
     setup() {
         return {
             checkProfile,
             switchForm,
-            startListenerEnterButAutho,
+            startListenerEnterButAuth,
         }
     },
 

@@ -22,7 +22,7 @@
                     </svg>
                 </div>
 
-                <button class="buttonFav cursor-pointer" v-if="isAutho" @click="addFavoriteFilm"> {{ nameFavBut }}</button>
+                <button class="buttonFav cursor-pointer" v-if="isAuth" @click="addFavoriteFilm"> {{ nameFavBut }}</button>
                 <button class="buttonOnKinoPoisk cursor-pointer" @click="openFilmOnKP">Open on КиноПоиске</button>
             </div>
 
@@ -68,7 +68,7 @@
 
 <script>
 import { changeRating } from '../hooks/show';
-import { isAutho } from '../hooks/authorization.js'
+import { isAuth } from '../hooks/authorization.js'
 import { addFavoriteFilm, checkIsFav, isFav, nameFavBut } from '../hooks/favorite.js'
 import { addReview, arrayReviews, pages,chengeArrayReview } from '../hooks/reviews.js'
 import { isLoaded } from '../hooks/fetch.js'
@@ -101,7 +101,7 @@ export default {
         checkIsFav()
         return {
             changeRating,
-            isAutho,
+            isAuth,
             addFavoriteFilm,
             isFav,
             checkIsFav,

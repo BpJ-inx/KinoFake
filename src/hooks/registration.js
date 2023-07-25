@@ -1,5 +1,5 @@
 import router from '../router/router'
-import { changeButtons, hideMenuAfterLogin, changeAutho } from '../hooks/authorization.js'
+import {  hideMenuAfterLogin, changeAuth } from '../hooks/authorization.js'
 import { ref } from 'vue'
 import { errorType, ifErrorData } from '../hooks/authorization.js'
 
@@ -108,7 +108,7 @@ function createNewAcc() {
         document.querySelector('.input__login_reg').value = ''
         document.querySelector('.input__password_reg').value = ''
 
-        changeButtons()
+
         hideMenuAfterLogin()
         switchForm()
         changeAutho()

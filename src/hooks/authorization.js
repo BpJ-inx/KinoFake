@@ -6,23 +6,24 @@ import { encryptPass } from './registration'
 export const errorType = ref('')
 export const ifErrorData = ref(false)
 export const isCookie = ref(false)
+export const isAuth = ref(false)
 
 localStorage.setItem('1', '22a')
 localStorage.setItem(`favorite.1`, JSON.stringify([]))
 localStorage.setItem('reviews.1', JSON.stringify([]))
 localStorage.setItem('logNAME', '')
 
-let isAutho = false
 
-export function changeAutho() {
-    if (isAutho == false) {
-        isAutho = true
+
+export function changeAuth() {
+    if (isAuth.value == false) {
+        isAuth.value = true
     } else {
-        isAutho = false
+        isAuth.value = false
     }
 }
 
-export function authorizationСheck() {
+export function checkAuth() {
     if (localStorage.getItem('logNAME')) {
 
         document.querySelector('.menu__Personal_page').addEventListener('click', router.replace('/personal'))
@@ -43,8 +44,7 @@ export function checkProfile() {
 
         hideMenuAfterLogin()
         clearInputs()
-        changeButtons()
-        changeAutho()
+        changeAuth()
         return router.replace('/personal');
 
 
@@ -76,10 +76,6 @@ export function hideMenuAfterLogin() {
         document.querySelector('body').classList.remove('overflow-hidden')
 }
 
-export function changeButtons() {
-    document.querySelector('.menu__Personal_page').innerHTML = 'Personal page'
-    document.querySelector('.menu__exit').classList.replace('hidden', 'block')
-}
 
 function showMenu() {
     document.querySelector('.autho_reg_place').classList.replace("hidden", "flex")
@@ -103,7 +99,7 @@ function hideMenuOnclick() {
     })
 }
 
-export function startListenerEnterButAutho() {
+export function startListenerEnterButAuth() {
     document.querySelector('.input__login').addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
             document.querySelector('.input__password').focus()
@@ -121,15 +117,11 @@ export function exitFromProfile() {
     localStorage.setItem('logNAME', '')
     document.querySelector('.menu__Personal_page').innerHTML = 'Sign In'
     document.querySelector('.menu__exit').classList.replace('block', 'hidden')
-    changeAutho()
+    changeAuth()
     for (let i = 0; i < document.querySelectorAll('.fav__star').length; ++i) {
         document.querySelectorAll('.fav__star')[i].style.display = 'none'
     }
     router.replace('/')
-}
-
-export {
-    isAutho
 }
 
 export function checkGuest() {

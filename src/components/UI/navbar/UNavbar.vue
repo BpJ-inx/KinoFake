@@ -23,14 +23,25 @@
             <usearchinputapi class="mt-1 lg:p-2 py-2 px-0 mr-20">
             </usearchinputapi>
           </li>
-          <li>
-            <ubutton class="menu__Personal_page mt-3 lg:p-2 py-2 px-0 block mr-5" @click="authorizationСheck">Sign In
+
+
+          <li v-if="!isAuth">
+            <ubutton class="menu__Personal_page mt-3 lg:p-2 py-2 px-0 block mr-5" @click="checkAuth">Sign In
             </ubutton>
           </li>
-          <li>
-            <ubutton class="menu__exit hidden mt-3 lg:p-2 py-2 px-0  mr-1" @click="exitFromProfile">Exit
-            </ubutton>
-          </li>
+
+          <div class="flex" v-else>
+            <li>
+              <ubutton class="menu__Personal_page mt-3 lg:p-2 py-2 px-0 block mr-5" @click="checkAuth">Personal
+                Page
+              </ubutton>
+            </li>
+            <li>
+              <ubutton class="menu__exit block mt-3 lg:p-2 py-2 px-0  mr-1" @click="exitFromProfile">Exit
+              </ubutton>
+            </li>
+          </div>
+
         </ul>
       </nav>
     </div>
@@ -39,7 +50,7 @@
 
 <script>
 
-import { authorizationСheck , exitFromProfile } from '.././../../hooks/authorization.js'
+import { checkAuth, exitFromProfile, isAuth } from '.././../../hooks/authorization.js'
 
 export default {
   name: 'navbar',
@@ -57,14 +68,15 @@ export default {
   },
   methods: {
 
-  
+
   },
 
   setup() {
-    
+
     return {
-      authorizationСheck,
+      checkAuth,
       exitFromProfile,
+      isAuth
     }
   }
 }
