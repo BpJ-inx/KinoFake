@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
         <form class="form">
-            <p class="header__autho_form mb-2 mt-2">Sign in to your account</p>
+            <div class="header__autho_form">Sign in to your account</div>
 
             <div class="">
                 <label class="input_field_names ">Login:</label>

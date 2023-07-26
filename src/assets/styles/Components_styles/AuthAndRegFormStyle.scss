@@ -13,10 +13,11 @@
     height: 100%;
     width: 30vw;
     align-items: center;
-    background-color: #101011;
+    background-color: #000000d6;
     color: black;
     z-index: 101;
     overflow: hidden;
+    
 }
 
 .empty_window {
@@ -38,7 +39,6 @@
     .autho_reg {
         position: absolute;
         width: 100%;
-        // height: 60.7%;
         max-height: 482px;
     }
 }
@@ -50,9 +50,10 @@
     line-height: 24px;
     font-family: Tahoma, Arial, Verdana, sans-serif;
     letter-spacing: 1px;
-    background-color: #3b3a3d;
     width: 100%;
     justify-content: center;
+    color: rgb(203, 203, 203);
+    box-shadow: 2px 2px 2px white;
 }
 
 .section_title_name {
@@ -74,8 +75,6 @@
   .cancel:hover {
     background-color: #515151;
   }
-
-
   
 .autho_reg_forms-trans-enter-active,
 .autho_reg_forms-trans-leave-active {
