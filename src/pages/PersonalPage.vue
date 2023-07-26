@@ -1,7 +1,5 @@
 <template >
-    <div class=''>
-        <h1 class="header">Personal page :</h1>
-
+    <div class='mt-24'>
         <div class="wrapper flex justify-between mt-7">
             <div class="w-full">
                 <div class="person__name">
