@@ -16,7 +16,7 @@
 <script>
 import AuthAndRegForm from './components/AuthAndRegForm.vue'
 import CookieAsk from './components/cookieAsk.vue'
-import { isCookie, checkGuest } from './hooks/authorization.js'
+import { isCookie, checkGuest, autoAuth } from './hooks/authorization.js'
 
 export default {
   components: {
@@ -25,6 +25,7 @@ export default {
   },
   mounted() {
     checkGuest()
+    autoAuth()
   },
   setup() {
     return {

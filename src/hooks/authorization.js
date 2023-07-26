@@ -11,7 +11,8 @@ export const isAuth = ref(false)
 localStorage.setItem('1', '22a')
 localStorage.setItem(`favorite.1`, JSON.stringify([]))
 localStorage.setItem('reviews.1', JSON.stringify([]))
-localStorage.setItem('logNAME', '')
+
+
 
 
 
@@ -23,12 +24,16 @@ export function changeAuth() {
     }
 }
 
+export function autoAuth(){
+    if(localStorage.getItem('logNAME')){
+        changeAuth()
+    }
+}
+
 export function checkAuth() {
+
     if (isAuth.value) {
-
         document.querySelector('.menu__Personal_page').addEventListener('click', router.replace('/personal'))
-
-
     } else {
         document.querySelector('.menu__Personal_page').addEventListener('click', showMenu())
     }
@@ -118,8 +123,8 @@ export function exitFromProfile() {
     document.querySelector('.menu__Personal_page').innerHTML = 'Sign In'
     document.querySelector('.menu__exit').classList.replace('block', 'hidden')
     changeAuth()
-    let allFavStar =  document.querySelectorAll('.fav__star')
-    for (let i = 0; i <allFavStar.length; ++i) {
+    let allFavStar = document.querySelectorAll('.fav__star')
+    for (let i = 0; i < allFavStar.length; ++i) {
         allFavStar[i].style.display = 'none'
     }
     router.replace('/')
