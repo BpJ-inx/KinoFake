@@ -53,7 +53,7 @@
     width: 100%;
     justify-content: center;
     color: rgb(203, 203, 203);
-    box-shadow: 2px 2px 2px white;
+    box-shadow: 0px 1px 1px white;
 }
 
 .section_title_name {
@@ -70,6 +70,7 @@
     background-color: #404040;
     cursor: pointer;
     transition: ease-out all 0.5s;
+    box-shadow:inset rgba(0, 0, 0, 0.5) -8px -8px 18px 5px;
   }
   
   .cancel:hover {
