@@ -50,8 +50,8 @@ export function easyValidation() {
 
 
         ifErrorData.value = true
-        errorType.value = 'Login is short'
-        setTimeout(() => { ifErrorData.value = false }, 1000)
+        errorType.value = 'Login must contain more than 3 symbols'
+        setTimeout(() => { ifErrorData.value = false }, 4000)
         document.querySelector('.input__login_reg').focus()
         return
     }
@@ -61,8 +61,8 @@ export function easyValidation() {
             document.querySelector('.input__password_reg').value = '';
 
             ifErrorData.value = true
-            errorType.value = 'Password not secure'
-            setTimeout(() => { ifErrorData.value = false }, 1000)
+            errorType.value = `Password must be at least 6 symbols long and contain uppercase, lowercase letters and numbers`
+            setTimeout(() => { ifErrorData.value = false }, 4000)
             document.querySelector('.input__password_reg').focus()
 
             return
@@ -72,8 +72,8 @@ export function easyValidation() {
         document.querySelector('.input__password_reg').value = '';
 
         ifErrorData.value = true
-        errorType.value = 'Password not secure'
-        setTimeout(() => { ifErrorData.value = false }, 1000)
+        errorType.value = 'Password must be at least 6 symbols long and contain uppercase, lowercase letters and numbers'
+        setTimeout(() => { ifErrorData.value = false }, 4000)
         document.querySelector('.input__password_reg').focus()
 
 
@@ -86,8 +86,8 @@ export function easyValidation() {
         document.querySelector('.input__password_reg').value = '';
 
         ifErrorData.value = true
-        errorType.value = 'Password not secure'
-        setTimeout(() => { ifErrorData.value = false }, 1000)
+        errorType.value = 'Password must be at least 6 symbols long and contain uppercase, lowercase letters and numbers'
+        setTimeout(() => { ifErrorData.value = false }, 4000)
         document.querySelector('.input__password_reg').focus()
 
         return

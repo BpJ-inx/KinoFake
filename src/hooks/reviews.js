@@ -131,7 +131,7 @@ export function toPage(selectedPage) {
 
 export function chengeArrayReview() {
     if (!localStorage.getItem(`reviewsFilm${localStorage.getItem('filmID')}`)) {
-        arrayReviews.value.value = []
+        arrayReviews.value = []
     } else {
         arrayReviews.value = []
         let reviewNumbers = JSON.parse(localStorage.getItem(`reviewsFilm${localStorage.getItem('filmID')}`))

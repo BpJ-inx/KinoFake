@@ -5,7 +5,6 @@
 
             <div class="">
                 <label class="input_field_names ">Login:</label>
-                <div class="recommendations w-72 ">(Login must contain more than 3 symbols)</div>
                 <div class="">
                     <input class="inputs input__login_reg text-sm rounded-lg  block w-72  p-2.5 px-5 
              dark:bg-gray-700  dark:placeholder-gray-400 text-white" placeholder="Create login" />
@@ -15,13 +14,9 @@
 
             <div class="mb-2">
                 <label for="password" class="input_field_names ">Password:</label>
-                <div class="recommendations  w-72">
-                    (Password must be at least 6 characters long and
-                    contain uppercase, lowercase letters and numbers)
-                </div>
                 <div class="">
                     <input type="password" class="inputs input__password_reg text-sm rounded-lg  block w-72  p-2.5 px-5 
-             dark:bg-gray-700  dark:placeholder-gray-400 text-white" placeholder="••••••" />
+             dark:bg-gray-700  dark:placeholder-gray-400 text-white" placeholder="Create password" />
 
                 </div>
             </div>
