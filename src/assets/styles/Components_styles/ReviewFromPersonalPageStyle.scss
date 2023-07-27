@@ -3,6 +3,7 @@
     justify-content: center;
     width: 100%;
     order: 1;
+    padding-inline: 20px;
 }
 
 .review {
@@ -33,6 +34,10 @@
     font-size: 25px;
     height: 100%;
     cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
 }
 
 .review__header__button_remove {
