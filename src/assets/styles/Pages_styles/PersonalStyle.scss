@@ -1,25 +1,20 @@
-.person__name,
+.personal_page__user_name,
 .favorites,
 .reviews {
     display: flex;
     font-family: Tahoma, Arial, Verdana, sans-serif;
     font-size: 25px;
     padding: 10px;
-    
+    flex-direction: column;
+    align-self: center;
 
 }
 
+.favorites,
 .reviews {
-    display: flex;
-    flex-direction: column;
-    align-self: center;
+    width: 100%;
 }
 
-.favorites {
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-}
 
 @media (max-width: 1024px) {
     .wrapper {
@@ -45,7 +40,7 @@
     order: 1;
 }
 
-.personal_page__category_name{
+.personal_page__category_name {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -56,7 +51,8 @@
 
 .empty_category {
     display: flex;
-    width: 500px;
+    width: 100%;
+    min-width: 353px;
     background-color: rgb(67, 67, 67);
     border: solid 1px white;
     border-radius: 0.75rem;

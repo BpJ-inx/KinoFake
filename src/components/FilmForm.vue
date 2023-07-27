@@ -1,6 +1,6 @@
 <template >
     <div class="filmPage flex-col justify-center flex">
-        <div class="aboutFilm h-auto " v-for="film in responseMove" :key="film.id">
+        <div class="aboutFilm h-auto" v-for="film in responseMove" :key="film.id">
 
             <div class="imgSide ">
                 <img class="posterFilm" :src="film.poster.previewUrl" @load="changeRating">

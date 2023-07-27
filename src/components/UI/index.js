@@ -16,6 +16,7 @@ import UCrossOnCard from './svg/UCrossOnCard.vue'
 import UStarOnCard from './svg/UStarOnCard.vue'
 import UCrossOnBut from './svg/UCrossOnBut.vue'
 import URightArrow from './svg/URightArrow.vue'
+import UProfileIconM1 from './svg/UProfileIconM1.vue'
 
 
 
@@ -38,5 +39,6 @@ export default [
     UStarOnCard,
     UCrossOnBut,
     URightArrow,
+    UProfileIconM1,
 
 ]

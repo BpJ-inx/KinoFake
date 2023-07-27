@@ -1,14 +1,17 @@
 <template >
-    <div class='mt-24 w-full'>
-        <div class="wrapper flex justify-between mt-7">
-            <div class="personal_info w-full">
-                <div class="person__name ">
-                    Name : {{ name }}
+    
+        <div class="wrapper flex justify-between mt-36 w-full ">
+            <div class="personal_page__user relative">
+                <div class="personal_page__user__img">
+                    <iconM1></iconM1>
+                </div>
+                <div class="personal_page__user_name">
+                    {{ name }}
                 </div>
             </div>
 
 
-            <div class="flex flex-col self-start w-full">
+            <div class="personal_page__categorys flex flex-col">
 
                 <div class="favorites">
 
@@ -34,14 +37,14 @@
                     <div class="flex justify-center m-auto" v-else>
                         <div class="empty_category  flex-col">
                             <div class="empty_category__header">There are no favorites films.</div>
-                            <div class="empty_category__body">By going to the page with the film, you can add it to your
-                                favorites.</div>
+                            <div class="empty_category__body">You can add film to your favorites on its page. 
+                        </div>
                         </div>
                     </div>
 
                 </div>
 
-                <div class="reviews w-full">
+                <div class="reviews">
                     <div class="personal_page__category_name ">Film reviews</div>
                     <div class="personal_page__content" v-if="anyReviews">
                         <div class="pagination_place">
@@ -56,14 +59,14 @@
                     <div class="flex justify-center m-auto" v-else>
                         <div class="empty_category  flex-col">
                             <div class="empty_category__header">Review list is empty.</div>
-                            <div class="empty_category__body">You can leave reviews on film pages.
+                            <div class="empty_category__body">You can write reviews on film pages.
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    
 </template>
   
 <script>
@@ -166,5 +169,22 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/styles/Pages_styles/PersonalStyle.scss';
 
+.personal_page__categorys{
+    width: 100%;
+}
+.personal_page__user {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
 
+.personal_page__user__img {
+    display: flex;
+    border-radius: 100%;
+    border: solid 2px black;
+    height: 300px;
+    width: 300px;
+}
 </style>
