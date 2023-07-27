@@ -4,6 +4,7 @@
     width: 100%;
     order: 1;
     padding-inline: 20px;
+    
 }
 
 .review {
@@ -15,6 +16,7 @@
     margin-bottom: 7px;
     border-radius: 0.5rem;
     order: 1;
+    box-shadow: 0.5px 0.5px 0.5px rgb(118, 118, 118)
 }
 
 
@@ -26,6 +28,7 @@
     padding-inline: 15px;
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
+    
 }
 
 .review__header__name_film {
@@ -37,6 +40,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    
 
 }
 

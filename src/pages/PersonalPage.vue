@@ -1,10 +1,12 @@
 <template >
     <div class='mt-24 w-full'>
         <div class="wrapper flex justify-between mt-7">
-
-            <div class="person__name w-full">
-                Name : {{ name }}
+            <div class="personal_info w-full">
+                <div class="person__name ">
+                    Name : {{ name }}
+                </div>
             </div>
+
 
             <div class="flex flex-col self-start w-full">
 
@@ -53,8 +55,8 @@
                     </div>
                     <div class="flex justify-center m-auto" v-else>
                         <div class="empty_category  flex-col">
-                            <div class="empty_category__header">Review list is empty</div>
-                            <div class="empty_category__body">You can leave reviews on film pages
+                            <div class="empty_category__header">Review list is empty.</div>
+                            <div class="empty_category__body">You can leave reviews on film pages.
                             </div>
                         </div>
                     </div>
@@ -95,8 +97,8 @@ export default {
     beforeMount() {
 
         if (isAuth.value) {
-                this.arrayReviews = this.responseReviews
-        this.pagintion()
+            this.arrayReviews = this.responseReviews
+            this.pagintion()
         }
         this.checkFavFilmsExist()
         this.checkRevFilmsExist()
@@ -164,25 +166,5 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/styles/Pages_styles/PersonalStyle.scss';
 
-.empty_category {
-    display: flex;
-    width: 500px;
-    background-color: rgb(67, 67, 67);
-    border: solid 1px white;
-    border-radius: 0.75rem;
-    padding: 20px;
-    box-shadow: inset 0 2px 10px 1px rgba(0, 0, 0, .3), inset 0 0 0 60px rgba(0, 0, 0, .3), 0 1px rgba(255, 255, 255, .08);
-}
 
-.empty_category__header {
-    font-family: Tahoma, Arial, Verdana, sans-serif;
-    font-size: 25px;
-    color: rgb(227, 227, 227);
-}
-
-.empty_category__body {
-    font-family: Tahoma, Arial, Verdana, sans-serif;
-    font-size: 15px;
-    color: rgb(151, 151, 151);
-}
 </style>
