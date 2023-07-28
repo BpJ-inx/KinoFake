@@ -1,78 +1,77 @@
 <template >
-    
-        <div class="wrapper flex justify-between mt-36 w-full ">
-            <div class="personal_page__user relative">
-                <div class="personal_page__user__img">
-                    <iconM1></iconM1>
+    <div class="wrapper flex justify-between mt-36 w-full ">
+        <div class="personal_page__user relative">
+            <div class="personal_page__user__img">
+                <IconProfile></IconProfile>
+            </div>
+            <div class="personal_page__user_name">
+                {{ name }}
+            </div>
+        </div>
+
+
+        <div class="personal_page__categorys flex flex-col">
+
+            <div class="favorites">
+
+                <div class="personal_page__category_name ">Favorites films
                 </div>
-                <div class="personal_page__user_name">
-                    {{ name }}
+
+                <div v-if="anyFavorites">
+                    <spinner v-if="!isLoaded"></spinner>
+
+                    <div class="personal_page__content" v-if="isLoaded">
+                        <div class="pagination_place">
+                            <upaginationfavorites :favPages="favPages">
+                            </upaginationfavorites>
+                        </div>
+
+                        <div class="favorites__place   flex flex-wrap   align-top">
+                            <ByIdSearchedFilmsForm :responseFavFilms="responseFavFilms">
+                            </ByIdSearchedFilmsForm>
+
+                        </div>
+                    </div>
                 </div>
+                <div class="flex justify-center m-auto" v-else>
+                    <div class="empty_category  flex-col">
+                        <div class="empty_category__header">There are no favorites films.</div>
+                        <div class="empty_category__body">You can add film to your favorites on its page.
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
-
-            <div class="personal_page__categorys flex flex-col">
-
-                <div class="favorites">
-
-                    <div class="personal_page__category_name ">Favorites films
+            <div class="reviews">
+                <div class="personal_page__category_name ">Film reviews</div>
+                <div class="personal_page__content" v-if="anyReviews">
+                    <div class="pagination_place">
+                        <upaginationreviews :pages="pages">
+                        </upaginationreviews>
                     </div>
 
-                    <div v-if="anyFavorites">
-                        <spinner v-if="!isLoaded"></spinner>
 
-                        <div class="personal_page__content" v-if="isLoaded">
-                            <div class="pagination_place">
-                                <upaginationfavorites :favPages="favPages">
-                                </upaginationfavorites>
-                            </div>
-
-                            <div class="favorites__place   flex flex-wrap   align-top">
-                                <ByIdSearchedFilmsForm :responseFavFilms="responseFavFilms">
-                                </ByIdSearchedFilmsForm>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex justify-center m-auto" v-else>
-                        <div class="empty_category  flex-col">
-                            <div class="empty_category__header">There are no favorites films.</div>
-                            <div class="empty_category__body">You can add film to your favorites on its page. 
-                        </div>
-                        </div>
-                    </div>
-
+                    <ReviewFormPersonalPage :arrayReviews="arrayReviews">
+                    </ReviewFormPersonalPage>
                 </div>
-
-                <div class="reviews">
-                    <div class="personal_page__category_name ">Film reviews</div>
-                    <div class="personal_page__content" v-if="anyReviews">
-                        <div class="pagination_place">
-                            <upaginationreviews :pages="pages">
-                            </upaginationreviews>
-                        </div>
-
-
-                        <ReviewFormPersonalPage :arrayReviews="arrayReviews">
-                        </ReviewFormPersonalPage>
-                    </div>
-                    <div class="flex justify-center m-auto" v-else>
-                        <div class="empty_category  flex-col">
-                            <div class="empty_category__header">Review list is empty.</div>
-                            <div class="empty_category__body">You can write reviews on film pages.
-                            </div>
+                <div class="flex justify-center m-auto" v-else>
+                    <div class="empty_category  flex-col">
+                        <div class="empty_category__header">Review list is empty.</div>
+                        <div class="empty_category__body">You can write reviews on film pages.
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    
+    </div>
 </template>
   
 <script>
 import { fetchFavFilms, fetchRev, isLoaded } from '../hooks/fetch.js'
 import ByIdSearchedFilmsForm from '../components/ByIdSearchedFilmsForm.vue'
 import ReviewFormPersonalPage from '../components/ReviewFormPersonalPage.vue';
+import IconProfile from '../components/IconProfile.vue'
 import { arrayReviews, fiveRev, page, pages } from '../hooks/reviews.js'
 import { IdFilmsArray, favPage, favPages } from '../hooks/favorite.js'
 import { isAuth } from '../hooks/authorization';
@@ -84,12 +83,14 @@ export default {
             name: localStorage.getItem('logNAME'),
             arrayReviews: arrayReviews,
             anyFavorites: false,
-            anyReviews: false
+            anyReviews: false,
+
         }
     },
     components: {
         ByIdSearchedFilmsForm,
-        ReviewFormPersonalPage
+        ReviewFormPersonalPage,
+        IconProfile
     },
     beforeUpdate() {
 
@@ -169,9 +170,10 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/styles/Pages_styles/PersonalStyle.scss';
 
-.personal_page__categorys{
+.personal_page__categorys {
     width: 100%;
 }
+
 .personal_page__user {
     display: flex;
     width: 100%;

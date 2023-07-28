@@ -1,11 +1,11 @@
 import router from '../router/router'
-import {  hideMenuAfterLogin, changeAuth } from '../hooks/authorization.js'
+import { hideMenuAfterLogin, changeAuth } from '../hooks/authorization.js'
 import { ref } from 'vue'
 import { errorType, ifErrorData } from '../hooks/authorization.js'
 
 
 export const show = ref(true)
-
+const gender = ref(false)
 let easyPassword = [
     '123456', 'qwerty', '123qwe', 'qwe123', '1q2w3e', '111111', '222222', '333333', '444444', '555555', '666666', 'qqqqqq', 'wwwwww', 'eeeeee', 'rrrrrr', 'tttttt', 'yyyyyy',
     '12345q', 'qwert1', '112233', 'qqwwee', '654321', 'ytrewq', '3e2w1q'
@@ -42,6 +42,8 @@ export function startListenerEnterBut() {
 
 
 export function easyValidation() {
+    checkUserGender()
+
     let r = new RegExp(/(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])[a-zA-Z0-9]{6,16}/)
     if (document.querySelector('.input__login_reg').value.length < 3) {
         document.querySelector('.input__login_reg').value = '';
@@ -96,6 +98,7 @@ export function easyValidation() {
 
 }
 
+
 function createNewAcc() {
     let password = document.querySelector('.input__password_reg').value
 
@@ -114,6 +117,16 @@ function createNewAcc() {
         changeAuth()
         localStorage.setItem(`favorite.${localStorage.getItem('logNAME')}`, JSON.stringify([]))
         localStorage.setItem(`reviews.${localStorage.getItem('logNAME')}`, JSON.stringify([]))
+
+        let randomNumberIcon = Math.floor(1+Math.random() * 2)
+        if(gender.value == 'male'){
+            localStorage.setItem(`icon.${localStorage.getItem('logNAME')}`, `M${randomNumberIcon}`) 
+        }else if(gender.value == 'female'){
+            localStorage.setItem(`icon.${localStorage.getItem('logNAME')}`, `F${randomNumberIcon}`) 
+        }else {
+            localStorage.setItem(`icon.${localStorage.getItem('logNAME')}`, 'NM') 
+        }
+        
         router.replace('/personal')
     }
     else {
@@ -128,6 +141,20 @@ function createNewAcc() {
 
         return
     }
+}
+
+
+
+export function checkUserGender() {
+    let form = document.querySelector('#sex')
+    let formD = new FormData(form);
+    for (const entry of formD) {
+        gender.value = entry[1];
+    };
+    if (gender.value != 'male' && gender.value != 'female'&& gender.value != 'noMatter') {
+        gender.value = 'noMatter'
+    }
+
 }
 
 export function encryptPass(password) {

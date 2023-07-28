@@ -72,3 +72,79 @@
     margin-top: -5px;
     margin-bottom: 5px;
 }
+
+
+
+
+.wrapper__sex   {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-bottom:10px;
+    padding-top: 10px;
+  }
+  .wrapper__sex    .option{
+    background: #3b3a3d;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0 5px;
+    transition: all 0.3s ease;
+    
+    white-space: nowrap
+  }
+  .wrapper__sex   .option .dot{
+    height: 20px;
+    width: 20px;
+    background: #d9d9d9;
+    border-radius: 50%;
+    position: relative;
+  }
+  .wrapper__sex   .option .dot::before{
+    position: absolute;
+    content: "";
+    top: 4px;
+    left: 4px;
+    width: 12px;
+    height: 12px;
+    background: #1b1a1d;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(1.5);
+    transition: all 0.3s ease;
+  }
+  input[type="radio"]{
+    display: none;
+  }
+  #noMatter:checked:checked ~ .noMatter,
+  #male:checked:checked ~ .male,
+  #female:checked:checked ~ .female{
+    border-color: #1b1a1d;
+  }
+  
+  #noMatter:checked:checked ~ .noMatter .dot,
+  #male:checked:checked ~ .male .dot,
+  #female:checked:checked ~ .female .dot{
+    background: #fff;
+  }
+  #noMatter:checked:checked ~ .noMatter .dot::before,
+  #male:checked:checked ~ .male .dot::before,
+  #female:checked:checked ~ .female .dot::before{
+    opacity: 1;
+    transform: scale(1);
+  }
+  .wrapper__sex  .option span{
+    font-size: 14px;
+    color: #808080;
+    padding-inline: 10px;
+  }
+  
+  #noMatter:checked:checked ~ .noMatter span,
+  #male:checked:checked ~ .male span,
+  #female:checked:checked ~ .female span{
+    color: #fff;
+  }

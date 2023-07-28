@@ -20,6 +20,31 @@
 
                 </div>
             </div>
+
+
+            <form id="sex">
+                <div class="wrapper__sex">
+                    <input type="radio" name="select" id="male" value="male">
+                    <input type="radio" name="select" id="female" value="female">
+                    <input type="radio" name="select" id="noMatter" value="noMatter">
+                    <label for="male" class="option male">
+                        <div class="dot"></div>
+                        <span>Male</span>
+                    </label>
+                    <label for="noMatter" class="option noMatter">
+                        <div class="dot"></div>
+                        <span>No matter</span>
+                    </label>
+                    <label for="female" class="option female">
+                        <div class="dot"></div>
+                        <span>Female</span>
+                    </label>
+
+                </div>
+            </form>
+
+
+
             <div class="buttons">
                 <button type="button"
                     class="but_sign rounded-xl h-10 px-5 mt-1 mb-1 font-medium text-gray-300 hover:text-white border-black mr-2"
@@ -44,12 +69,17 @@ export default {
     mounted() {
         startListenerEnterBut()
     },
+    beforeUnmount(){
+        document.querySelector('#male').checked = false
+        document.querySelector('#female').checked = false
+        document.querySelector('#noMatter').checked = false
+    },
     setup() {
 
         return {
             switchForm,
             easyValidation,
-            startListenerEnterBut
+            startListenerEnterBut,
         }
     },
 

@@ -13,11 +13,10 @@
     height: 100%;
     width: 30vw;
     align-items: center;
-    background-color: #000000d6;
+    background-color: #000000c3;
     color: black;
     z-index: 101;
     overflow: hidden;
-    
 }
 
 .empty_window {
@@ -25,7 +24,7 @@
     justify-content: flex-end;
     height: 100%;
     width: 70vw;
-    background-color: hsla(0, 1%, 17%, 0.5);
+    background-color: #000000c3;
     z-index: 101;
     overflow: hidden;
 }
@@ -34,12 +33,21 @@
     .empty_window {
         display: flex;
         width: 100%;
+        justify-content: center;
     }
 
     .autho_reg {
         position: absolute;
         width: 100%;
         max-height: 482px;
+        background-color: #000000ed;
+    }
+    .section_title{
+      margin-top: 10px;
+      background-color:#000000 ;
+    }
+    .cancel{
+      align-self: flex-end;
     }
 }
 
@@ -52,8 +60,7 @@
     letter-spacing: 1px;
     width: 100%;
     justify-content: center;
-    color: rgb(203, 203, 203);
-    box-shadow: 0px 1px 1px white;
+    color: rgb(235, 235, 235);
 }
 
 .section_title_name {
