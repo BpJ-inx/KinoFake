@@ -61,7 +61,7 @@
 import { changeRating } from '../hooks/show';
 import { isAuth } from '../hooks/authorization.js'
 import { addFavoriteFilm, checkIsFav, isFav, chengeColorStarButIfFav } from '../hooks/favorite.js'
-import { addReview, arrayReviews, pages, chengeArrayReview } from '../hooks/reviews.js'
+import { addReview, arrayReviews, pages, chengeArrayReview, page } from '../hooks/reviews.js'
 import { isLoaded } from '../hooks/fetch.js'
 import ReviewForm from './ReviewForm.vue';
 
@@ -83,6 +83,9 @@ export default {
         chengeColorStarButIfFav()
         chengeArrayReview()
 
+    },
+    unmounted() {
+        page.value = 1
     },
     components: {
         ReviewForm,

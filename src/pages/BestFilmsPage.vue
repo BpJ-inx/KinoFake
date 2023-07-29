@@ -55,6 +55,9 @@ export default {
     let observer = new IntersectionObserver(funcAtIntersection, options);
     observer.observe(this.$refs.observer);
   },
+  beforeMount(){
+    window.scrollTo(0,0)
+  },
   setup() {
     const { responseFilms, fetchRequest, X_API_KEY, pageNumber } =
       fetchBestFilms();

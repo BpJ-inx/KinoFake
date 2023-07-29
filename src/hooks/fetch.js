@@ -290,8 +290,6 @@ export function fetchFavFilms() {
     }
 }
 
-
-
 export function fetchRev() {
     responseReviews.value = [];
     let name = localStorage.getItem('logNAME')

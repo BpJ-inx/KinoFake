@@ -99,7 +99,7 @@ export default {
         this.checkRevFilmsExist()
     },
     beforeMount() {
-
+        window.scrollTo(0, 0)
         if (isAuth.value) {
             this.arrayReviews = this.responseReviews
             this.pagintion()
@@ -169,24 +169,4 @@ export default {
   
 <style lang="scss" scoped>
 @import '../assets/styles/Pages_styles/PersonalStyle.scss';
-
-.personal_page__categorys {
-    width: 100%;
-}
-
-.personal_page__user {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-}
-
-.personal_page__user__img {
-    display: flex;
-    border-radius: 100%;
-    border: solid 2px black;
-    height: 300px;
-    width: 300px;
-}
 </style>

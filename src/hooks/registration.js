@@ -3,7 +3,6 @@ import { hideMenuAfterLogin, changeAuth } from '../hooks/authorization.js'
 import { ref } from 'vue'
 import { errorType, ifErrorData } from '../hooks/authorization.js'
 
-
 export const show = ref(true)
 const gender = ref(false)
 let easyPassword = [
@@ -29,8 +28,6 @@ export function startListenerEnterBut() {
         };
     });
 
-
-
     document.querySelector('.input__password_reg').addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
             easyValidation()
@@ -48,8 +45,6 @@ export function easyValidation() {
     if (document.querySelector('.input__login_reg').value.length < 3) {
         document.querySelector('.input__login_reg').value = '';
         document.querySelector('.input__password_reg').value = '';
-
-
 
         ifErrorData.value = true
         errorType.value = 'Login must contain more than 3 symbols'
@@ -78,7 +73,6 @@ export function easyValidation() {
         setTimeout(() => { ifErrorData.value = false }, 4000)
         document.querySelector('.input__password_reg').focus()
 
-
         return
     }
 
@@ -94,10 +88,7 @@ export function easyValidation() {
 
         return
     }
-
-
 }
-
 
 function createNewAcc() {
     let password = document.querySelector('.input__password_reg').value
@@ -110,7 +101,6 @@ function createNewAcc() {
         localStorage.setItem('logNAME', document.querySelector('.input__login_reg').value)
         document.querySelector('.input__login_reg').value = ''
         document.querySelector('.input__password_reg').value = ''
-
 
         hideMenuAfterLogin()
         switchForm()

@@ -75,7 +75,6 @@ export function deleteFromFav() {
 
     favPage.value = Math.ceil(IdFilmsArray.value.length / 3)
 
-
     fetchFavFilms()
 }
 

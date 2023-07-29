@@ -21,8 +21,7 @@
                 </div>
             </div>
 
-
-            <form id="sex">
+            <form id="sex" name="sex_form">
                 <div class="wrapper__sex">
                     <input type="radio" name="select" id="male" value="male">
                     <input type="radio" name="select" id="female" value="female">

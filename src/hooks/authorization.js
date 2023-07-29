@@ -8,14 +8,6 @@ export const ifErrorData = ref(false)
 export const isCookie = ref(false)
 export const isAuth = ref(false)
 
-localStorage.setItem('1', '22a')
-localStorage.setItem(`favorite.1`, JSON.stringify([]))
-localStorage.setItem('reviews.1', JSON.stringify([]))
-
-
-
-
-
 export function changeAuth() {
     if (isAuth.value == false) {
         isAuth.value = true

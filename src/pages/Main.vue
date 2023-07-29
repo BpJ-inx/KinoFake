@@ -57,7 +57,9 @@ export default {
   components: {
     FilmsFormWithoutRating,
   },
-
+  beforeMount(){
+    window.scrollTo(0,0)
+  },
   setup() {
     const { prevRespPremiers, prevRespTop, prevRespBest } = fetchMainTop()
 
